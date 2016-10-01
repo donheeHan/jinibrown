@@ -39,12 +39,7 @@
 		authentication-failure-url : login 에러시 커스텀 페이지로 이동 (중복 로그인시 해당 url로 이동)
 		always-use-default-target="true" : 로그인 성공후에 default-target-url에 설정한 곳으로 갈지 말지 설정
 -->
-<!-- 		<intercept-url pattern="/stu/**" access="hasRole('ROLE_STU')"/>
-		<intercept-url pattern="/pro/**" access="hasRole('ROLE_PRO')"/>
-		<intercept-url pattern="/emp/**" access="hasRole('ROLE_EMP')"/>
-		<intercept-url pattern="/cyberCampus/**" access="hasAnyRole('ROLE_STU', 'ROLE_PRO')"/>
-		<intercept-url pattern="/cyberCampus/pro/**" access="hasRole('ROLE_PRO')"/>
-		<intercept-url pattern="/crses/stu/**" access="hasRole('ROLE_STU')"/>
-		<intercept-url pattern="/common/**" access="permitAll"/> -->
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/**" access="permitAll"/>
 	</http>
 </beans:beans>
