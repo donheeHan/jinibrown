@@ -1,0 +1,237 @@
+
+#wrap{
+    width:971px; /* 각 웹 페이지 크기에 맞게 사이즈 조정 */
+    text-align:left;
+    margin:0;
+    margin-right:auto;
+    margin-left:auto;
+    background-repeat:repeat-y;    
+   /*  min-height:780px; */
+   min-height:200px;
+}
+
+
+.clear{clear:both;}
+
+#logo{
+    float:left;
+    width:180px;
+    height:100px;
+    margin:40px 0 0 40px;
+}
+
+nav#catagory_menu{
+	float:right;
+    margin:20px 64px 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table#cartList {
+    border-collapse:collapse;    /* border 사이의 간격 없앰 */
+    border-top: 2px solid  #333;    
+    border-bottom: 1px solid  #333; 
+    width:100%;                  /* 전체 테이블 길이 설정 */
+    margin-bottom: 20px;
+}
+
+table#cartList th{	
+	text-align: center;
+}
+#fixedDiv{
+	text-align:center;	
+	margin-top:0;
+}
+
+nav#catagory_menu p{
+	display:block; 
+    float:left;
+    font-family: 굴림;
+	margin-top:0;
+}
+
+#catagory_menu{
+	margin-top:0;
+	padding-top:0;
+	list-style:none; 
+	position: fixed;
+	width: 100%;
+	background-color: #BDBDBD;
+	opacity : 0.4;
+}
+
+
+
+
+nav#top_menu{
+	padding-top:5%;
+    margin-left:30%;
+    float:center;
+}
+
+nav#top_menu ul{
+    list-style:none;
+    font-family:Verdana;
+}
+nav#top_menu ul li{
+   float:left;
+   margin:0 15px;  
+   font-size: 14pt; 
+}
+
+nav#top_menu a{
+	display:block; 
+    height:20px;
+    text-decoration:none;
+    padding: 10px;
+}
+
+nav#top_menu a:hover{
+    background-image:url(../images/purple.gif);
+    background-repeat:repeat-x;
+    background-position:bottom;
+}
+
+article h1, div h1 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 45px;
+	color: #CCC;
+	margin: 20px 0;
+	font-weight: normal;
+}
+
+article h2, div h2{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 30px; 
+	color: #CCC;
+	padding-bottom: 15px;
+	border-bottom: 1px dotted #666; /* 제목 하단 부에 점선을 넣어 제목이라는 것을 표시해 줍니다. */	
+}
+
+
+#item{
+    width:200px;
+    float:left; margin: 0 13px;
+    text-align: center;
+}
+
+#item img{
+	width: 190px; 
+	height : 200px; 
+}
+
+#itemdetail  img{
+	width: 190px; 
+	height : 200px; 
+	margin-right: 20px;
+}
+
+a{
+    text-decoration:none;
+}
+a:hover{
+    color:#F90;
+    text-decoration:underline;
+}
+
+#pname {
+	font-size: 20px; 
+	border-bottom: 1px dotted #666; 
+	padding: 5px 0; 
+}
+
+
+#main_img{
+	text-align: center;
+} 
+#main_img img{
+    margin:9px 0 0 0; 
+}
+
+div#front{
+    margin:5px 0 5px 20px;
+}
+
+#sub_img {
+	text-align: center;
+}
+
+#sub_img img {
+	margin: 9px 0 0 0;
+}
+
+#sub_menu {
+	width: 250x;
+	float: left;
+	margin: 20px 0;
+}
+
+#sub_menu ul {
+	margin: 20px 0 0 16px;
+	list-style: none;
+}
+
+#sub_menu a {
+	text-decoration: none;
+	 font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold; font-size:16px;
+	display: block;
+	height: 15px;
+	width: 160px;
+	padding: 7px;
+	border-bottom: 1px dotted #999;
+	background-image: url(../images/bullet.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+#sub_menu a:hover {
+	background-image: url(../images/bullet_orange.gif);
+	background-repeat: no-repeat; 
+	background-position: right center;
+	color: #F90;font-weight:bold; font-size:16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+article {
+	float: right;
+	width: 680px;
+	padding-right: 10px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1em;
+	line-height: 1.5em; 
+}
+
+article p {
+	padding-left: 10px;
+}
+
+article table#notice {
+	width: 670px;
+	border-collapse: collapse;
+	border-top: 1px solid #999;
+}
+
+article table#notice th {
+	height: 20px;
+	width: 70px;
+	font-size: 14px; 
+	font-weight: bold;
+	padding: 5px; 
+	border-bottom: 1px dotted #999;
+}
+
+article table#notice td {
+	text-align: left;
+	padding: 6px 0;
+	border-bottom: 1px dotted #999;
+}
+
+article table#notice tr:hover {
+	background-color: #DDF;
+	cursor: pointer;
+	color: red;
+}
+
+.divMain{
+	text-align: center;
+}

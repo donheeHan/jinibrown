@@ -60,17 +60,9 @@ $(function(){
 });
 
 </script>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Hanguk University! | </title>
-  </head>
-
-  <body> 
-    <div>
-      <div> 
-        <div class="login_form">
-          <section> 
-            <form name="form" method="post" action="/common/loginCheck" id="loginForm">
+<body>
+		<div class="divMain" style="width: 200px;">
+           <form method="post" action="/common/loginCheck" id="loginForm">
               <h1 style="color:#D8D8D8;">LOGIN</h1> 
               <div>
                 <input type="text" class="form-control" name="use_id" id="use_id" placeholder="User ID"/>
@@ -79,12 +71,9 @@ $(function(){
                 <input type="password" class="form-control" name="use_pwd" id="use_pwd" placeholder="Password"/>
               </div> 
               <div>  
-                <input type="submit" value="L O G I N" style="width:100%; height: 30px;">  
+                <input type="submit" value="L O G I N" style="width:10px; height: 30px;">  
               </div> 
            	</form>
-          	</section>
-           </div>
-        </div>     
-      </div>
-  </body>
+       </div>
+</body>
 </html>

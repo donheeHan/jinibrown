@@ -20,12 +20,14 @@
 	<script src="/js/jquery.form.js"></script>
 	<script src="/js/sweetalert.min.js"></script>
 	<link href="/css/sweetalert.css" rel="stylesheet">
+	<link href="/css/common.css" rel="stylesheet">
+	<link href="/css/shopping.css" rel="stylesheet">
   <body>
-  		<div>탑</div>
+  		<jsp:include page="header.jsp"></jsp:include>
   		
-        <div>
+        <div class="divCenter" style="width: 100%;">  
           <decorator:body />
-        </div>
+        </div> 
 
         <footer>
           <div>밭엄</div>

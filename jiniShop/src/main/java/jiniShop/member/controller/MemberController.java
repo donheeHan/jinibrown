@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import jiniShop.member.service.MemberService;
 import jiniShop.security.SecurityProcess;
+import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.UsersVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +27,13 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
+	public String main(){
+		String url = "main";
+		
+		return url;
+	}
 	
 	@RequestMapping(value="/loginPage", method={RequestMethod.GET, RequestMethod.POST})
 	public String loginForm(){
@@ -71,5 +81,29 @@ public class MemberController {
 			ei.printStackTrace();
 		}
 		
+	}
+	
+	@RequestMapping(value="/login", method={RequestMethod.GET, RequestMethod.POST})
+	public String login(){
+		String url = "redirect:/main";
+		
+		//로그인되고
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Login_ViewVO loginUser = new Login_ViewVO();
+		
+		//id 가져와서
+		String id = auth.getName();
+		
+		loginUser = memberService.getLoginInfo(id);
+			
+		
+		return url;
+	}
+	
+	@RequestMapping(value="/joinForm", method={RequestMethod.GET, RequestMethod.POST})
+	public String join(){
+		String url = "/member/joinForm";
+		
+		return url;
 	}
 }

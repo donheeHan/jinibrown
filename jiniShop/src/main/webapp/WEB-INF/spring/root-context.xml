@@ -46,8 +46,7 @@
 
 	<aop:config>
 		<aop:pointcut
-			expression="execution(public * jiniShop.*.service..*ServiceImpl.*(..))"
-			id="servicePublicMethod" />
+			expression="execution(public * jiniShop.*.service..*ServiceImpl.*(..))" id="servicePublicMethod" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod" />
 	</aop:config>
 

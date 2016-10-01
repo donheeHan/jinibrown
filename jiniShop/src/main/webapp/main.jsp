@@ -3,12 +3,12 @@
 
 <html>
 <head>
-<meta http-equiv="refresh" content="0;url=/loginPage" charset="UTF-8">
+<meta http-equiv="refresh" content="0;url=/main" charset="UTF-8">
 <title></title>
 </head>
 <body>
 	<script>
-		location.href="/loginPage";
+		location.href="/main";
 	</script>                        
 </body>
 </html>

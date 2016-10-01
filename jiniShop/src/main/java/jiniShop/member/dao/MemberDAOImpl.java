@@ -2,6 +2,7 @@ package jiniShop.member.dao;
 
 import java.util.Map;
 
+import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.UsersVO;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +18,11 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public UsersVO getLoginCheck(Map<String, String> checkMap) {
 		return (UsersVO) session.selectOne("Member.loginCheck", checkMap);
+	}
+
+	@Override
+	public Login_ViewVO getLoginInfo(String id) {
+		return (Login_ViewVO) session.selectOne("Member.loginInfo", id);
 	}
 
 }
