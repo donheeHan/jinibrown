@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- .js/.css/.images 확장자를 가진 파일들은 security를 걸지않겠다는 설정. -->
+	<http pattern="common/**/*.js" security="none" />
+	<http pattern="common/**/*.css" security="none" />
+	<http pattern="common/images/*" security="none" />
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT USER_ID AS USERNAME, USER_PASS AS PASSWORD, ENABLED FROM USERS WHERE USER_ID=?"
+				authorities-by-username-query="SELECT USER_ID AS USERNAME, AUTHORITY FROM USERS WHERE USER_ID=?"
+			/>
+		</authentication-provider>
+	</authentication-manager>
+	
+<!-- 시큐리티 -->
+	<http pattern="/**" use-expressions="true">
+		<form-login
+			login-page="/loginForm"
+			login-processing-url="/loginProcess"
+			username-parameter="use_id"
+			password-parameter="use_pwd"
+			default-target-url="/login"
+		/>
+		<access-denied-handler error-page="/auth_error"/>
+<!--
+        login-page : 로그인이 요청될 시에 이동할 URL을 설정합니다.
+		username-parameter : 로그인 아이디의 파라미터명 즉 name필드값을 설정합니다.
+		passoword-parameter : 비밀번호의 파라미터 명을 설정합니다.
+		login-processing-url : 폼에서 전송할 URL 값을 설정합니다. (action=login-processing-url)
+		default-target-url : 사용자 보호된 URL요청시 스프링 시큐리티에서 로그인 페이지를 보여주는 경우 사용자가 로그인 성공 후 대상 URL로 리다이렉트 된다.
+		authentication-failure-url : login 에러시 커스텀 페이지로 이동 (중복 로그인시 해당 url로 이동)
+		always-use-default-target="true" : 로그인 성공후에 default-target-url에 설정한 곳으로 갈지 말지 설정
+-->
+<!-- 		<intercept-url pattern="/stu/**" access="hasRole('ROLE_STU')"/>
+		<intercept-url pattern="/pro/**" access="hasRole('ROLE_PRO')"/>
+		<intercept-url pattern="/emp/**" access="hasRole('ROLE_EMP')"/>
+		<intercept-url pattern="/cyberCampus/**" access="hasAnyRole('ROLE_STU', 'ROLE_PRO')"/>
+		<intercept-url pattern="/cyberCampus/pro/**" access="hasRole('ROLE_PRO')"/>
+		<intercept-url pattern="/crses/stu/**" access="hasRole('ROLE_STU')"/>
+		<intercept-url pattern="/common/**" access="permitAll"/> -->
+	</http>
+</beans:beans>
