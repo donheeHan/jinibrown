@@ -22,7 +22,7 @@
 	 }); 
 	});  
 </script>
-<div style="width:100%;"> 
+<div style="width:100%; margin-top: 100px;"> 
 <ul class="bxslider">
   <li><img src="/images/main/main1.jpg" title="caption value pic1"/></li>
   <li><img src="/images/main/main2.jpg" title="caption value pic2"/></li>

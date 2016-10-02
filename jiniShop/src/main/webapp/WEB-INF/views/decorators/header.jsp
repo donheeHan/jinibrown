@@ -84,7 +84,7 @@
 <!--헤더파일 들어가는 곳 시작 -->
   <header>  
     <!--로고 들어가는 곳 시작--->  
-    <div class="divCenter">
+    <div class="divCenter" style="background:url('../../resources/images/main/mainBack.png'); background-size:100%;">
       <a href="/main"><img src="/images/mainlogo.png" style="width:60%;"></a>
     </div>
     <!--로고 들어가는 곳 끝-->     
