@@ -1,6 +1,5 @@
 package jiniShop.vo;
 
-import java.util.Date;
 
 public class MemberVO {
 	private String id;
@@ -48,18 +47,19 @@ public class MemberVO {
 	public void setMaddress2(String maddress2) {
 		this.maddress2 = maddress2;
 	}
-	public String getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
 	public int getPoint() {
 		return point;
 	}
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	
 	
 	
 }

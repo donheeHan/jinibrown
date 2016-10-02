@@ -29,6 +29,7 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
+	SecurityProcess sp = new SecurityProcess();
 	
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
 	public String main(){
@@ -47,7 +48,7 @@ public class MemberController {
 	@RequestMapping(value="/loginCheck", method={RequestMethod.GET, RequestMethod.POST})
 	public void loginCheck(HttpServletResponse response, @RequestParam(value="use_id")String id, @RequestParam(value="use_pwd")String pwd){
 		String message = "";
-		SecurityProcess sp = new SecurityProcess();
+		
 		String encPwd = "";
 		try {
 			encPwd = sp.encrypt(pwd);
@@ -134,7 +135,11 @@ public class MemberController {
 		UsersVO users = new UsersVO();
 		
 		users.setUser_id(member.getId());
-		users.setUser_pass(pass);
+		try {
+			users.setUser_pass(sp.encrypt(pass));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		memberService.insertMember(member, users);
 		

@@ -708,8 +708,8 @@
 			<br>
 
 			<div>
-				<input type="button" value="회원가입" class="submit"> <input
-					type="reset" value="취소" class="cancel">
+				<input type="submit" value="회원가입"> 
+				<input type="reset" value="취소" class="cancel">
 			</div>
 		</form>
 	</fieldset>

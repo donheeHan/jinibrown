@@ -17,7 +17,7 @@
 	</insert>
 	
 	<insert id="insertMember" parameterType="member">
-		insert into member(id, name, email, mtemp, maddress1, maddress2, brithday) 
-		values(#{id}, #{name}, #{email}, #{mtemp},#{maddress1}, #{maddress2}, #{brithday})
+		insert into member(id, name, email, mtemp, maddress1, maddress2, birthday) 
+		values(#{id}, #{name}, #{email}, #{mtemp},#{maddress1}, #{maddress2}, #{birthday})
 	</insert>
 </mapper>
