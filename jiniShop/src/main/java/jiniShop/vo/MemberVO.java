@@ -9,8 +9,7 @@ public class MemberVO {
 	private String mtemp;
 	private String maddress1;
 	private String maddress2;
-	private Date birthday;
-	private String info;
+	private String birthday;
 	private int point;
 	
 	public String getId() {
@@ -49,17 +48,11 @@ public class MemberVO {
 	public void setMaddress2(String maddress2) {
 		this.maddress2 = maddress2;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
-	}
-	public String getInfo() {
-		return info;
-	}
-	public void setInfo(String info) {
-		this.info = info;
 	}
 	public int getPoint() {
 		return point;

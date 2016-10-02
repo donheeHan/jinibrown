@@ -3,6 +3,7 @@ package jiniShop.member.service;
 import java.util.Map;
 
 import jiniShop.vo.Login_ViewVO;
+import jiniShop.vo.MemberVO;
 import jiniShop.vo.UsersVO;
 
 public interface MemberService {
@@ -12,5 +13,8 @@ public interface MemberService {
 
 	//로그인정보
 	Login_ViewVO getLoginInfo(String id);
+
+	//회원가입
+	void insertMember(MemberVO member, UsersVO users);
 
 }

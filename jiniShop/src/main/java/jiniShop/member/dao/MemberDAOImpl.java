@@ -3,6 +3,7 @@ package jiniShop.member.dao;
 import java.util.Map;
 
 import jiniShop.vo.Login_ViewVO;
+import jiniShop.vo.MemberVO;
 import jiniShop.vo.UsersVO;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,6 +24,16 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public Login_ViewVO getLoginInfo(String id) {
 		return (Login_ViewVO) session.selectOne("Member.loginInfo", id);
+	}
+
+	@Override
+	public void insertUser(UsersVO users) {
+		session.insert("Member.insertUser", users);
+	}
+
+	@Override
+	public void insertMember(MemberVO member) {
+		session.insert("Member.insertMember", member);
 	}
 
 }

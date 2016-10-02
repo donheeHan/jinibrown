@@ -21,16 +21,20 @@
 	<script src="/js/sweetalert.min.js"></script>
 	<link href="/css/sweetalert.css" rel="stylesheet">
 	<link href="/css/common.css" rel="stylesheet">
-	<link href="/css/shopping.css" rel="stylesheet">
   <body>
+  		<br><br><br>
   		<jsp:include page="header.jsp"></jsp:include>
   		
-        <div class="divCenter" style="width: 100%;">  
+        <div class="divCenter" style="width: 100%; min-height: 1000px; max-height: auto;">
+	        <div class="divCenter" style="width: 60%; display:inline-block;">
           <decorator:body />
+          	</div>
         </div> 
 
+
+		<hr>
         <footer>
-          <div>밭엄</div>
+          <div class="divCenter">Copyright ©All rights reserved. Designed By madeleine</div>
         </footer>
   </body>
 </html>

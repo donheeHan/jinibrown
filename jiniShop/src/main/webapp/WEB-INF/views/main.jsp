@@ -1,170 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-<script src="http://malsup.github.com/jquery.cycle2.js"></script>
-
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>Insert title here</title>
-
-<style type="text/css">
-
-.cycle-slideshow, .cycle-slideshow *
-
-{
-
-	-webkit-box-sizing: border-box;
-
-	-moz-box-sizing: border-box;
-
-	box-sizing: border-box;
-
-}
-
-.cycle-slideshow
-
-{
-
-	width:1000;
-
-	margin : 0px auto;
-
-	padding: 0;
-
-	position : relative;
-
-}
-
-.cycle-slideshow div.slide
-
-{
-
-	width: 100%;
-
-	height : 100%;
-
-}
-
-.cycle-slideshow img
-
-{
-
-	position : absolute;
-
-	top : 0;
-
-	left : 0;
-
-	width : 100%;
-
-	padding : 0;
-
-	display : block;
-
-}
-
-.cycle-slideshow imgLfirst-child
-
-{
-
-	position : static;
-
-	z-index : 100;
-
-}
-
-.cycle-pager
-
-{
-
-	text-align : center;
-
-	width : 100%;
-
-	z-index : 500;
-
-	position : absolute;
-
-	top : 10px;
-
-	
-
-}
-
-.cycle-pager span
-
-{
-
-	font-family : serif;
-
-	font-size : 50px;
-
-	width: 16px;
-
-	height: 16px;
-
-	display : inline-block;
-
-	color : #DDD;
-
-	cursor : pointer;
-
-}
-
-.cycle-pager span.cycle-pager-active
-
-{
-
-	color : #D69746;
-
-}
-
-.cycle-pager > *
-
-{
-
-	cursor: pointer;
-
-}
-
-
-</style>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Untitled Document</title>
+<!-- bxSlider Javascript file -->
+<script src="/js/jquery.bxslider.min.js"></script>
+<!-- bxSlider CSS file --> 
+<link href="/css/jquery.bxslider.css" rel="stylesheet" />
+<script type="text/javascript">
+	$(function(){
+	 $('.bxslider').bxSlider({ 
+	   mode: 'fade',    //사라지는 모냥
+	   speen:3000,     // 이미지변환 속도 기본 500
+	   pager: true,     //하단 페이지
+	   auto: true,     //자동시작
+	   captions: true,  //캡션
+	   controls:false //전 후 콘트롤 보이기 안보이기
+	 }); 
+	}); 
+</script>
 </head>
-
-<body>
-
-<div class="cycle-slideshow" cycle-slideshow data-cycle-loader="wait" style="width:1000px; height:auto;"> 
-
-	<div class="cycle-slideshow" data-cycle-fx=scrollHorz data-cycle-timeout=2000>
-
-
-
-
-	<div class="cycle-pager"></div>     
-
-      <img src="/images/main/main1.jpg" width="1000" height="auto" alt="Slide 1" />
-      <img src="/images/main/main2.jpg" width="1000" height="auto" alt="Slide 2" />
-      <img src="/images/main/main3.jpg" width="1000" height="auto" alt="Slide 3" />
-      <img src="/images/main/main4.jpg" width="1000" height="auto" alt="Slide 3" />
-      <img src="/images/main/main5.jpg" width="1000" height="auto" alt="Slide 3" />
-
-
-      </div>
-
-    </div>
-
-
+<body> 
+<div style="width:600px"> 
+<ul class="bxslider">
+  <li><img src="/images/main/main1.jpg" title="caption value pic1"/></li>
+  <li><img src="/images/main/main2.jpg" title="caption value pic2"/></li>
+  <li><img src="/images/main/main3.jpg" title="caption value pic3"/></li>
+  <li><img src="/images/main/main4.jpg" title="caption value pic4"/></li>
+</ul>
+</div>
 </body>
-
 </html>

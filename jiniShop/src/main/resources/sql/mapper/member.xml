@@ -7,4 +7,17 @@
 	<select id="loginCheck" parameterType="map" resultType="users">
 		select * from users where user_id = #{id} and user_pass = #{pwd} and enabled = '1'
 	</select>
+	
+	<select id="loginInfo" parameterType="str" resultType="loginView">
+		select * from login_view where id=#{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="users">
+		insert into users(user_id, user_pass) values(#{user_id}, #{user_pass})
+	</insert>
+	
+	<insert id="insertMember" parameterType="member">
+		insert into member(id, name, email, mtemp, maddress1, maddress2, brithday) 
+		values(#{id}, #{name}, #{email}, #{mtemp},#{maddress1}, #{maddress2}, #{brithday})
+	</insert>
 </mapper>

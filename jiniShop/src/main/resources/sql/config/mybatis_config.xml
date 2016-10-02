@@ -13,6 +13,7 @@
 		
 		<typeAlias alias="member" type="jiniShop.vo.MemberVO" />
 		<typeAlias alias="users" type="jiniShop.vo.UsersVO" />
+		<typeAlias alias="loginView" type="jiniShop.vo.Login_ViewVO" />
 
 
 	</typeAliases>

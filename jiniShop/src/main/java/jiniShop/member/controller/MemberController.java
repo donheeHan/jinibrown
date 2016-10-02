@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jiniShop.member.service.MemberService;
 import jiniShop.security.SecurityProcess;
 import jiniShop.vo.Login_ViewVO;
+import jiniShop.vo.MemberVO;
 import jiniShop.vo.UsersVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +86,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/login", method={RequestMethod.GET, RequestMethod.POST})
-	public String login(){
+	public String login(HttpSession session){
 		String url = "redirect:/main";
 		
 		//로그인되고
@@ -95,15 +97,76 @@ public class MemberController {
 		String id = auth.getName();
 		
 		loginUser = memberService.getLoginInfo(id);
+		
+		session.setAttribute("loginUser", loginUser);
+		
+		return url;
+	}
+	
+	@RequestMapping(value="/logout", method={RequestMethod.GET, RequestMethod.POST})
+	public String logout(HttpSession session){
+		String url ="redirect:/main";
 			
+		if(session != null){
+			session.invalidate();
+		}
 		
 		return url;
 	}
 	
 	@RequestMapping(value="/joinForm", method={RequestMethod.GET, RequestMethod.POST})
-	public String join(){
+	public String joinForm(){
 		String url = "/member/joinForm";
 		
 		return url;
+	}
+	
+	@RequestMapping(value="/join", method={RequestMethod.GET, RequestMethod.POST})
+	public String join(MemberVO member, @RequestParam("pwd")String pass,
+			@RequestParam("email1")String email1, @RequestParam("email2")String email2,
+			@RequestParam("birth1")String birth1, @RequestParam("birth2")String birth2,
+			@RequestParam("birth3")String birth3){
+		String url = "redirect:/main";
+		
+		member.setBirthday(birth1+birth2+birth3);
+		member.setEmail(email1+"@"+email2);
+		
+		UsersVO users = new UsersVO();
+		
+		users.setUser_id(member.getId());
+		users.setUser_pass(pass);
+		
+		memberService.insertMember(member, users);
+		
+		
+		return url;
+	}
+	
+	@RequestMapping(value="/idCheck", method={RequestMethod.GET, RequestMethod.POST})
+	public void idCheck(HttpServletResponse response, @RequestParam("id")String id){
+
+		String result = "";
+		
+		Login_ViewVO loginUser = new Login_ViewVO();
+		
+		loginUser = memberService.getLoginInfo(id);
+		
+		if(loginUser != null){
+			result = "no";
+		}else{
+			result = "ok";
+		}
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+	
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(result);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
 	}
 }

@@ -68,7 +68,6 @@
 		});
 	</script>
     <div>
-        <div class="login_form">
           <section> 
             <form name="form" method="post" action="/loginCheck" id="loginForm">
               <h1 style="color:#D8D8D8;">LOGIN</h1> 
@@ -83,6 +82,5 @@
               </div> 
            	</form>
           	</section>
-           </div>
-        </div>     
+    </div>     
 </body>
