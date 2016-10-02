@@ -28,7 +28,7 @@
             #fixedDiv{
                 position:absolute;
                 width:40px;
-                top:150px;
+                top:300px;
                 right:70px;
                 padding:0;
                 margin:0;
@@ -38,10 +38,13 @@
             	color:red;
             	margin-left: 50%;
             }
-        </style>
+            #menuDiv li:hover{
+            	border-bottom: 3px solid #DA81F5;
+            }
+        </style> 
 
-<body>
-<div id="fixedDiv">
+<body style="line-height:1;"> 
+<div id="fixedDiv"> 
 	<c:choose>
 	<c:when test="${empty sessionScope.admin}">
        <c:choose>
@@ -53,10 +56,9 @@
        <p><a href="/joinForm"><img src="./images/join.jpg"></a></p>
        </c:when>
        <c:otherwise>
-       <span style="color:orange">${sessionScope.loginUser.name}<br>(${sessionScope.loginUser.id})</span>
        <p><a href="/logout"><img src="./images/Logout.jpg"></a></p>
        </c:otherwise>       
-       </c:choose>
+    </c:choose>
        
        <p class="aa">♥</p>
        <p>
@@ -83,18 +85,46 @@
 <div>
 <!--헤더파일 들어가는 곳 시작 -->
   <header>  
+  	<div style="margin-bottom: 10px; margin-right:30px; text-align: right;">
+  		
+		<c:choose>
+			<c:when test="${empty sessionScope.admin}">
+				<c:choose>
+					<c:when test="${empty sessionScope.loginUser}">
+				  		 안녕하세요.<strong style="color:#DA81F5;">JINI BROWN</strong> 입니다. 즐거운 시간 되세요.
+					</c:when> 
+					<c:otherwise> 
+						환영합니다. <strong style="color:#DA81F5;">${loginUser.name }(${loginUser.id })</strong>님 즐거운 시간 되세요.
+					</c:otherwise>       
+				</c:choose>
+			</c:when>
+		</c:choose>
+  	
+  	
+  	</div> 
     <!--로고 들어가는 곳 시작--->  
     <div class="divCenter" style="background:url('../../resources/images/main/mainBack.png'); background-size:100%;">
       <a href="/main"><img src="/images/mainlogo.png" style="width:60%;"></a>
     </div>
-    <!--로고 들어가는 곳 끝-->     
-    <nav id="top_menu">
-      <ul style="list-style: none;">
-        <li>메뉴들어가야할고오오오오오옷</li>
-      </ul>
-    </nav>
+    <!--로고 들어가는 곳 끝-->
+    <!-- 메뉴들어가는 곳 시작 -->     
+    <div class="divCenter" id="menuDiv" style="width:100%; height: 60px;">
+    	<div style="width: 55%; height: 60px; margin: auto; margin-top: 40px;">
+		    <nav>  
+		      <ul style="list-style: none;"> 
+		        <li style="float: left;"><a href="#"><img src="/images/menu/cheek.jpg"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/eye.jpg"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/face.jpg"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/lip.jpg"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/skincare.jpg"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/more.jpg"></a></li>
+		      </ul>
+		    </nav>
+	    </div>
+    </div>
+    <!-- 메뉴들어가는 곳 끝 -->     
 
-    <div class="clear"></div>
+    <div style="clear:both;"></div>
     <hr>
   </header>
  </div>

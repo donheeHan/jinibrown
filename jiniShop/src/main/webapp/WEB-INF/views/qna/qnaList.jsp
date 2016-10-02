@@ -16,9 +16,13 @@
 
 </script>
 <div>
-	<div style="text-align: left;">
+	<div style="text-align: left; height: 80px;">
 		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>Q&A</strong></p>
+		<br> 
 	</div>  
+	<div style="text-align: right; height: 50px;">  
+		<input type="button" class="btn" value="문의하기">
+	</div>
 	<table class="simple_table" id="datatable">
 		<thead>
 			<tr>
@@ -38,6 +42,7 @@
 	            <td>내용이 들어갑니다.</td>
 	        </tr>
 	    </tbody>
-	</table>
+	</table> 
+
 </div>
 </body>

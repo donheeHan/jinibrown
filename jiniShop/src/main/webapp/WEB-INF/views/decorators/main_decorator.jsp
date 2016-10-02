@@ -10,8 +10,8 @@
 
 <!DOCTYPE html>
 <html>
-<!-- 테이블스타일 -->
 <style type="text/css">
+/* 테이블스타일 */
 .simple_table {
     width: 100%;
     border: none;
@@ -36,8 +36,18 @@
     text-align: left;
     vertical-align: baseline;
 }
-</style>
 
+/* 버튼스타일 */
+.btn {
+	border:1px solid black;    /*---테두리 정의---*/
+	background-Color:#F8ECE0;   /*--백그라운드 정의---*/
+	font:12px 굴림;      /*--폰트 정의---*/
+	font-weight:bold;   /*--폰트 굵기---*/
+	color:#ff0080;    /*--폰트 색깔---*/
+	width:130;height:30;  /*--버튼 크기---*/ 
+}
+</style>
+ 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
