@@ -68,13 +68,9 @@
        </p>
        </c:when>
        </c:choose>
-       <p class="aa">♥</p>
-       <p> 
-         <a href="#"><img src="./images/notice.jpg"></a>
-       </p>
         <p class="aa">♥</p>
        <p>
-         <a href="#"><img src="./images/qna.jpg"></a>
+         <a href="/qnaList"><img src="./images/qna.jpg"></a>
        </p>
          <c:if test="${empty sessionScope.loginUser}">
        <p> 
@@ -94,7 +90,7 @@
     <!--로고 들어가는 곳 끝-->     
     <nav id="top_menu">
       <ul style="list-style: none;">
-        
+        <li>메뉴들어가야할고오오오오오옷</li>
       </ul>
     </nav>
 

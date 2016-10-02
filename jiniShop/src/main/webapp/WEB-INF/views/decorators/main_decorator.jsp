@@ -10,6 +10,34 @@
 
 <!DOCTYPE html>
 <html>
+<!-- 테이블스타일 -->
+<style type="text/css">
+.simple_table {
+    width: 100%;
+    border: none;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+ 
+.simple_table th { 
+    padding: 15px;
+    border-bottom: 1px solid #DDD;
+    background: #F8ECE0;  
+    font-weight: normal;
+    text-align:center;
+    text-shadow: 0 1px #FFF;
+    vertical-align: middle;
+}
+ 
+.simple_table td {
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #DDD;
+    text-align: left;
+    vertical-align: baseline;
+}
+</style>
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -18,7 +46,18 @@
   </head>
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery.form.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/sweetalert.min.js"></script>
+	<script src="/js/jquery.dataTables.min.js"></script>
+	<script src="/js/dataTables.bootstrap.min.js"></script>
+	<script src="/js/jquery.bxslider.min.js"></script>
+	 
+	
+	
+	<link href="/css/jquery.bxslider.css" rel="stylesheet" />
+	<link href="/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<link href="/css/sweetalert.css" rel="stylesheet">
 	<link href="/css/common.css" rel="stylesheet">
   <body>
@@ -34,7 +73,7 @@
 
 		<hr>
         <footer>
-          <div class="divCenter">Copyright ©All rights reserved. Designed By madeleine</div>
+          <div class="divCenter"><img src="/images/main/botmain.jpg"></div>
         </footer>
   </body>
 </html>

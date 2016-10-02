@@ -8,7 +8,7 @@ public class Login_ViewVO {
 	private String mtemp;
 	private String maddress1;
 	private String maddress2;
-	private String brithday;
+	private String birthday;
 	private String point;
 	private String enabled;
 	private String authority;
@@ -54,12 +54,6 @@ public class Login_ViewVO {
 	public void setMaddress2(String maddress2) {
 		this.maddress2 = maddress2;
 	}
-	public String getBrithday() {
-		return brithday;
-	}
-	public void setBrithday(String brithday) {
-		this.brithday = brithday;
-	}
 	public String getPoint() {
 		return point;
 	}
@@ -77,6 +71,12 @@ public class Login_ViewVO {
 	}
 	public void setAuthority(String authority) {
 		this.authority = authority;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 	
 	
