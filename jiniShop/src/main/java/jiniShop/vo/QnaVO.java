@@ -6,7 +6,7 @@ public class QnaVO {
 	private String q_no;
 	private String q_title;
 	private String q_content;
-	private Date q_day;
+	private String q_day;
 	private String q_answer;
 	private String q_user;
 	public String getQ_no() {
@@ -27,12 +27,6 @@ public class QnaVO {
 	public void setQ_content(String q_content) {
 		this.q_content = q_content;
 	}
-	public Date getQ_day() {
-		return q_day;
-	}
-	public void setQ_day(Date q_day) {
-		this.q_day = q_day;
-	}
 	public String getQ_answer() {
 		return q_answer;
 	}
@@ -44,6 +38,12 @@ public class QnaVO {
 	}
 	public void setQ_user(String q_user) {
 		this.q_user = q_user;
+	}
+	public String getQ_day() {
+		return q_day;
+	}
+	public void setQ_day(String q_day) {
+		this.q_day = q_day;
 	}
 	
 	

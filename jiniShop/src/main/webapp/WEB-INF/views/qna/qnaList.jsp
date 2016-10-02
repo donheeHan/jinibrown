@@ -12,6 +12,11 @@
 <script>
 	$(function(){
 		$("#datatable").DataTable();
+		
+		$(".listTr").click(function(){
+			var q_no = $(this).attr("id");
+			location.href='/qnaDetail?q_no='+q_no+'';
+		})
 	});
 
 </script>
@@ -21,7 +26,7 @@
 		<br> 
 	</div>  
 	<div style="text-align: right; height: 50px;">  
-		<input type="button" class="btn" value="문의하기">
+		<input type="button" class="button1" onclick="location.href='/qnaWriteForm';" value="문의하기">
 	</div>
 	<table class="simple_table" id="datatable">
 		<thead>
@@ -30,17 +35,33 @@
 				<th>SUBJECT</th>
 				<th>WRITER</th>
 				<th>DATE</th>
-				<th>HIT</th>
+				<th>RE</th>
 			</tr>
 		</thead>
 	    <tbody>
-	        <tr>
-	            <td scope="row">항목명</td>
-	            <td>내용이 들어갑니다.</td>
-	            <td>내용이 들어갑니다.</td>
-	            <td>내용이 들어갑니다.</td>
-	            <td>내용이 들어갑니다.</td>
-	        </tr>
+	        	<c:choose>
+	        		<c:when test="${empty qnaList }">
+			        <tr>
+	        			<td colspan="5">문의하신 내용이 없습니다.</td>
+			        </tr>
+	        		</c:when>
+	        		<c:otherwise>
+			           	<c:forEach var="qnaList" items="${qnaList}">
+				        <tr id="${qnaList.q_no }" class="listTr">
+			           		<td>${qnaList.q_no }</td>
+			           		<td>${qnaList.q_title }</td>
+			           		<td>${qnaList.q_user }</td>
+			           		<td>${qnaList.q_day }</td>
+			           		<c:if test="${empty qnaList.q_answer }">
+			           			<td style="color:red;">대기</td>
+			           		</c:if>
+			           		<c:if test="${!empty qnaList.q_answer }">
+			           			<td style="color:blue;">답변완료</td>
+			           		</c:if>
+				        </tr>
+			           	</c:forEach>
+	        		</c:otherwise>
+	        	</c:choose>
 	    </tbody>
 	</table> 
 

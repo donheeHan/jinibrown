@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QNA">
+	<select id="qnaList" parameterType="str" resultType="qna">
+		select * from qna where Q_USER = #{id} order by q_no desc
+	</select>
+
+	<insert id="insertQna" parameterType="qna">
+		insert into qna(q_no, q_title, q_content, q_day, q_user) values(qna_seq.nextval, #{q_title}, #{q_content}, #{q_day}, #{q_user})
+	</insert>
+	
+	<select id="qnaDetail" parameterType="str" resultType="qna">
+		select * from qna where q_no = #{q_no}
+	</select>
+	
+	<delete id="qnaDelete" parameterType="str">
+		delete from qna where q_no = #{q_no}
+	</delete>
+</mapper>

@@ -36,16 +36,42 @@
     text-align: left;
     vertical-align: baseline;
 }
+.simple_table tr:hover{
+	background-color: lightyellow; 
+}
+
+/* qna등록 테이블 */
+#writeTable{
+	font-size:17px;
+}
+
+#writeTable th{
+	width: 20%;
+}
+
+#writeTable td{
+	width: 80%;
+}
+
+#writeTable input{
+	border:none;
+	width: 100%;
+	height: 30px;
+}
 
 /* 버튼스타일 */
-.btn {
-	border:1px solid black;    /*---테두리 정의---*/
+.button1 {
+	border:none;    /*---테두리 정의---*/
 	background-Color:#F8ECE0;   /*--백그라운드 정의---*/
 	font:12px 굴림;      /*--폰트 정의---*/
 	font-weight:bold;   /*--폰트 굵기---*/
-	color:#ff0080;    /*--폰트 색깔---*/
-	width:130;height:30;  /*--버튼 크기---*/ 
-}
+	color:black;    /*--폰트 색깔---*/
+	width:130px;height:30px;  /*--버튼 크기---*/ 
+} 
+.button1:hover{ 
+	color:red;
+} 
+
 </style>
  
   <head>

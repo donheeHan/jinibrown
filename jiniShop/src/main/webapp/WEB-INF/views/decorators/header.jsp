@@ -22,6 +22,24 @@
                     offset = topHeight+$(document).scrollTop()+"px";
                     $("#fixedDiv").animate({top:offset},{duration:500,queue:false});
                 });
+                
+                var loginCheck = $("#loginCheck").attr("name");
+                $("#qna").click(function(){
+                	if(loginCheck != ""){
+                		
+                	}else{
+                		swal("로그인 후 이용가능합니다.");
+                		return false;
+                	}
+                });
+                $("#cart").click(function(){
+                	if(loginCheck != ""){
+                		
+                	}else{
+                		swal("로그인 후 이용가능합니다.");
+                		return false;
+                	}
+                });
             }); 
         </script>
          <style>
@@ -44,7 +62,8 @@
         </style> 
 
 <body style="line-height:1;"> 
-<div id="fixedDiv"> 
+<div id="fixedDiv">
+	<input type="hidden" id="loginCheck" name="${loginUser.id }">
 	<c:choose>
 	<c:when test="${empty sessionScope.admin}">
        <c:choose>
@@ -62,7 +81,7 @@
        
        <p class="aa">♥</p>
        <p>
-         <a href="#"><img src="./images/cart.jpg"></a>
+         <a href="#" id="cart"><img src="./images/cart.jpg"></a>
        </p>
        <p class="aa">♥</p>
        <p>
@@ -72,7 +91,7 @@
        </c:choose>
         <p class="aa">♥</p>
        <p>
-         <a href="/qnaList"><img src="./images/qna.jpg"></a>
+         <a href="/qnaList" id="qna"><img src="./images/qna.jpg"></a>
        </p>
          <c:if test="${empty sessionScope.loginUser}">
        <p> 

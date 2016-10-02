@@ -14,6 +14,7 @@
 		<typeAlias alias="member" type="jiniShop.vo.MemberVO" />
 		<typeAlias alias="users" type="jiniShop.vo.UsersVO" />
 		<typeAlias alias="loginView" type="jiniShop.vo.Login_ViewVO" />
+		<typeAlias alias="qna" type="jiniShop.vo.QnaVO" />
 
 
 	</typeAliases>
@@ -21,6 +22,7 @@
 	<mappers>
 
 		<mapper resource="sql/mapper/member.xml" />
+		<mapper resource="sql/mapper/qna.xml" />
 
 	</mappers>
 </configuration>
