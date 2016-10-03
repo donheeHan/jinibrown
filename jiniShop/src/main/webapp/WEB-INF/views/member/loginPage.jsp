@@ -43,11 +43,6 @@
 						}); 
 						return false;
 					}else{
-						swal({
-							title: "< 로그인 성공 >",
-							text: "즐거운하루되세요.",
-							type: "success",
-						}); 
 						var pwd = data.encPwd;
 						$("#use_pwd").val(pwd);
 						$("#loginForm").ajaxFormUnbind();

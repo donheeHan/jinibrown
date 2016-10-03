@@ -50,11 +50,15 @@
 }
 
 #writeTable th{
+	font-weight: normal;
+    text-align:center;
+    text-shadow: 0 1px #FFF;
 	width: 20%;
-}
-
+} 
+ 
 #writeTable td{
 	width: 80%;
+	vertical-align: baseline;
 }
 
 #writeTable input{

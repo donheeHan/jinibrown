@@ -24,12 +24,13 @@
 		
 	});
 
-</script>
-<div>
-	<div style="text-align: left; height: 80px;">
+</script> 
+<div> 
+	<div style="text-align: left; height: 50px;">
 		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>Q&A Detail</strong></p>
 		<br> 
 	</div>  
+	<hr>
 	<table class="simple_table" id="writeTable">
 			<tr>
 				<th>제목</th>
@@ -54,7 +55,7 @@
 						<td style="color:red;"><strong>답변이 없습니다.</strong></td> 
 					</c:when>
 					<c:otherwise>
-						<td>${qnaInfo.q_answer }</td> 
+						<td>관리자 :&nbsp;${qnaInfo.q_answer }</td> 
 					</c:otherwise>
 				</c:choose>
 			</tr>
