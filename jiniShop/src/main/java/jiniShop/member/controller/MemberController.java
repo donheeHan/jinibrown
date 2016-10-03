@@ -127,7 +127,7 @@ public class MemberController {
 			@RequestParam("email1")String email1, @RequestParam("email2")String email2,
 			@RequestParam("birth1")String birth1, @RequestParam("birth2")String birth2,
 			@RequestParam("birth3")String birth3){
-		String url = "redirect:/main";
+		String url = "";
 		
 		member.setBirthday(birth1+birth2+birth3);
 		member.setEmail(email1+"@"+email2);
@@ -141,7 +141,14 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		memberService.insertMember(member, users);
+		try {
+			memberService.insertMember(member, users);
+			url = "redirect:/joinSuccess";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			url = "redirect:/joinError";
+		}
 		
 		
 		return url;
@@ -173,5 +180,21 @@ public class MemberController {
 		} catch (IOException ei){
 			ei.printStackTrace();
 		}
+	}
+	
+	@RequestMapping("joinSuccess")
+	public String joinSuccess(){
+		String url="/member/joinSuccess";
+		
+		
+		return url;
+	}
+	
+	@RequestMapping("joinError")
+	public String joinError(){
+		String url="/member/joinError";
+		
+		
+		return url;
 	}
 }

@@ -67,20 +67,24 @@
 			
 		});
 	</script>
-    <div>
-          <section> 
-            <form name="form" method="post" action="/loginCheck" id="loginForm">
-              <h1 style="color:#D8D8D8;">LOGIN</h1> 
-              <div>
-                <input type="text" class="form-control" name="use_id" id="use_id" placeholder="User ID"/>
-              </div> 
-              <div> 
-                <input type="password" class="form-control" name="use_pwd" id="use_pwd" placeholder="Password"/>
-              </div> 
-              <div>  
-                <input type="submit" value="L O G I N" style="width:100%; height: 30px;">  
-              </div> 
-           	</form>
-          	</section>
+    <div>   	
+	    <div style="text-align: center; height: 30px;">
+			<p style="margin-top:100px; font-size:30px;"><strong>LOGIN PAGE</strong></p>
+			<br> 
+		</div>  
+		<hr>
+     <form class="form-3" name="form" method="post" action="/loginCheck" id="loginForm">
+	    <p class="clearfix">
+	        <label for="login">Username</label>
+	        <input type="text" name="use_id" id="use_id" placeholder="User ID">
+	    </p>
+	    <p class="clearfix">
+	        <label for="password">Password</label>
+	        <input type="password" name="use_pwd" id="use_pwd" placeholder="Password"> 
+	    </p>
+	    <p class="clearfix" style="text-align: center;">
+	        <input type="submit" value="L O G I N" style="margin-top: 15px; width: 100%; height: 50px;">  
+	    </p>
+	</form>
     </div>     
 </body>

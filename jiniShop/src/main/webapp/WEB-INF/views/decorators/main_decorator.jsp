@@ -40,6 +40,10 @@
 	background-color: lightyellow; 
 }
 
+.simple_table input{
+	width: 300px; 
+}
+
 /* qna등록 테이블 */
 #writeTable{
 	font-size:17px;
@@ -72,6 +76,15 @@
 	color:red;
 } 
 
+.button2 {
+ border:1x solid #333333; /* 테두리 정의 */
+ /* border: 1px dashed #ff008; /* 테두리 점선 */
+ background-Color:#E4E4E4; /* 백그라운드 정의 */
+ font:12px 굴림; /* 폰트 정의 */
+ font-weight:bold; /* 폰트 굵기 */
+ color:#444444; /* 폰트 색깔 */
+ width:130;height:30; /* 버튼 크기 */
+}
 </style>
  
   <head>
@@ -89,7 +102,7 @@
 	<script src="/js/jquery.bxslider.min.js"></script>
 	 
 	
-	
+	<link href="/css/login.css" rel="stylesheet" />
 	<link href="/css/jquery.bxslider.css" rel="stylesheet" />
 	<link href="/css/font-awesome.min.css" rel="stylesheet" />
 	<link href="/css/bootstrap.min.css" rel="stylesheet" />
@@ -100,7 +113,7 @@
   		<br><br><br>
   		<jsp:include page="header.jsp"></jsp:include>
   		
-        <div class="divCenter" style="width: 100%; min-height: 1000px; max-height: auto;">
+        <div class="divCenter" style="width: 100%; min-height: 600px; max-height: auto;">
 	        <div class="divCenter" style="width: 60%; display:inline-block;">
           <decorator:body />
           	</div>

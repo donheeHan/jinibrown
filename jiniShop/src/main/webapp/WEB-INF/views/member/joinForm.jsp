@@ -28,7 +28,12 @@
 
 			$("#idcheck").click(function() {
 				var id = $("#id").val();
-
+				if($("#id").val() == ""){
+					swal("아이디를 입력해주세요");
+					$("#id").focus();
+					return false;
+				}
+				
 				$.ajax({
 					url : "/idCheck",
 					method : "get",
@@ -40,7 +45,7 @@
 						if (data == "ok") {
 							swal("사용하실수 있습니다.");
 						} else {
-							swal("아이디가 중복됩니다. 다시입력해주세요");
+							swal("중복아이디. 다시입력해주세요");
 							$("#id").val("");
 						}
 					}
@@ -49,66 +54,36 @@
 
 		});
 	</script>
-	<h2>Join Us</h2>
+	<div style="text-align: left; height: 80px;">
+		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>회원가입</strong></p>
+		<br> 
+	</div> 
+	<hr>
 	<fieldset>
 		<form id="join" action="/join" method="post">
 			<fieldset>
-				<legend>기본 정보</legend>
-				<table>
+				<h3>필수항목</h3>
+				<table class="simple_table">
 					<tr>
-						<td><label>User ID</label></td>
+						<th style="width: 300px;"><label>User ID</label></th>
 						<td><input type="text" name="id" id="id" size="12"> <input
-							type="hidden" name="reid"></td>
-						<td><input type="button" value="중복 체크" id="idcheck">
-						</td>
+							type="hidden" name="reid"><input type="button" value="중복 체크" id="idcheck" class="button2" style="width: 100px; margin-left: 15px;">
 					</tr>
 					<tr>
-						<td><label>Password</label></td>
+						<th><label>Password</label></th>  
 						<td colspan="2"><input type="password" name="pwd"></td>
 					</tr>
 					<tr>
-						<td><label>Retype Password</label></td>
+						<th><label>Retype Password</label></th>
 						<td colspan="2"><input type="password" name="pwdCheck"></td>
 					</tr>
 					<tr>
-						<td><label>Name</label></td>
+						<th><label>Name</label></th>
 						<td colspan="2"><input type="text" name="name"></td>
 					</tr>
 					<tr>
-						<td><label>E-Mail</label></td>
-						<td colspan="2"><input type="text" name="email1" id="email1">@
-							<select name="email2" id="email2" title='이메일'
-							style='width: 220px;'>
-								<option value="">선택해주세요</option>
-								<option value="naver.com">naver.com</option>
-								<option value="chol.com">chol.com</option>
-								<option value="dreamwiz.com">dreamwiz.com</option>
-								<option value="empal.com">empal.com</option>
-								<option value="freechal.com">freechal.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="hanafos.com">hanafos.com</option>
-								<option value="hanmail.net">hanmail.net</option>
-								<option value="hanmir.com">hanmir.com</option>
-								<option value="hitel.net">hitel.net</option>
-								<option value="hotmail.com">hotmail.com</option>
-								<option value="korea.com">korea.com</option>
-								<option value="lycos.co.kr">lycos.co.kr</option>
-								<option value="nate.com">nate.com</option>
-								<option value="netian.com">netian.com</option>
-								<option value="paran.com">paran.com</option>
-								<option value="yahoo.com">yahoo.com</option>
-								<option value="yahoo.co.kr">yahoo.co.kr</option>
-						</select></td>
-					</tr>
-				</table>
-			</fieldset>
-			<fieldset>
-
-				<legend>추가 정보</legend>
-				<table>
-					<tr>
-						<td><label>생년월일</label></td>
-						<td colspan="2"><select title="년" name="birth1" id="birth1">
+						<th><label>생년월일</label></th>
+						<td colspan="2"><select title="년" name="birth1" id="birth1" style="width: 80px;"> 
 								<option value="" selected="selected">년도</option>
 								<option value="2016">2016</option>
 								<option value="2015">2015</option>
@@ -198,31 +173,62 @@
 								<option value="1931">1931</option>
 								<option value="1930">1930</option>
 
-						</select>년 <select title="월" name="birth2" id="birth2">
+						</select>년&nbsp;&nbsp; <select title="월" name="birth2" id="birth2" style="width: 80px;">
 								<option value="" selected="selected">월</option>
 								<c:forEach var="i" begin="1" end="12" step="1">
 									<option value="${i }">${i }</option>
 								</c:forEach>
-						</select>월 <select title="일" name="birth3" id="birth3">
+						</select>월&nbsp; <select title="일" name="birth3" id="birth3" style="width: 80px;">
 								<option value="" selected="selected">일</option>
 								<c:forEach var="i" begin="1" end="31" step="1">
 									<option value="${i }">${i }</option>
 								</c:forEach>
-						</select>일</td>
+						</select>일&nbsp;</td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<h3>추가항목</h3>
+				<table class="simple_table"> 
+					<tr> 
+						<th style="width: 300px;"><label>E-Mail</label></th>
+							<td colspan="2"><input type="text" name="email1" id="email1">&nbsp;@&nbsp;
+								<select name="email2" id="email2" title='이메일'
+								style='width: 220px;'>
+									<option value="">선택해주세요</option>
+									<option value="naver.com">naver.com</option>
+									<option value="chol.com">chol.com</option>
+									<option value="dreamwiz.com">dreamwiz.com</option>
+									<option value="empal.com">empal.com</option>
+									<option value="freechal.com">freechal.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="hanafos.com">hanafos.com</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="hanmir.com">hanmir.com</option>
+									<option value="hitel.net">hitel.net</option>
+									<option value="hotmail.com">hotmail.com</option>
+									<option value="korea.com">korea.com</option>
+									<option value="lycos.co.kr">lycos.co.kr</option>
+									<option value="nate.com">nate.com</option>
+									<option value="netian.com">netian.com</option>
+									<option value="paran.com">paran.com</option>
+									<option value="yahoo.com">yahoo.com</option>
+									<option value="yahoo.co.kr">yahoo.co.kr</option>
+							</select></td>
 					</tr>
 					<tr>
-						<td><label>우편번호</label></td>
+						<th><label>우편번호</label></th>
 						<td><input type="text" name="mtemp"
-							class="postcodify_postcode5" value="" /></td>
-						<td><input type="button" id="postcodify_search_button"
-							value="검색"></td>
+							class="postcodify_postcode5" value="" />
+						<input type="button" id="postcodify_search_button"value="검색" class="button2" style="width: 100px; margin-left: 15px;">
+						</td> 
 					<tr>
-						<td><label>도로명주소</label></td>
+						<th><label>도로명주소</label></th>
 						<td colspan="2"><input type="text" name="maddress1" size="40"
 							class="postcodify_address" value="" /></td>
 					</tr>
 					<tr>
-						<td><label>상세주소</label></td>
+						<th><label>상세주소</label></th>
 						<td colspan="2"><input type="text" name="maddress2"
 							class="postcodify_details" value="" /></td>
 					</tr>
@@ -231,12 +237,16 @@
 			<div class="clear"></div>
 
 
-			<h3>
-				쇼핑몰 회원 약관 개인보호 취급방침
-				<!-- 쇼핑몰 회원 약관 개인보호 취급방침 -->
-			</h3>
+			<br>
+			<br>
+			<hr>
+			<br>
+			<br>
+			<p>
+				<span style="font-size: 20px;">쇼핑몰 회원 약관 개인보호 취급방침</span>
+			</p>
 			<div
-				style="border: 1px solid gold; padding: 10px; height: 250px; overflow: scroll;">
+				style="border: 1px solid gold; padding: 10px; height: 300px; overflow: scroll;">
 				<p>
 					<span>쇼핑몰 이용약관</span>
 				</p>
@@ -664,17 +674,20 @@
 
 				</div>
 			</div>
+			<br>
+			<br>
+			<br>
 			<p>
-				<span>개인정보 수집 및 이용에 대한 안내</span>
+				<span style="font-size: 20px;">개인정보 수집 및 이용에 대한 안내</span>
 			</p>
 			<div style="text-align: center;">
-				<table>
+				<table class="simple_table">
 					<col width='*'>
 					<col width='214'>
 					<col width='214'>
 					<col width='214'>
 					<tr>
-						<td></td>
+						<th style="width:150px;">비고</th>
 						<th height='36px'>수집항목</th>
 						<th>수집목적</th>
 						<th>보유기간</th>
@@ -700,7 +713,7 @@
 			</div>
 			<br>
 			<div>
-				<input type="checkbox"><label>이용약관 및 개인정보 수집/이용 내용을
+				<input type="checkbox"><label>&nbsp;이용약관 및 개인정보 수집/이용 내용을
 					확인하고 동의합니다 <!-- 이용약관 및 개인정보 수집/이용 내용을 확인하고 동의합니다 -->
 				</label>
 			</div>
@@ -708,8 +721,8 @@
 			<br>
 
 			<div>
-				<input type="submit" value="회원가입"> 
-				<input type="reset" value="취소" class="cancel">
+				<input type="submit" value="회원가입" class="button1"> 
+				<input type="reset" value="취소" onclick="history.back();" class="button1">
 			</div>
 		</form>
 	</fieldset>

@@ -41,7 +41,7 @@
 		<br />
 		<br />
 		<div style="text-align: left;">
-			<strong style="font-size: 25px;">───────§ JINI BROWN <span style="color:#FF8000;">New Items</span></strong>
+			<strong style="font-size: 25px;">───────§ JINI BROWN <span style="color:#FF8000;">Best Items</span></strong>
 		</div> 
 	</div>
 </body>
