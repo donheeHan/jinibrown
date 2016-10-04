@@ -90,7 +90,7 @@
   	</div> 
     <!--로고 들어가는 곳 시작--->  
     <div class="divCenter" style="background:url('../../resources/images/main/mainBack.png'); background-size:100%;">
-      <a href="/main"><img src="/images/mainlogo.png" style="width:60%;"></a>
+      <a href="/admin/main"><img src="/images/mainlogo.png" style="width:60%;"></a>
     </div>
     <!--로고 들어가는 곳 끝-->
     <!-- 메뉴들어가는 곳 시작 -->     
@@ -101,7 +101,7 @@
 		        <li style="float: left;"><a href="/admin/memberList"><img src="/images/menu/admin1.png"></a>&nbsp;</li>
 		        <li style="float: left;"><a href="#"><img src="/images/menu/admin2.png"></a>&nbsp;</li>
 		        <li style="float: left;"><a href="#"><img src="/images/menu/admin3.png"></a>&nbsp;</li>
-		        <li style="float: left;"><a href="#"><img src="/images/menu/admin4.png"></a></li>
+		        <li style="float: left;"><a href="/admin/qnaList"><img src="/images/menu/admin4.png"></a></li>
 		      </ul>
 		    </nav>
 	    </div>

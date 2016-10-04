@@ -19,4 +19,20 @@
 	<delete id="qnaDelete" parameterType="str">
 		delete from qna where q_no = #{q_no}
 	</delete>
+	
+	<select id="adminQnaList" resultType="qna">
+		select * from qna order by q_no desc
+	</select>
+	
+	<select id="adminQnaDetail" parameterType="str" resultType="qna">
+		select * from qna where q_no = #{q_no}
+	</select>
+	
+	<delete id="adminQnaDel" parameterType="str">
+		delete from qna where q_no = #{q_no}
+	</delete>
+	
+	<update id="adminInsertReply" parameterType="map">
+		update qna set q_answer = #{reply} where q_no = #{q_no}
+	</update>
 </mapper>
