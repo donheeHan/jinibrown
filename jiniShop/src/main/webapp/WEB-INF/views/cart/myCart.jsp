@@ -11,6 +11,9 @@
 <body>
 <script>
 	$(function(){
+		$("#goBuyList").click(function(){
+			location.href='/myBuyList';
+		});
 		$("#datatable").DataTable();
 		
 		$(".goProduct").click(function(){
@@ -48,7 +51,7 @@
 						type:"info"
 					},
 					function(){
-						self.location.reload();
+							self.location.reload();
 					});
 				}
 			});
@@ -85,12 +88,13 @@
 </script>
 <div>
 	<div style="text-align: left; height: 80px;">
-		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>Q&A</strong></p>
+		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>장바구니</strong></p>
 		<br> 
 	</div>  
 	<div style="text-align: right; height: 50px;">  
 		<input type="button" id="checkTrue" class="button1"value="선택상품 삭제">
 		<input type="button" id="checkBuy" class="button1" value="선택상품  구매">
+		<input type="button" id="goBuyList" class="button1" value="구매 목록으로 이동">
 	</div>
 	<table class="simple_table" id="datatable">
 		<thead>
@@ -106,13 +110,16 @@
 	        	<c:choose>
 	        		<c:when test="${empty myCart }">
 			        <tr>
-	        			<td colspan="5">문의하신 내용이 없습니다.</td>
+	        			<td colspan="5">장바구니가 비었습니다.</td>
 			        </tr>
 	        		</c:when>
 	        		<c:otherwise>
 			           	<c:forEach var="myCart" items="${myCart}">
 				        <tr>
-				        	<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_mainimg }</a></td>
+				        	<td>
+				        	<a href="#" class="goProduct" id="${myCart.c_no}">
+				        	<img src="/resources/testImage/${myCart.p_mainimg }" style="width:75px; height: 75px;"/></a>
+				        	</td>
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_name }</a></td>
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_info }</a></td>
 			           		<td>${myCart.p_price }</td>

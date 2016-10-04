@@ -32,4 +32,10 @@
 		WHERE C_NO=#{k}
 	</select>
 	
+	<select id="getBuyMyProduct" parameterType="str" resultType="buy">
+		SELECT P_NO,P_NAME,P_PRICE,P_INFO,P_MAINIMG,P_SUBIMG,P_COUNT,P_CATE,P_QTY,P_PRICE2,P_BUY,P_STATUS,P_C_NAME,S_NO,S_DAY,S_QTY,S_RETURN,S_USER,S_P_NO
+		FROM BUYLISTVIEW
+		WHERE S_USER=#{id}
+	</select>
+	
 	</mapper>

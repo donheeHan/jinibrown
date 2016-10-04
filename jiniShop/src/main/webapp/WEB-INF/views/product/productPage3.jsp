@@ -17,7 +17,7 @@
 			<c:forEach items="${productList3}" var="item" varStatus="status">
 			<div style="display: inline-block;">
 					<a href="/productDetail?productNo=${item.p_no}">
-					<img src="/resources/testImage/C0${status.count}.jpg" style="width:250px; height:250px;"><br>
+					<img src="/resources/testImage/${item.p_mainimg }" style="width:250px; height:250px;"><br>
 					${item.p_mainimg}<br>
 					${item.p_name}<br>
 					<span>${item.p_price} 원</span><br>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import jiniShop.cart.dao.CartDAO;
+import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
 
@@ -69,6 +70,18 @@ public class CartServiceImpl implements CartService{
 			e.printStackTrace();
 		}
 		return myCartPno;
+	}
+
+	@Override
+	public List<BuyListViewVO> getBuyMyProduct(String id) {
+		List<BuyListViewVO> getBuyMyProduct = null;
+		try {
+			getBuyMyProduct = cartDAO.getBuyMyProduct(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getBuyMyProduct;
 	}
 
 }

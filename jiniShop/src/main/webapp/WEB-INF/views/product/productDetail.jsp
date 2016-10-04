@@ -18,17 +18,33 @@
 		var passNo=$("#passNo").val();
 		$.ajax({
 			url : "/insertCart",
-			method : "get",
+			method : "GET",
 			data : {
 				"productNo" : passNo
 			},
 			type : "json",
-			success : function() {
-				
+			success : function(result) {
+				if(result=="ok"){
+					swal({
+						title:"상품 임시저장!",
+						text:"상품을 성공적으로 장바구니에 담았습니다.",
+						type:"success"
+					},
+					function(){
+						self.location.reload();
+					});
+				}else{
+					swal({
+						title:"로그인이 필요합니다!",
+						text:"메인페이지로 이동합니다.",
+						type:"error"
+					},
+					function(){
+						self.location.href="/main";
+					});
+				}
 			}
 		});
-		swal("상품 임시저장!", "상품을 성공적으로 장바구니에 담았습니다.","success");
-		self.reload();
 	}
 
 	function productBuy(frm){

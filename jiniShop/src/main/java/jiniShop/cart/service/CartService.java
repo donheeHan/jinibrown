@@ -3,6 +3,7 @@ package jiniShop.cart.service;
 import java.util.List;
 import java.util.Map;
 
+import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
 
@@ -12,4 +13,5 @@ public interface CartService {
 	void myCartDel(int pass);
 	void myCartBuy(Map<String, Object> productBuy);
 	CartVO myCartPno(int k);
+	List<BuyListViewVO> getBuyMyProduct(String id);
 }

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
 
@@ -44,6 +45,13 @@ public class CartDAOImpl implements CartDAO{
 		CartVO myCartPno = null;
 		myCartPno = (CartVO) session.selectOne("cart.myCartPno", k);
 		return myCartPno;
+	}
+
+	@Override
+	public List<BuyListViewVO> getBuyMyProduct(String id) throws SQLException {
+		List<BuyListViewVO> getBuyMyProduct = null;
+		getBuyMyProduct = session.selectList("cart.getBuyMyProduct", id);
+		return getBuyMyProduct;
 	}
 	
 }
