@@ -1,9 +1,11 @@
 package jiniShop.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import jiniShop.admin.dao.AdminDAO;
 import jiniShop.vo.Login_ViewVO;
+import jiniShop.vo.QnaVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,28 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Login_ViewVO> getMemberList() {
 		return adminDAO.getMemberList();
+	}
+
+	@Override
+	public List<QnaVO> getQnaList() {
+		return adminDAO.getQnaList();
+	}
+
+	@Override
+	public QnaVO getQnaDetail(String q_no) {
+		return adminDAO.getQnaDetail(q_no);
+	}
+
+	@Override
+	public void deleteAdminQna(String q_no) {
+		adminDAO.deleteAdminQna(q_no);
+	}
+
+	@Override
+	public QnaVO insertQnaReply(Map<String, String> params) {
+		adminDAO.insertQnaReply(params);
+		QnaVO qnaInfo = adminDAO.getQnaDetail(params.get("q_no"));
+		return qnaInfo;
 	}
 	
 	
