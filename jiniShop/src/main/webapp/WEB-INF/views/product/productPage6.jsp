@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div>
-			<c:forEach items="${productList1}" var="item" varStatus="status">
+			<c:forEach items="${productList6}" var="item" varStatus="status">
 			<div style="display: inline-block;">
 					<a href="/productDetail?productNo=${item.p_no}">
 					<img src="/resources/productImage/${item.p_mainimg }" style="width:250px; height:250px;"><br>

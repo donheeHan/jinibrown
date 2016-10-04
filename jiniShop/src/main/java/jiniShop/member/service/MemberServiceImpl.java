@@ -1,10 +1,13 @@
 package jiniShop.member.service;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import jiniShop.member.dao.MemberDAO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.MemberVO;
+import jiniShop.vo.ProductVO;
 import jiniShop.vo.UsersVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,19 @@ public class MemberServiceImpl implements MemberService{
 
 		memberDAO.insertUser(users);
 		memberDAO.insertMember(member);
+	}
+
+	@Override
+	public List<ProductVO> getBestProduct() {
+		List<ProductVO> getBestProduct = null;
+		try {
+			getBestProduct = memberDAO.getBestProduct();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return getBestProduct;
 	}
 
 }

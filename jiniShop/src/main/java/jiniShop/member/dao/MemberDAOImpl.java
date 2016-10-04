@@ -1,9 +1,12 @@
 package jiniShop.member.dao;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.MemberVO;
+import jiniShop.vo.ProductVO;
 import jiniShop.vo.UsersVO;
 
 import org.apache.ibatis.session.SqlSession;
@@ -34,6 +37,13 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void insertMember(MemberVO member) {
 		session.insert("Member.insertMember", member);
+	}
+
+	@Override
+	public List<ProductVO> getBestProduct() throws SQLException {
+		List<ProductVO> getBestProduct = null;
+		getBestProduct = session.selectList("product.getBestProduct");
+		return getBestProduct;
 	}
 
 }

@@ -40,10 +40,26 @@ public class ProductDAOImpl implements ProductDAO{
 		return productList4;
 	}
 	@Override
+	public List<ProductVO> productList5(String kind) throws SQLException {
+		List<ProductVO> productList5 = null;
+		productList5 = session.selectList("product.list", kind);
+		return productList5;
+	}
+	@Override
+	public List<ProductVO> productList6(String kind) throws SQLException {
+		List<ProductVO> productList6 = null;
+		productList6 = session.selectList("product.list", kind);
+		return productList6;
+	}
+	@Override
 	public ProductVO getProductDetail(int productNo) throws SQLException {
 		ProductVO getProductDetail = null;
 		getProductDetail = (ProductVO) session.selectOne("product.detail", productNo);
 		return getProductDetail;
+	}
+	@Override
+	public void increaseCount(Map<String, Object> counting) throws SQLException {
+		session.update("product.increaseCount",counting);
 	}
 
 	

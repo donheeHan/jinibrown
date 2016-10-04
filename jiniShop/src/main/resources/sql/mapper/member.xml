@@ -24,4 +24,5 @@
 	<select id="memberList" resultType="loginView">
 		select * from login_view where id != 'admin'
 	</select>
+	
 </mapper>

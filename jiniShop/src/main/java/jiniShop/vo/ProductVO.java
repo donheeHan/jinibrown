@@ -6,7 +6,7 @@ public class ProductVO {
 	private String p_info;
 	private String p_mainimg;
 	private String p_subimg;
-	private int p_coint;
+	private int p_count;
 	private String p_cate;
 	private int p_qty;
 	private int p_price;
@@ -45,11 +45,11 @@ public class ProductVO {
 	public void setP_subimg(String p_subimg) {
 		this.p_subimg = p_subimg;
 	}
-	public int getP_coint() {
-		return p_coint;
+	public int getp_count() {
+		return p_count;
 	}
-	public void setP_coint(int p_coint) {
-		this.p_coint = p_coint;
+	public void setp_count(int p_count) {
+		this.p_count = p_count;
 	}
 	public String getP_cate() {
 		return p_cate;

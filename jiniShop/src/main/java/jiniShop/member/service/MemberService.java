@@ -1,9 +1,11 @@
 package jiniShop.member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.MemberVO;
+import jiniShop.vo.ProductVO;
 import jiniShop.vo.UsersVO;
 
 public interface MemberService {
@@ -16,5 +18,7 @@ public interface MemberService {
 
 	//회원가입
 	void insertMember(MemberVO member, UsersVO users);
+
+	List<ProductVO> getBestProduct();
 
 }

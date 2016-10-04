@@ -34,6 +34,10 @@ public class ProductController {
 				url = "redirect:/productList3";
 			}else if(kind.equals("4")){
 				url = "redirect:/productList4";
+			}else if(kind.equals("5")){
+				url = "redirect:/productList5";
+			}else if(kind.equals("6")){
+				url = "redirect:/productList6";
 			}
 		return url;
 	}
@@ -80,11 +84,41 @@ public class ProductController {
 			}
 		return url;
 	}
+	@RequestMapping(value="/productList5")
+	public String productList5(Model model, @RequestParam(value="kind") String kind, HttpSession session){
+		String url="/product/productPage4";
+		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
+		List<ProductVO> productList5 = productService.productList5(kind);
+		if(productList5!=null){
+			model.addAttribute("productList5", productList5);			
+		}
+		return url;
+	}
+	@RequestMapping(value="/productList6")
+	public String productList6(Model model, @RequestParam(value="kind") String kind, HttpSession session){
+		String url="/product/productPage6";
+		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
+		List<ProductVO> productList6 = productService.productList6(kind);
+		if(productList6!=null){
+			model.addAttribute("productList6", productList6);			
+		}
+		return url;
+	}
 	@RequestMapping(value="/productDetail")
 	public String productDetail(Model model, @RequestParam(value="productNo")int productNo, HttpSession session){
 		String url = "/product/productDetail";
 		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
 			ProductVO productDetail = productService.getProductDetail(productNo);
+			
+			//조회수 증가
+			Map<String, Object> counting = new HashMap<String, Object>();
+			int count = productDetail.getp_count();
+			count++;
+			counting.put("productNo", productNo);
+			counting.put("count", count);
+			productService.increaseCount(counting);
+			
+			
 			if(productDetail!=null){
 				model.addAttribute("productDetail", productDetail);
 			}

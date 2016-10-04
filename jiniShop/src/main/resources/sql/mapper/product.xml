@@ -14,4 +14,30 @@
 		FROM PRODUCT
 		WHERE P_NO=#{productNo}
 	</select>
+	<insert id="addProduct" parameterType="product">
+		INSERT INTO PRODUCT(P_NO, P_NAME,P_PRICE,P_INFO,P_MAINIMG,P_SUBIMG,P_CATE,P_QTY,P_PRICE2,P_C_NAME)
+		VALUES(PRODUCT_SEQ.NEXTVAL, #{p_name}, #{p_price}, #{p_info}, #{p_mainimg}, #{p_subimg}, #{p_cate}, #{p_qty}, #{p_price2}, #{p_c_name})
+	</insert>
+	<select id="getProductList" resultType="product">
+		SELECT P_NO, P_NAME, P_PRICE, P_INFO, P_MAINIMG, P_SUBIMG, P_COUNT, P_CATE, P_QTY, P_PRICE2, P_BUY, P_STATUS, P_C_NAME
+		FROM PRODUCT
+	</select>
+	<delete id="productDel" parameterType="int">
+		DELETE FROM PRODUCT
+		WHERE P_NO=#{proNo}
+	</delete>
+	<update id="increaseCount" parameterType="map">
+		UPDATE PRODUCT SET P_COUNT=#{count}
+		WHERE P_NO=#{productNo}
+	</update>
+	<select id="getBestProduct" resultType="product">
+		SELECT 		P_NO, P_NAME, P_PRICE, P_INFO, P_MAINIMG, P_SUBIMG, P_COUNT, P_CATE, P_QTY, P_PRICE2, P_BUY, P_STATUS, P_C_NAME
+		FROM 		PRODUCT
+    	WHERE 		ROWNUM BETWEEN 1 AND 4 
+		ORDER BY 	P_COUNT DESC
+	</select>
+	<select id="getClientList" resultType="client">
+		SELECT C_NO, C_NAME, C_TEL
+		FROM CLIENT
+	</select>
 </mapper>

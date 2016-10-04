@@ -42,6 +42,19 @@
 		<br />
 		<div style="text-align: left;">
 			<strong style="font-size: 25px;">───────§ JINI BROWN <span style="color:#FF8000;">Best Items</span></strong>
+			<div class="clear"></div>
+			<c:forEach items="${getBestProduct}" var="item" varStatus="status">
+			<div style="display: inline-block;">
+					<a href="/productDetail?productNo=${item.p_no}">
+					<img src="/resources/productImage/${item.p_mainimg }" style="width:250px; height:250px;"><br>
+					${item.p_name}<br>
+					<span>${item.p_price} 원</span><br>
+					${item.p_info}<br>
+					</a>
+			</div>
+				
+			</c:forEach>
+			
 		</div> 
 	</div>
 </body>

@@ -61,7 +61,7 @@
 	
 <div style="margin-left: 400px;">
 	<div style="float: left">
-		<img src="/resources/testImage/D0${productDetail.p_no}.jpg" style="width: 250px; height: 250px;">
+		<img src="/resources/testImage/${productDetail.p_mainimg}" style="width: 250px; height: 250px;">
 	</div>
 	<div style="text-align: left">
 	<form>

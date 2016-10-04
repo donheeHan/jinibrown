@@ -61,6 +61,28 @@ public class ProductServiceImpl implements ProductService{
 		return productList4;
 	}
 	@Override
+	public List<ProductVO> productList5(String kind) {
+		List<ProductVO> productList5 = null;
+		try {
+			productList5 = productDAO.productList5(kind);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return productList5;
+	}
+	@Override
+	public List<ProductVO> productList6(String kind) {
+		List<ProductVO> productList6 = null;
+		try {
+			productList6 = productDAO.productList6(kind);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return productList6;
+	}
+	@Override
 	public ProductVO getProductDetail(int productNo) {
 		ProductVO getProductDetail = null;
 		try {
@@ -70,6 +92,16 @@ public class ProductServiceImpl implements ProductService{
 			e.printStackTrace();
 		}
 		return getProductDetail;
+	}
+	@Override
+	public void increaseCount(Map<String, Object> counting) {
+		try {
+			productDAO.increaseCount(counting);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	

@@ -20,6 +20,7 @@
 		<typeAlias alias="cartView" type="jiniShop.vo.CartViewVO" />
 		<typeAlias alias="sell" type="jiniShop.vo.SellVO" />
 		<typeAlias alias="buy" type="jiniShop.vo.BuyListViewVO" />
+		<typeAlias alias="client" type="jiniShop.vo.ClientVO" />
 
 
 	</typeAliases>

@@ -2,6 +2,7 @@ package jiniShop.member.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -11,12 +12,14 @@ import jiniShop.member.service.MemberService;
 import jiniShop.security.SecurityProcess;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.MemberVO;
+import jiniShop.vo.ProductVO;
 import jiniShop.vo.UsersVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,9 +35,12 @@ public class MemberController {
 	SecurityProcess sp = new SecurityProcess();
 	
 	@RequestMapping(value={"/main","/admin/main"}, method={RequestMethod.GET, RequestMethod.POST})
-	public String main(){
+	public String main(Model model){
 		String url = "main";
-		
+		List<ProductVO> getBestProduct = memberService.getBestProduct();
+		if(getBestProduct!=null){
+			model.addAttribute("getBestProduct",getBestProduct);
+		}
 		return url;
 	}
 	
