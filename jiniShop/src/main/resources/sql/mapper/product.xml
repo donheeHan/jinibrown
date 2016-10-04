@@ -5,7 +5,7 @@
 
 <mapper namespace="product">
 	<select id="list" parameterType="str" resultType="product">
-		SELECT P_NO, P_NAME,P_PRICE,P_INFO,P_MAINIMG
+		SELECT P_NO, P_NAME,P_PRICE,P_INFO,P_MAINIMG, p_count
 		FROM PRODUCT
 		WHERE P_CATE=#{kind}
 	</select>
@@ -31,7 +31,7 @@
 		WHERE P_NO=#{productNo}
 	</update>
 	<select id="getBestProduct" resultType="product">
-		SELECT 		P_NO, P_NAME, P_PRICE, P_INFO, P_MAINIMG, P_SUBIMG, P_COUNT, P_CATE, P_QTY, P_PRICE2, P_BUY, P_STATUS, P_C_NAME
+		SELECT 		*
 		FROM 		PRODUCT
     	WHERE 		ROWNUM BETWEEN 1 AND 4 
 		ORDER BY 	P_COUNT DESC
@@ -39,5 +39,9 @@
 	<select id="getClientList" resultType="client">
 		SELECT C_NO, C_NAME, C_TEL
 		FROM CLIENT
+	</select>
+	
+	<select id="getNewProduct" resultType="product">
+		select * from product where rownum between 1 and 4 order by p_no desc
 	</select>
 </mapper>

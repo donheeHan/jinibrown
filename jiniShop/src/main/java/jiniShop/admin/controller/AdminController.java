@@ -106,7 +106,6 @@ public class AdminController {
 	    if(loginUser !=null){
 	    	url = "/admin/adminProductForm";
 	    	List<ClientVO> clientList = adminService.getClientList();
-	    	System.out.println(clientList.size()+"@@@@@@@@@@@@@@@@@");
 	    	if(clientList!=null){
 	    		model.addAttribute("clientList",clientList);
 	    	}
@@ -134,13 +133,13 @@ public class AdminController {
 	     /* String imagePath = request.getSession().getServletContext().getRealPath("resources/memberManagementImage");      
 	      String signPath = request.getSession().getServletContext().getRealPath("resources/memberSign");        */     
  
-		String url = "redirect:/main";
+		String url = "redirect:/admin/productList";
 		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
 	      
 	      if(loginUser !=null){
 	         model.addAttribute("memberVO",loginUser);
 	         if(!multiFile1.isEmpty() && !multiFile2.isEmpty()){
-	        	String uploadPath = "C:/Users/allk2_000/git/jinibrown/jiniShop/src/main/webapp/resources/productImage";
+	        	String uploadPath = "C:/Users/admin/git/jinibrown/jiniShop/src/main/webapp/resources/images/productImage";
 	            File file1 = new File(uploadPath, "$$"+System.currentTimeMillis() + multiFile1.getOriginalFilename());
 	            File file2 = new File(uploadPath, "$$"+System.currentTimeMillis() + multiFile2.getOriginalFilename());
 	            
@@ -149,10 +148,8 @@ public class AdminController {
 	            	multiFile2.transferTo(file2); 
 					//실제 저장이 이루어짐
 				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} //실제 저장이 이루어짐
 	            product.setP_mainimg(file1.getName()); //DB 컬럼에 파일명 저장

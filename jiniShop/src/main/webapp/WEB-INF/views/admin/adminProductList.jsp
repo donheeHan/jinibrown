@@ -15,7 +15,6 @@
 			swal({	
 				title:"상품 등록!",
 				text:"상품 등록 페이지로 이동합니다.",
-				type:"success"
 			},
 			function(){						
 				location.href="/admin/productForm"
@@ -82,7 +81,7 @@
 </script>
 <div>
 	<div style="text-align: left; height: 80px;">
-		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>장바구니</strong></p>
+		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>상품관리</strong></p>
 		<br> 
 	</div>  
 	<div style="text-align: right; height: 50px;">  
@@ -93,8 +92,6 @@
 		<thead>
 			<tr>
 				<th>메인 이미지</th>
-				<th>서브 이미지</th>
-				<th>상품번호</th>
 				<th>상품명</th>
 				<th>상품 정보</th>
 				<th>판매 가격</th>
@@ -102,7 +99,7 @@
 				<th>카테고리</th>
 				<th>재고 수량</th>
 				<th>거래처</th>
-				<th><input type="checkbox" id="checkAll"/></th>
+				<th style="width:5%;"><input type="checkbox" id="checkAll" style="width:10px;"/></th>
 
 			</tr>
 		</thead>
@@ -110,29 +107,23 @@
 	        	<c:choose>
 	        		<c:when test="${empty productList}">
 			        <tr>
-	        			<td colspan="5">상품 목록이 비었습니다.</td>
+	        			<td colspan="10">상품 목록이 비었습니다.</td>
 			        </tr>
 	        		</c:when>
 	        		<c:otherwise>
 			           	<c:forEach var="productList" items="${productList}">
-				        <tr>
+				        <tr class="goProduct" id="${productList.p_no}">
 				        	<td>
-				        	<a href="#" class="goProduct" id="${productList.p_no}">
-				        	<img src="/resources/productImage/${productList.p_mainimg}" style="width:75px; height: 75px;"/></a>
+				        	<img src="/images/productImage/${productList.p_mainimg}" style="width:100px; height: 125px;"/>
 				        	</td>
-				        	<td>
-				        	<a href="#" class="goProduct" id="${productList.p_no}">
-				        	<img src="/resources/productImage/${productList.p_subimg}" style="width:75px; height: 75px;"/></a>
-				        	</td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_no }</a></td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_name }</a></td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_info }</a></td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_price }</a></td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_price2 }</a></td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_cate }</a></td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_qty }</a></td>
-			           		<td><a href="#" class="goProduct" id="${productList.p_no}">${productList.p_c_name }</a></td>
-				        	<td><input type="checkbox" id="${productList.p_no}"/></td>
+			           		<td>${productList.p_name }</td>
+			           		<td>${productList.p_info }</td>
+			           		<td>${productList.p_price }</td>
+			           		<td>${productList.p_price2 }</td>
+			           		<td>${productList.p_cate }</td>
+			           		<td>${productList.p_qty }</td>
+			           		<td>${productList.p_c_name }</td> 
+				        	<td><input type="checkbox" id="${productList.p_no}" style="width:10px;"></td>
 				        </tr>
 			           	</c:forEach>
 	        		</c:otherwise>

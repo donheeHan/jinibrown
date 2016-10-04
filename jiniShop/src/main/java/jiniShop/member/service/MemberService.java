@@ -21,4 +21,6 @@ public interface MemberService {
 
 	List<ProductVO> getBestProduct();
 
+	List<ProductVO> getNewProduct();
+
 }

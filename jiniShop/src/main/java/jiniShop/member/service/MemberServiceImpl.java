@@ -42,11 +42,15 @@ public class MemberServiceImpl implements MemberService{
 		try {
 			getBestProduct = memberDAO.getBestProduct();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return getBestProduct;
+	}
+
+	@Override
+	public List<ProductVO> getNewProduct() {
+		return memberDAO.getNewProduct();
 	}
 
 }

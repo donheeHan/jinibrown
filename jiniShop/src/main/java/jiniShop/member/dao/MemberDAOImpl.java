@@ -46,4 +46,9 @@ public class MemberDAOImpl implements MemberDAO{
 		return getBestProduct;
 	}
 
+	@Override
+	public List<ProductVO> getNewProduct() {
+		return session.selectList("product.getNewProduct");
+	}
+
 }

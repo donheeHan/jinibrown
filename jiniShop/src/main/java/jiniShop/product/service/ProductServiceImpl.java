@@ -17,70 +17,14 @@ public class ProductServiceImpl implements ProductService{
 	ProductDAO productDAO;
 
 	@Override
-	public List<ProductVO> productList1(String kind) {
-		List<ProductVO> productList1 = null;
+	public List<ProductVO> productList(String kind) {
+		List<ProductVO> productList = null;
 		try {
-			productList1 = productDAO.productList1(kind);
+			productList = productDAO.productList(kind);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return productList1;
-	}
-	@Override
-	public List<ProductVO> productList2(String kind) {
-		List<ProductVO> productList2 = null;
-		try {
-			productList2 = productDAO.productList2(kind);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return productList2;
-	}
-	@Override
-	public List<ProductVO> productList3(String kind) {
-		List<ProductVO> productList3 = null;
-		try {
-			productList3 = productDAO.productList3(kind);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return productList3;
-	}
-	@Override
-	public List<ProductVO> productList4(String kind) {
-		List<ProductVO> productList4 = null;
-		try {
-			productList4 = productDAO.productList4(kind);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return productList4;
-	}
-	@Override
-	public List<ProductVO> productList5(String kind) {
-		List<ProductVO> productList5 = null;
-		try {
-			productList5 = productDAO.productList5(kind);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return productList5;
-	}
-	@Override
-	public List<ProductVO> productList6(String kind) {
-		List<ProductVO> productList6 = null;
-		try {
-			productList6 = productDAO.productList6(kind);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return productList6;
+		return productList;
 	}
 	@Override
 	public ProductVO getProductDetail(int productNo) {
@@ -88,7 +32,6 @@ public class ProductServiceImpl implements ProductService{
 		try {
 			getProductDetail = productDAO.getProductDetail(productNo);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return getProductDetail;
@@ -98,7 +41,6 @@ public class ProductServiceImpl implements ProductService{
 		try {
 			productDAO.increaseCount(counting);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

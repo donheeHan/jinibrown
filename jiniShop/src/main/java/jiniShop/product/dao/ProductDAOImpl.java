@@ -16,40 +16,10 @@ public class ProductDAOImpl implements ProductDAO{
 	SqlSession session;
 
 	@Override
-	public List<ProductVO> productList1(String kind) throws SQLException {
+	public List<ProductVO> productList(String kind) throws SQLException {
 		List<ProductVO> productList1 = null;
 		productList1 = session.selectList("product.list", kind);
 		return productList1;
-	}
-	@Override
-	public List<ProductVO> productList2(String kind) throws SQLException {
-		List<ProductVO> productList2 = null;
-		productList2 = session.selectList("product.list", kind);
-		return productList2;
-	}
-	@Override
-	public List<ProductVO> productList3(String kind) throws SQLException {
-		List<ProductVO> productList3 = null;
-		productList3 = session.selectList("product.list", kind);
-		return productList3;
-	}
-	@Override
-	public List<ProductVO> productList4(String kind) throws SQLException {
-		List<ProductVO> productList4 = null;
-		productList4 = session.selectList("product.list", kind);
-		return productList4;
-	}
-	@Override
-	public List<ProductVO> productList5(String kind) throws SQLException {
-		List<ProductVO> productList5 = null;
-		productList5 = session.selectList("product.list", kind);
-		return productList5;
-	}
-	@Override
-	public List<ProductVO> productList6(String kind) throws SQLException {
-		List<ProductVO> productList6 = null;
-		productList6 = session.selectList("product.list", kind);
-		return productList6;
 	}
 	@Override
 	public ProductVO getProductDetail(int productNo) throws SQLException {

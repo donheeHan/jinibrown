@@ -38,9 +38,11 @@ public class MemberController {
 	public String main(Model model){
 		String url = "main";
 		List<ProductVO> getBestProduct = memberService.getBestProduct();
+		List<ProductVO> getNewProduct = memberService.getNewProduct();
 		if(getBestProduct!=null){
 			model.addAttribute("getBestProduct",getBestProduct);
 		}
+		model.addAttribute("getNewProduct", getNewProduct);
 		return url;
 	}
 	

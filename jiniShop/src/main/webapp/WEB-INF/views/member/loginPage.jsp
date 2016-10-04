@@ -43,11 +43,17 @@
 						}); 
 						return false;
 					}else{
-						var pwd = data.encPwd;
-						$("#use_pwd").val(pwd);
-						$("#loginForm").ajaxFormUnbind();
-						$("#loginForm").attr("action", "/common/loginProcess");
-						$("#loginForm").submit();
+						swal({	
+							title:"로그인 성공",
+							text:"즐거운 쇼핑 되세요.",
+							type:"success"
+						},function(){
+							var pwd = data.encPwd;
+							$("#use_pwd").val(pwd);
+							$("#loginForm").ajaxFormUnbind();
+							$("#loginForm").attr("action", "/common/loginProcess");
+							$("#loginForm").submit();
+						});
 					}
 				},
 				error:function(){

@@ -125,12 +125,12 @@
     	<div style="width: 55%; height: 60px; margin: auto; margin-top: 40px;">
 		    <nav>  
 		      <ul style="list-style: none;"> 
-		        <li style="float: left;"><a href="/changePage?kind=1"><img src="/images/menu/cheek.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=2"><img src="/images/menu/eye.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=3"><img src="/images/menu/face.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=4"><img src="/images/menu/lip.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=5"><img src="/images/menu/skincare.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=6"><img src="/images/menu/more.jpg"></a></li>
+		        <li style="float: left;"><a href="/productList?kind=1"><img src="/images/menu/cheek.jpg"></a></li>
+		        <li style="float: left;"><a href="/productList?kind=2"><img src="/images/menu/eye.jpg"></a></li>
+		        <li style="float: left;"><a href="/productList?kind=3"><img src="/images/menu/face.jpg"></a></li>
+		        <li style="float: left;"><a href="/productList?kind=4"><img src="/images/menu/lip.jpg"></a></li>
+		        <li style="float: left;"><a href="/productList?kind=5"><img src="/images/menu/skincare.jpg"></a></li>
+		        <li style="float: left;"><a href="/productList?kind=6"><img src="/images/menu/more.jpg"></a></li>
 		      </ul>
 		    </nav>
 	    </div>

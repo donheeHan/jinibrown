@@ -118,7 +118,7 @@
 				        <tr>
 				        	<td>
 				        	<a href="#" class="goProduct" id="${myCart.c_no}">
-				        	<img src="/resources/testImage/${myCart.p_mainimg }" style="width:75px; height: 75px;"/></a>
+				        	<img src="/images/productImage/${myCart.p_mainimg }" style="width:100px; height: 125px;"/></a>
 				        	</td>
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_name }</a></td>
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_info }</a></td>

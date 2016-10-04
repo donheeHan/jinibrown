@@ -56,7 +56,7 @@ $(function(){
 				        <tr>
 				        	<td>${mySell.s_no }</td>
 			           		<td><a href="#" class="goProduct" id="${mySell.p_no}">
-			           		<img src="/resources/testImage/${mySell.p_mainimg }" style="width: 75px; height: 75px;"/></a>
+			           		<img src="/images/productImage/${mySell.p_mainimg }" style="width: 100px; height: 125px;"/></a>
 			           		</td>
 			           		<td><a href="#" class="goProduct" id="${mySell.p_no}">${mySell.p_name }</a></td>
 			           		<td><a href="#" class="goProduct" id="${mySell.p_no}">${mySell.p_info }</a></td>

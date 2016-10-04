@@ -6,12 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title></title>
-</head>
 <body>
 <script type="text/javascript">
  function cartInput(){
@@ -59,13 +53,13 @@
 	}
 </style>
 	
-<div style="margin-left: 400px;">
-	<div style="float: left">
-		<img src="/resources/testImage/${productDetail.p_mainimg}" style="width: 250px; height: 250px;">
-	</div>
-	<div style="text-align: left">
+<div>
+	<div style="float: left; width: 40%;">
+		<img src="/images/productImage/${productDetail.p_mainimg}" style="width: 60%; height: 300px;">
+	</div> 
+	<div style="text-align: left; float: left; width:40%;">
 	<form>
-		<p>[${productDetail.p_name}]&nbsp;${productDetail.p_info}</p><br>
+		<p>[${productDetail.p_name}]&nbsp;${productDetail.p_info}</p><br> 
 			<p>판매가 : ${productDetail.p_price}</p>
 		<p><span>
 			제조사/원산지 : ${productDetail.p_c_name}/국산<br>
@@ -97,13 +91,8 @@
 </div>
 <br>
 <div>
+<hr>
+	<img src="/images/productImage/${productDetail.p_subimg}"> 
+	
 </div>
-
-
-
-
-
-
-
 </body>
-</html>

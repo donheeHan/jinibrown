@@ -28,7 +28,6 @@
 			swal({	
 				title:"상품 리스트",
 				text:"상품 리스트로 이동합니다.",
-				type:"success"
 			},
 			function(){						
 				location.href="/admin/productList"
@@ -66,7 +65,7 @@
 					</tr>
 					<tr>
 						<th><label>재고수량</label></th>
-						<td><input type="text" name="p_qty" pattern="[0-9]{1,4}" title="재고 수량은 최대  9,999개 입니다."></td>
+						<td><input type="number" name="p_qty" pattern="[0-9]{1,4}" title="재고 수량은 최대  9,999개 입니다."></td>
 					</tr>
 					<tr>
 						<th><label>입고 가격</label></th>
@@ -114,7 +113,7 @@
 			<div class="clear"></div>
 
 			<div>
-				<input type="submit" value="회원가입" class="button1"> 
+				<input type="submit" value="상품등록" class="button1"> 
 				<input type="reset" value="취소" class="button1">
 			</div>
 		</form>

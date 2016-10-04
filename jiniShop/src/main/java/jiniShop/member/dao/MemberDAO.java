@@ -21,4 +21,6 @@ public interface MemberDAO {
 
 	List<ProductVO> getBestProduct() throws SQLException;
 
+	List<ProductVO> getNewProduct();
+
 }
