@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cart">
+
+	<insert id="insertCart" parameterType="map">
+		INSERT INTO CART(C_NO,C_USER,C_P_NO) VALUES(CART_SEQ.NEXTVAL,#{member},#{productNo})
+	</insert>
+	
+	<select id="getMyCart" parameterType="str" resultType="cartView">
+		SELECT 	C_NO, C_USER, C_P_NO, P_NO, P_NAME, P_PRICE, P_INFO, P_MAINIMG
+		FROM 	CART, PRODUCT
+		WHERE 	CART.C_P_NO = PRODUCT.P_NO
+			AND
+				C_USER=#{id}
+	</select>
+	
+	<delete id="myCartDel" parameterType="int">
+		DELETE FROM CART
+		WHERE C_NO=#{pass}
+	</delete>
+	
+	<insert id="myCartBuy" parameterType="map">
+		INSERT INTO SELL(S_NO,S_USER,S_P_NO) VALUES(#{pass},#{loginUser},#{pass2})
+	</insert>
+	
+	<select id="myCartPno" parameterType="int" resultType="cart">
+		SELECT C_NO, C_USER, C_P_NO
+		FROM CART
+		WHERE C_NO=#{k}
+	</select>
+	
+	</mapper>

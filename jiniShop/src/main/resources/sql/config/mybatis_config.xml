@@ -15,6 +15,9 @@
 		<typeAlias alias="users" type="jiniShop.vo.UsersVO" />
 		<typeAlias alias="loginView" type="jiniShop.vo.Login_ViewVO" />
 		<typeAlias alias="qna" type="jiniShop.vo.QnaVO" />
+		<typeAlias alias="product" type="jiniShop.vo.ProductVO" />
+		<typeAlias alias="cart" type="jiniShop.vo.CartVO" />
+		<typeAlias alias="cartView" type="jiniShop.vo.CartViewVO" />
 
 
 	</typeAliases>
@@ -23,6 +26,8 @@
 
 		<mapper resource="sql/mapper/member.xml" />
 		<mapper resource="sql/mapper/qna.xml" />
+		<mapper resource="sql/mapper/product.xml" />
+		<mapper resource="sql/mapper/cart.xml" />
 
 	</mappers>
 </configuration>

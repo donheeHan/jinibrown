@@ -1,14 +1,14 @@
 package jiniShop.vo;
 
 public class CartVO {
-	private String c_no;
+	private int c_no;
 	private String c_user;
 	private int c_p_no;
 	
-	public String getC_no() {
+	public int getC_no() {
 		return c_no;
 	}
-	public void setC_no(String c_no) {
+	public void setC_no(int c_no) {
 		this.c_no = c_no;
 	}
 	public String getC_user() {

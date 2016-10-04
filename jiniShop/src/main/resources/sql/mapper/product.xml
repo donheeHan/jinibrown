@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+	<select id="list" parameterType="str" resultType="product">
+		SELECT P_NO, P_NAME,P_PRICE,P_INFO,P_MAINIMG
+		FROM PRODUCT
+		WHERE P_CATE=#{kind}
+	</select>
+	<select id="detail" parameterType="int" resultType="product">
+		SELECT P_NO, P_NAME,P_PRICE,P_INFO,P_MAINIMG,P_SUBIMG,P_COUNT,P_CATE,P_QTY,P_PRICE2,P_BUY,P_STATUS,P_C_NAME
+		FROM PRODUCT
+		WHERE P_NO=#{productNo}
+	</select>
+</mapper>
