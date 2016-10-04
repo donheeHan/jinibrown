@@ -31,7 +31,7 @@ public class MemberController {
 	MemberService memberService;
 	SecurityProcess sp = new SecurityProcess();
 	
-	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value={"/main","/admin/main"}, method={RequestMethod.GET, RequestMethod.POST})
 	public String main(){
 		String url = "main";
 		
@@ -88,7 +88,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/login", method={RequestMethod.GET, RequestMethod.POST})
 	public String login(HttpSession session){
-		String url = "redirect:/main";
+		String url = "";
 		
 		//로그인되고
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -98,6 +98,13 @@ public class MemberController {
 		String id = auth.getName();
 		
 		loginUser = memberService.getLoginInfo(id);
+		
+		if(id.equals("admin")){
+			url = "redirect:/admin/main";
+		}else{
+			url = "redirect:/main";
+		}
+		
 		
 		session.setAttribute("loginUser", loginUser);
 		

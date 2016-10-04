@@ -64,35 +64,8 @@
 <body style="line-height:1;"> 
 <div id="fixedDiv">
 	<input type="hidden" id="loginCheck" name="${loginUser.id }">
-	<c:choose>
-	<c:when test="${empty sessionScope.admin}">
-       <c:choose>
-       <c:when test="${empty sessionScope.loginUser}">
-       <p>         
-         <a href="/loginPage" style="width:110px;"><img src="./images/login.jpg"></a>   
-	   </p>		       
-      <p class="aa">♥</p>
-       <p><a href="/joinForm"><img src="./images/join.jpg"></a></p>
-       </c:when>
-       <c:otherwise>
-       <p><a href="/logout"><img src="./images/Logout.jpg"></a></p>
-       </c:otherwise>       
-    </c:choose>
-       
-       <p class="aa">♥</p>
-       <p>
-         <a href="/myCart" id="cart"><img src="./images/cart.jpg"></a>
-       </p>
-       <p class="aa">♥</p>
-       <p>
-         <a href="#"><img src="./images/mypage.jpg"></a>
-       </p>
-       </c:when>
-       </c:choose>
-        <p class="aa">♥</p>
-       <p>
-         <a href="/qnaList" id="qna"><img src="./images/qna.jpg"></a>
-       </p> 
+       <p><a href="/logout"><img src="/images/Logout.jpg"></a></p>
+
  </div>
 <div>
 <!--헤더파일 들어가는 곳 시작 -->
@@ -125,12 +98,10 @@
     	<div style="width: 55%; height: 60px; margin: auto; margin-top: 40px;">
 		    <nav>  
 		      <ul style="list-style: none;"> 
-		        <li style="float: left;"><a href="/changePage?kind=1"><img src="/images/menu/cheek.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=2"><img src="/images/menu/eye.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=3"><img src="/images/menu/face.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=4"><img src="/images/menu/lip.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=5"><img src="/images/menu/skincare.jpg"></a></li>
-		        <li style="float: left;"><a href="/changePage?kind=6"><img src="/images/menu/more.jpg"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/admin1.png"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/admin2.png"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/admin3.png"></a></li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/admin4.png"></a></li>
 		      </ul>
 		    </nav>
 	    </div>
