@@ -95,12 +95,12 @@
     <!--로고 들어가는 곳 끝-->
     <!-- 메뉴들어가는 곳 시작 -->     
     <div class="divCenter" id="menuDiv" style="width:100%; height: 60px;">
-    	<div style="width: 55%; height: 60px; margin: auto; margin-top: 40px;">
+    	<div style="width: 40%; height: 60px; margin: auto; margin-top: 40px;">
 		    <nav>  
 		      <ul style="list-style: none;"> 
-		        <li style="float: left;"><a href="#"><img src="/images/menu/admin1.png"></a></li>
-		        <li style="float: left;"><a href="#"><img src="/images/menu/admin2.png"></a></li>
-		        <li style="float: left;"><a href="#"><img src="/images/menu/admin3.png"></a></li>
+		        <li style="float: left;"><a href="/admin/memberList"><img src="/images/menu/admin1.png"></a>&nbsp;</li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/admin2.png"></a>&nbsp;</li>
+		        <li style="float: left;"><a href="#"><img src="/images/menu/admin3.png"></a>&nbsp;</li>
 		        <li style="float: left;"><a href="#"><img src="/images/menu/admin4.png"></a></li>
 		      </ul>
 		    </nav>

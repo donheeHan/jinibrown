@@ -20,4 +20,8 @@
 		insert into member(id, name, email, mtemp, maddress1, maddress2, birthday) 
 		values(#{id}, #{name}, #{email}, #{mtemp},#{maddress1}, #{maddress2}, #{birthday})
 	</insert>
+	
+	<select id="memberList" resultType="loginView">
+		select * from login_view where id != 'admin'
+	</select>
 </mapper>
