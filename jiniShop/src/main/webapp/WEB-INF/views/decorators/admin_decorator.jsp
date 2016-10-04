@@ -115,7 +115,7 @@
 	<link href="/css/common.css" rel="stylesheet">
   <body>
   		<br><br><br>
-  		<jsp:include page="header.jsp"></jsp:include>
+  		<jsp:include page="admin_header.jsp"></jsp:include>
   		
         <div class="divCenter" style="width: 100%; min-height: 600px; max-height: auto;">
 	        <div class="divCenter" style="width: 60%; display:inline-block;">

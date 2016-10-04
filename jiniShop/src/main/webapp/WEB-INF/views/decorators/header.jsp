@@ -92,14 +92,7 @@
         <p class="aa">♥</p>
        <p>
          <a href="/qnaList" id="qna"><img src="./images/qna.jpg"></a>
-       </p>
-         <c:if test="${empty sessionScope.loginUser}">
-       <p> 
-       <p class="aa">♥</p>
-       <p>
-	     <a href="#" ><img src="./images/admin.jpg"></a>
- 		</p>
- 		</c:if>
+       </p> 
  </div>
 <div>
 <!--헤더파일 들어가는 곳 시작 -->
