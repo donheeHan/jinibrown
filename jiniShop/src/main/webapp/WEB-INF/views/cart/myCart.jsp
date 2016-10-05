@@ -11,6 +11,13 @@
 <body>
 <script>
 	$(function(){
+		var status = $("#buyFalse");
+			if(status=="false"){
+				alert("포인트부족");
+			}else if(status=="true"){
+				alert("선택상품이없슴");			
+			}
+		
 		$("#goBuyList").click(function(){
 			location.href='/myBuyList';
 		});
@@ -44,15 +51,35 @@
 					"str" : str
 				},
 				type : "json",
-				success : function() {
-					swal({
-						title:"상품 구매",
-						text:"선택한 상품을 성공적으로 구매하였습니다.",
-						type:"info"
-					},
-					function(){
-							self.location.reload();
-					});
+				success : function(data) {
+					if(data=="ok"){
+						swal({
+							title:"구매성공!!",
+							text:"구매에 성공했습니다.",
+							type:"success"
+						},
+						function(){
+								self.location.reload();
+						});
+					}else if(data=="noPoint"){
+						swal({
+							title:"포인트 부족!",
+							text:"구매 상품보다 포인트가 부족합니다.",
+							type:"info"
+						},
+						function(){
+								self.location.reload();
+						});
+					}else if(data=="noProduct"){
+						swal({
+							title:"상품 미선택!",
+							text:"선택하신 상품이 없습니다.",
+							type:"info"
+						},
+						function(){
+								self.location.reload();
+						});
+					}
 				}
 			});
 		});
@@ -129,7 +156,7 @@
 	        		</c:otherwise>
 	        	</c:choose>
 	    </tbody>
-	</table> 
-
+	</table>
+		<input type="hidden" value="${buyFalse}" id="buyFalse"/>
 </div>
 </body>

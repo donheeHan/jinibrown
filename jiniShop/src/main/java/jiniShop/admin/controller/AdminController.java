@@ -2,6 +2,8 @@ package jiniShop.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.SellVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -180,5 +183,27 @@ public class AdminController {
 				}
 		}
 		return check;
+	}
+	@RequestMapping(value="/admin/mainSellProduct", method=RequestMethod.GET)
+	@ResponseBody
+	public Object mainSellProduct(Model model, HttpSession session, @RequestParam(value="search")String search){
+		Calendar cal = Calendar.getInstance();
+		 
+		int month = cal.get ( cal.MONTH ) + 1 ;
+		int date = cal.get ( cal.DATE ) ;
+		int weekDay = cal.get(cal.DATE);
+
+		Map<String,Object> retVal = new HashMap<String, Object>();
+		if(search.equals("month")){
+		List<SellVO> getProductMonth = adminService.getProductMonth(month);
+		retVal.put("getProductMonth", getProductMonth);
+		}else if(search.equals("day")){
+			List<SellVO> getProductMonth = adminService.getProductDay(date);
+			retVal.put("getProductMonth", getProductMonth);
+		}else if(search.equals("week")){
+			List<SellVO> getProductMonth = adminService.getProductWeek(weekDay);
+			retVal.put("getProductMonth", getProductMonth);
+		}
+		return retVal;
 	}
 }

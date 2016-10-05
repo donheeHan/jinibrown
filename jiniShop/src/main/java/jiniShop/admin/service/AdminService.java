@@ -7,6 +7,7 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.SellVO;
 
 public interface AdminService {
 
@@ -27,5 +28,12 @@ public interface AdminService {
 	void productDel(int proNo);
 
 	List<ClientVO> getClientList();
+
+	List<SellVO> getProductMonth(int month);
+
+	List<SellVO> getProductDay(int date);
+
+	List<SellVO> getProductWeek(int weekDay);
+
 
 }

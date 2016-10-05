@@ -8,6 +8,7 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.SellVO;
 
 public interface AdminDAO {
 
@@ -28,5 +29,11 @@ public interface AdminDAO {
 	void productDel(int proNo) throws SQLException;
 
 	List<ClientVO> getClientList() throws SQLException;
+
+	List<SellVO> getProductMonth(int month) throws SQLException;
+
+	List<SellVO> getProductDay(int date) throws SQLException;
+
+	List<SellVO> getProductWeek(int weekDay) throws SQLException;
 
 }

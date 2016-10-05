@@ -4,7 +4,21 @@ public class CartVO {
 	private int c_no;
 	private String c_user;
 	private int c_p_no;
+	private int c_qty;
+	private String c_color;
 	
+	public int getC_qty() {
+		return c_qty;
+	}
+	public void setC_qty(int c_qty) {
+		this.c_qty = c_qty;
+	}
+	public String getC_color() {
+		return c_color;
+	}
+	public void setC_color(String c_color) {
+		this.c_color = c_color;
+	}
 	public int getC_no() {
 		return c_no;
 	}

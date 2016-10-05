@@ -8,13 +8,53 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <body>
 <script type="text/javascript">
+ function sellInput(){
+	 var passNo=$("#passNo").val();
+		var c_qty=$("#c_qty").val();
+		var c_color=$("#c_color").val();
+		$.ajax({
+			url : "/insertSell",
+			method : "GET",
+			data : {
+				"productNo" : passNo,
+				"c_qty" : c_qty,
+				"c_color" : c_color
+			},
+			type : "json",
+			success : function(result) {
+				if(result=="ok"){
+					swal({
+						title:"구매 성공!",
+						text:"상품을 성공적으로 구매했습니다.",
+						type:"success"
+					},
+					function(){
+						self.location.reload();
+					});
+				}else{
+					swal({
+						title:"로그인이 필요합니다!",
+						text:"메인페이지로 이동합니다.",
+						type:"error"
+					},
+					function(){
+						self.location.href="/main";
+					});
+				}
+			}
+		});
+ }
  function cartInput(){
 		var passNo=$("#passNo").val();
+		var c_qty=$("#c_qty").val();
+		var c_color=$("#c_color").val();
 		$.ajax({
 			url : "/insertCart",
 			method : "GET",
 			data : {
-				"productNo" : passNo
+				"productNo" : passNo,
+				"c_qty" : c_qty,
+				"c_color" : c_color
 			},
 			type : "json",
 			success : function(result) {
@@ -66,23 +106,25 @@
 			배송비 :구매가격이 30,000원 이상일 경우 무료배송 - 택배
 		</span></p>
 		<br>
-			<div>주문 시 옵션 <select>
-							<option>-- 선택 --</option>
-							<option>선택 옵션 1</option>
-							<option>선택 옵션 2</option>
-							<option>선택 옵션 3</option>
-							<option>선택 옵션 4</option>
+			<div>주문 수량(최대 5개) <select id="c_qty">
+							<option selected="selected" value="1">1개</option>
+							<option value="2">2개</option>
+							<option value="3">3개</option>
+							<option value="4">4개</option>
+							<option value="5">5개</option>
 						</select>
-						
-						 <select>
-							<option>-- 선택 --</option>
-							<option>선택 옵션 1</option>
-							<option>선택 옵션 2</option>
-							<option>선택 옵션 3</option>
-							<option>선택 옵션 4</option>
+				 색상 선택
+						 <select id="c_color">
+							<option>Red</option>
+							<option>Black</option>
+							<option>Blue</option>
+							<option>Green</option>
+							<option>Yellow</option>
+							<option>Gray</option>
+							<option>LightGreen</option>
 						</select>
 			</div>
-			<input type="button" value="구매하기">
+			<input type="button" onclick="sellInput();" value="구매하기">
 			<input type="reset" value="옵션 재 선택">
 			<input type="button" onclick="cartInput();" value="장바구니 담기">
 			<input type="hidden" id="passNo" value="${productDetail.p_no}">

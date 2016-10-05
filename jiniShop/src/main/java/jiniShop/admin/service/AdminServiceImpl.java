@@ -9,6 +9,7 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.SellVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,6 +90,42 @@ public class AdminServiceImpl implements AdminService{
 			e.printStackTrace();
 		}
 		return getClientList;
+	}
+
+	@Override
+	public List<SellVO> getProductMonth(int month) {
+		List<SellVO> getProductMonth = null;		
+		try {
+			getProductMonth = adminDAO.getProductMonth(month);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getProductMonth;
+	}
+
+	@Override
+	public List<SellVO> getProductDay(int date) {
+		List<SellVO> getProductDay = null;
+		try {
+			getProductDay = adminDAO.getProductDay(date);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getProductDay;
+	}
+
+	@Override
+	public List<SellVO> getProductWeek(int weekDay) {
+		List<SellVO> getProductWeek = null;
+		try {
+			getProductWeek = adminDAO.getProductWeek(weekDay);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getProductWeek;
 	}
 	
 	

@@ -7,6 +7,7 @@ import java.util.Map;
 import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
+import jiniShop.vo.ProductVO;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,30 @@ public class CartDAOImpl implements CartDAO{
 		List<BuyListViewVO> getBuyMyProduct = null;
 		getBuyMyProduct = session.selectList("cart.getBuyMyProduct", id);
 		return getBuyMyProduct;
+	}
+
+	@Override
+	public int getPrice(int point) throws SQLException {
+		int getPrice = 0;
+		getPrice = (Integer) session.selectOne("cart.getPrice",point);
+		return getPrice;
+	}
+
+	@Override
+	public void minusPoint(Map<String, Object> pointChange) throws SQLException {
+		session.update("cart.minusPoint",pointChange);
+	}
+
+	@Override
+	public int getProNum(int point) throws SQLException {
+		int getProNum = 0;
+		getProNum = (Integer) session.selectOne("cart.getProNum",point);
+		return getProNum;
+	}
+
+	@Override
+	public void insertSell(Map<String, String> insertCart) throws SQLException {
+		session.insert("cart.insertSell",insertCart);
 	}
 	
 }

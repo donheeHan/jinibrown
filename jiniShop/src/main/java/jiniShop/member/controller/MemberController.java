@@ -34,7 +34,7 @@ public class MemberController {
 	MemberService memberService;
 	SecurityProcess sp = new SecurityProcess();
 	
-	@RequestMapping(value={"/main","/admin/main"}, method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
 	public String main(Model model){
 		String url = "main";
 		List<ProductVO> getBestProduct = memberService.getBestProduct();
@@ -108,7 +108,8 @@ public class MemberController {
 		loginUser = memberService.getLoginInfo(id);
 		
 		if(id.equals("admin")){
-			url = "redirect:/admin/main";
+			url = "/admin/adminMain";
+			
 		}else{
 			url = "redirect:/main";
 		}

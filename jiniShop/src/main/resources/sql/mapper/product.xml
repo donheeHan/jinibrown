@@ -44,4 +44,38 @@
 	<select id="getNewProduct" resultType="product">
 		select * from product where rownum between 1 and 4 order by p_no desc
 	</select>
+	
+	<select id="getProductMonth" parameterType="int" resultType="sell">
+		SELECT S_DAY, S_USER, S_P_NO, COUNT(S_C_QTY) AS S_C_QTY, P_PRICE, P_NAME
+		FROM SELL, PRODUCT
+		WHERE SUBSTR(S_DAY,4,2)=#{month}
+    	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME
+    	ORDER BY S_DAY DESC
+	</select>
+	<select id="getProductDay" parameterType="int" resultType="sell">
+		SELECT S_DAY, S_USER, S_P_NO, COUNT(S_C_QTY) AS S_C_QTY, P_PRICE, P_NAME
+		FROM SELL, PRODUCT
+		WHERE SUBSTR(S_DAY,7,2)=#{date}
+    	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME
+    	ORDER BY S_DAY DESC
+	</select>
+	<select id="getProductWeek" parameterType="int" resultType="sell">
+		SELECT 	S_DAY, S_USER, S_P_NO, COUNT(S_C_QTY) AS S_C_QTY, P_PRICE, P_NAME
+		FROM 	SELL, PRODUCT
+		WHERE 	SUBSTR(S_DAY,7,2)=#{weekDay}-6
+			OR
+				SUBSTR(S_DAY,7,2)=#{weekDay}-5
+			OR
+				SUBSTR(S_DAY,7,2)=#{weekDay}-4
+			OR
+				SUBSTR(S_DAY,7,2)=#{weekDay}-3
+			OR
+				SUBSTR(S_DAY,7,2)=#{weekDay}-2
+			OR
+				SUBSTR(S_DAY,7,2)=#{weekDay}-1
+			OR
+				SUBSTR(S_DAY,7,2)=#{weekDay}
+    	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME
+    	ORDER BY S_DAY DESC
+	</select>
 </mapper>

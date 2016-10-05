@@ -8,6 +8,7 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.SellVO;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,28 @@ public class AdminDAOImpl implements AdminDAO{
 		List<ClientVO> getClientList = null;
 		getClientList = session.selectList("product.getClientList");
 		return getClientList;
+	}
+
+	@Override
+	public List<SellVO> getProductMonth(int month) throws SQLException {
+		List<SellVO> getProductMonth = null;
+		getProductMonth = session.selectList("product.getProductMonth",month);
+		return getProductMonth;
+	}
+
+	@Override
+	public List<SellVO> getProductDay(int date) throws SQLException {
+		List<SellVO> getProductDay = null;
+		getProductDay = session.selectList("product.getProductDay",date);
+		return getProductDay;
+	}
+
+	@Override
+	public List<SellVO> getProductWeek(int weekDay)
+			throws SQLException {
+		List<SellVO> getProductWeek = null;
+		getProductWeek = session.selectList("product.getProductWeek",weekDay);
+		return getProductWeek;
 	}
 
 }

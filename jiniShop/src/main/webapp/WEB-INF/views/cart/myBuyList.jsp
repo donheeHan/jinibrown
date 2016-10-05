@@ -42,6 +42,9 @@ $(function(){
 				<th>상품명</th>
 				<th>상품정보</th>
 				<th>가격</th>
+				<th>구매 개수</th>
+				<th>구매 색상</th>
+				<th>총 구매 가격</th>
 			</tr>
 		</thead>
 	    <tbody>
@@ -60,7 +63,10 @@ $(function(){
 			           		</td>
 			           		<td><a href="#" class="goProduct" id="${mySell.p_no}">${mySell.p_name }</a></td>
 			           		<td><a href="#" class="goProduct" id="${mySell.p_no}">${mySell.p_info }</a></td>
-			           		<td>${myCart.p_price }</td>
+			           		<td><a href="#" class="goProduct" id="${mySell.p_no}">${mySell.p_price }</a></td>
+			           		<td>${mySell.s_c_qty }</td>
+			           		<td>${mySell.s_c_color }</td>
+			           		<td>${mySell.s_c_qty*mySell.p_price}</td>
 				        </tr>
 			           	</c:forEach>
 	        		</c:otherwise>

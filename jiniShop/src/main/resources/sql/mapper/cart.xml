@@ -6,7 +6,10 @@
 <mapper namespace="cart">
 
 	<insert id="insertCart" parameterType="map">
-		INSERT INTO CART(C_NO,C_USER,C_P_NO) VALUES(CART_SEQ.NEXTVAL,#{member},#{productNo})
+		INSERT INTO CART(C_NO,C_USER,C_P_NO,C_QTY,C_COLOR) VALUES(CART_SEQ.NEXTVAL,#{member},#{productNo},#{c_qty},#{c_color})
+	</insert>
+	<insert id="insertSell" parameterType="map">
+		INSERT INTO SELL(S_NO,S_USER,S_P_NO,S_C_QTY,S_C_COLOR) VALUES(CART_SEQ.NEXTVAL,#{member},#{productNo},#{c_qty},#{c_color})
 	</insert>
 	
 	<select id="getMyCart" parameterType="str" resultType="cartView">
@@ -33,9 +36,25 @@
 	</select>
 	
 	<select id="getBuyMyProduct" parameterType="str" resultType="buy">
-		SELECT P_NO,P_NAME,P_PRICE,P_INFO,P_MAINIMG,P_SUBIMG,P_COUNT,P_CATE,P_QTY,P_PRICE2,P_BUY,P_STATUS,P_C_NAME,S_NO,S_DAY,S_QTY,S_RETURN,S_USER,S_P_NO
+		SELECT P_NO,P_NAME,P_PRICE,P_INFO,P_MAINIMG,P_SUBIMG,P_COUNT,P_CATE,P_QTY,P_PRICE2,P_BUY,P_STATUS,P_C_NAME,S_NO,S_DAY,S_RETURN,S_USER,S_P_NO,S_C_QTY,S_C_COLOR
 		FROM BUYLISTVIEW
 		WHERE S_USER=#{id}
+	</select>
+	
+	<select id="getPrice" parameterType="int" resultType="int">
+		SELECT P_PRICE
+		FROM PRODUCT
+		WHERE P_NO=#{point}
+	</select>
+	
+	<update id="minusPoint" parameterType="map">
+		UPDATE LOGIN_VIEW SET POINT = #{priceSum} WHERE ID = #{loginUser}
+	</update>
+	
+	<select id="getProNum" parameterType="int" resultType="int">
+		SELECT C_P_NO
+		FROM CART
+		WHERE C_NO=#{point}
 	</select>
 	
 	</mapper>

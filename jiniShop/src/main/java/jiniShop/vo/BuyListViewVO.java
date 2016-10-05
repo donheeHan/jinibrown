@@ -20,6 +20,21 @@ public class BuyListViewVO {
 	private String s_return;
 	private String s_user;
 	private String s_p_no;
+	private int s_c_qty;
+	private String s_c_color;
+	
+	public int getS_c_qty() {
+		return s_c_qty;
+	}
+	public void setS_c_qty(int s_c_qty) {
+		this.s_c_qty = s_c_qty;
+	}
+	public String getS_c_color() {
+		return s_c_color;
+	}
+	public void setS_c_color(String s_c_color) {
+		this.s_c_color = s_c_color;
+	}
 	public String getP_no() {
 		return p_no;
 	}
