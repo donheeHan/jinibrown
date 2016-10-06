@@ -56,7 +56,6 @@ public class CartServiceImpl implements CartService{
 		try {
 			cartDAO.myCartBuy(productBuy);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -67,7 +66,6 @@ public class CartServiceImpl implements CartService{
 		try {
 			myCartPno = cartDAO.myCartPno(k);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return myCartPno;
@@ -79,7 +77,6 @@ public class CartServiceImpl implements CartService{
 		try {
 			getBuyMyProduct = cartDAO.getBuyMyProduct(id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return getBuyMyProduct;
@@ -91,7 +88,6 @@ public class CartServiceImpl implements CartService{
 		try {
 			getPrice = cartDAO.getPrice(point);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return getPrice;

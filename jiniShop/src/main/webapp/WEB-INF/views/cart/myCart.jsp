@@ -128,16 +128,19 @@
 			<tr>
 				<th style="width:25%;">상품</th>
 				<th style="width:15%;">상품명</th>
-				<th style="width:45%;">상품정보</th>
-				<th style="width:10%;">가격</th>
-				<th style="width:5%;"><input type="checkbox" id="checkAll"/></th>
-			</tr>
+				<th style="width:25%;">상품정보</th>
+				<th style="width:10%;">수량</th>
+				<th style="width:10%;">색상</th>
+				<th style="width:10%;">단가 가격</th>
+				<th style="width:10%;">총 가격</th>
+				<th style="width:5%;"><input type="checkbox" id="checkAll" style="width:30px;"/></th>
+			</tr> 
 		</thead>
-	    <tbody>
+	    <tbody> 
 	        	<c:choose>
 	        		<c:when test="${empty myCart }">
 			        <tr>
-	        			<td colspan="5">장바구니가 비었습니다.</td>
+	        			<td colspan="7">장바구니가 비었습니다.</td>
 			        </tr>
 	        		</c:when>
 	        		<c:otherwise>
@@ -149,8 +152,11 @@
 				        	</td>
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_name }</a></td>
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_info }</a></td>
-			           		<td>${myCart.p_price }</td>
-				        	<td><input type="checkbox" id="${myCart.c_no}"/></td>
+			           		<td>${myCart.c_qty }</td>
+			           		<td>${myCart.c_color }</td>
+			           		<td>${myCart.p_price }</td> 
+			           		<td>${(myCart.p_price * myCart.c_qty) }</td>
+				        	<td><input type="checkbox" id="${myCart.c_no}" style="width:30px;"/></td>
 				        </tr>
 			           	</c:forEach>
 	        		</c:otherwise>

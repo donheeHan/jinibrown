@@ -37,6 +37,13 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 
+	@RequestMapping("/admin/main")
+	public String adminMain(){
+		String url="/admin/adminMain";
+		
+		return url;
+	}
+	
 	@RequestMapping("/admin/memberList")
 	public String memberList(Model model) {
 		String url = "/admin/memberList";

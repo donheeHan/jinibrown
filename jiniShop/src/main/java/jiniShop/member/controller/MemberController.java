@@ -108,7 +108,7 @@ public class MemberController {
 		loginUser = memberService.getLoginInfo(id);
 		
 		if(id.equals("admin")){
-			url = "/admin/adminMain";
+			url = "redirect:/admin/main";
 			
 		}else{
 			url = "redirect:/main";

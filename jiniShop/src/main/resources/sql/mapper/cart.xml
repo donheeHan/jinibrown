@@ -13,7 +13,7 @@
 	</insert>
 	
 	<select id="getMyCart" parameterType="str" resultType="cartView">
-		SELECT 	C_NO, C_USER, C_P_NO, P_NO, P_NAME, P_PRICE, P_INFO, P_MAINIMG
+		SELECT 	C_NO, C_USER, C_P_NO, P_NO, P_NAME, P_PRICE, P_INFO, P_MAINIMG, c_qty, c_color
 		FROM 	CART, PRODUCT
 		WHERE 	CART.C_P_NO = PRODUCT.P_NO
 			AND

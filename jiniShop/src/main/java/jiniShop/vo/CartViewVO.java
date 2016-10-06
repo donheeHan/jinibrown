@@ -8,6 +8,20 @@ public class CartViewVO {
 	private String p_price;
 	private String p_info;
 	private String p_mainimg;
+	private String c_qty;
+	public String getC_qty() {
+		return c_qty;
+	}
+	public void setC_qty(String c_qty) {
+		this.c_qty = c_qty;
+	}
+	public String getC_color() {
+		return c_color;
+	}
+	public void setC_color(String c_color) {
+		this.c_color = c_color;
+	}
+	private String c_color;
 	public String getC_no() {
 		return c_no;
 	}
