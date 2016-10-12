@@ -100,7 +100,7 @@
 		      <ul style="list-style: none;"> 
 		        <li style="float: left;"><a href="/admin/memberList"><img src="/images/menu/admin1.png"></a>&nbsp;</li>
 		        <li style="float: left;"><a href="/admin/productList"><img src="/images/menu/admin2.png"></a>&nbsp;</li>
-		        <li style="float: left;"><a href="#"><img src="/images/menu/admin3.png"></a>&nbsp;</li>
+		        <li style="float: left;"><a href="/admin/clientList"><img src="/images/menu/admin3.png"></a>&nbsp;</li>
 		        <li style="float: left;"><a href="/admin/qnaList"><img src="/images/menu/admin4.png"></a></li>
 		      </ul>
 		    </nav>

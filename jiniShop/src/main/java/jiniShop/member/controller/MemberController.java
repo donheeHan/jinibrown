@@ -46,7 +46,7 @@ public class MemberController {
 		return url;
 	}
 	
-	@RequestMapping(value="/loginPage", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value={"/loginPage", "/loginForm"}, method={RequestMethod.GET, RequestMethod.POST})
 	public String loginForm(){
 		String url = "/member/loginPage";
 		

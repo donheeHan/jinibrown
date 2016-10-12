@@ -36,4 +36,8 @@ public interface AdminDAO {
 
 	List<SellVO> getProductWeek(int weekDay) throws SQLException;
 
+	void insertClient(ClientVO clientVO);
+
+	void deleteClient(String c_no);
+
 }

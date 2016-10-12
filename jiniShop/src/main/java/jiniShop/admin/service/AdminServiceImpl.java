@@ -52,7 +52,6 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			adminDAO.addProduct(product);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -64,7 +63,6 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			productList = adminDAO.getProductList();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return productList;
@@ -75,7 +73,6 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			adminDAO.productDel(proNo);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -86,7 +83,6 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			getClientList = adminDAO.getClientList();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return getClientList;
@@ -98,7 +94,6 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			getProductMonth = adminDAO.getProductMonth(month);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return getProductMonth;
@@ -110,7 +105,6 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			getProductDay = adminDAO.getProductDay(date);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return getProductDay;
@@ -122,10 +116,19 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			getProductWeek = adminDAO.getProductWeek(weekDay);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return getProductWeek;
+	}
+
+	@Override
+	public void insertClient(ClientVO clientVO) {
+		adminDAO.insertClient(clientVO);
+	}
+
+	@Override
+	public void deleteClient(String c_no) {
+		adminDAO.deleteClient(c_no);
 	}
 	
 	

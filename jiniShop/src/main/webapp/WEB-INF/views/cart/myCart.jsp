@@ -140,7 +140,7 @@
 	        	<c:choose>
 	        		<c:when test="${empty myCart }">
 			        <tr>
-	        			<td colspan="7">장바구니가 비었습니다.</td>
+	        			<td colspan="8">장바구니가 비었습니다.</td>
 			        </tr>
 	        		</c:when>
 	        		<c:otherwise>
@@ -153,7 +153,7 @@
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_name }</a></td>
 			           		<td><a href="#" class="goProduct" id="${myCart.c_no}">${myCart.p_info }</a></td>
 			           		<td>${myCart.c_qty }</td>
-			           		<td>${myCart.c_color }</td>
+			           		<td><span style="color:${myCart.c_color };">${myCart.c_color }</span></td>
 			           		<td>${myCart.p_price }</td> 
 			           		<td>${(myCart.p_price * myCart.c_qty) }</td>
 				        	<td><input type="checkbox" id="${myCart.c_no}" style="width:30px;"/></td>

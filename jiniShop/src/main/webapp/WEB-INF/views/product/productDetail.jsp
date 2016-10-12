@@ -97,38 +97,37 @@
 	<div style="float: left; width: 40%;">
 		<img src="/images/productImage/${productDetail.p_mainimg}" style="width: 60%; height: 300px;">
 	</div> 
-	<div style="text-align: left; float: left; width:40%;">
+	<div style="text-align: left; float: left; width:50%;">
 	<form>
-		<p>[${productDetail.p_name}]&nbsp;${productDetail.p_info}</p><br> 
-			<p>판매가 : ${productDetail.p_price}</p>
-		<p><span>
-			제조사/원산지 : ${productDetail.p_c_name}/국산<br>
-			배송비 :구매가격이 30,000원 이상일 경우 무료배송 - 택배
-		</span></p>
+		<p style="text-align: center; font-size:30px; overflow: hidden; text-overflow: ellipsis;">[${productDetail.p_name}]</p><br>
+		<p style="text-align: left; font-size:20px; color:#FF4000; overflow: hidden; text-overflow: ellipsis;">${productDetail.p_info}</p><br> 
+		<p style="text-align: left; font-size:20px; overflow: hidden; text-overflow: ellipsis;">판매가 : ${productDetail.p_price}</p> 
+		<p style="text-align: left; font-size:20px; overflow: hidden; text-overflow: ellipsis;"><span> 제조사/원산지 : ${productDetail.p_c_name}/국산<br></span></p>
 		<br>
-			<div>주문 수량(최대 5개) <select id="c_qty">
+			<div><p>주문 수량(최대 5개) :  <select id="c_qty">
 							<option selected="selected" value="1">1개</option>
 							<option value="2">2개</option>
 							<option value="3">3개</option>
 							<option value="4">4개</option>
 							<option value="5">5개</option>
-						</select>
-				 색상 선택
+						</select></p>
+				 <p>색상 선택 : 
 						 <select id="c_color">
-							<option>Red</option>
-							<option>Black</option>
-							<option>Blue</option>
-							<option>Green</option>
-							<option>Yellow</option>
-							<option>Gray</option>
-							<option>LightGreen</option>
+							<option>red</option>
+							<option>black</option>
+							<option>blue</option>
+							<option>green</option>
+							<option>yellow</option>
+							<option>gray</option>
+							<option>lightGreen</option>
 						</select>
-			</div>
-			<input type="button" onclick="sellInput();" value="구매하기">
-			<input type="reset" value="옵션 재 선택">
-			<input type="button" onclick="cartInput();" value="장바구니 담기">
-			<input type="hidden" id="passNo" value="${productDetail.p_no}">
-		</form>
+						</p>
+			</div>   
+			<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" onclick="sellInput();" value="구매하기">
+			<input type="reset" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" value="옵션 재 선택">
+			<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" onclick="cartInput();" value="장바구니 담기">
+			<input type="hidden" id="passNo" value="${productDetail.p_no}">  
+		</form> 
 	</div>
 </div>
 <br>

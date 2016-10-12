@@ -26,11 +26,11 @@
 	</delete>
 	
 	<insert id="myCartBuy" parameterType="map">
-		INSERT INTO SELL(S_NO,S_USER,S_P_NO) VALUES(#{pass},#{loginUser},#{pass2})
+		INSERT INTO SELL(S_NO, S_USER, S_P_NO, S_C_QTY, S_C_COLOR) VALUES(#{pass},#{loginUser},#{pass2},#{s_c_qty},#{s_c_color})
 	</insert>
 	
 	<select id="myCartPno" parameterType="int" resultType="cart">
-		SELECT C_NO, C_USER, C_P_NO
+		SELECT C_NO, C_USER, C_P_NO, C_QTY, C_COLOR
 		FROM CART
 		WHERE C_NO=#{k}
 	</select>

@@ -51,15 +51,15 @@
 						</div>
 						<div>
 							<br />
-							<p style="text-align: center; font-size:13px;"><strong>${item.p_name}</strong></p>
-							<p style="text-align: center; font-size:13px; color:#FF4000;">${item.p_info}</p>
-							<p style="text-align: center; font-size:15px;"><strong>${item.p_price}</strong></p>
-							<p style="text-align: center; font-size:13px;"><strong>조회수 : ${item.p_count}</strong></p>
+							<p style="text-align: center; font-size:13px; overflow: hidden; text-overflow: ellipsis;"><strong>${item.p_name}</strong></p>
+							<p style="text-align: center; font-size:13px; color:#FF4000; overflow: hidden; text-overflow: ellipsis;">${item.p_info}</p>
+							<p style="text-align: center; font-size:15px; overflow: hidden; text-overflow: ellipsis;"><strong>${item.p_price}</strong></p>
+							<p style="text-align: center; font-size:13px; overflow: hidden; text-overflow: ellipsis;"><strong>조회수 : ${item.p_count}</strong></p>
 						</div>
 					</li>
-			</c:forEach>
+			</c:forEach>   
 			</div>
-
+ 
 		</div>
 		<div style="text-align: left;">
 			<strong style="font-size: 25px;">───────§ JINI BROWN <span
@@ -80,7 +80,7 @@
 							<p style="text-align: center; font-size:13px; color:#FF4000; overflow: hidden; text-overflow: ellipsis;">${item.p_info}</p>
 							<p style="text-align: center; font-size:15px; overflow: hidden; text-overflow: ellipsis;"><strong>${item.p_price}</strong></p>
 							<p style="text-align: center; font-size:13px; overflow: hidden; text-overflow: ellipsis;"><strong>조회수 : ${item.p_count}</strong></p>
-						</div>
+						</div>s 
 					</li>
 			</c:forEach>
 			</div>

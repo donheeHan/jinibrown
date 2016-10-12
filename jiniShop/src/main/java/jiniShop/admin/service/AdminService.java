@@ -35,5 +35,9 @@ public interface AdminService {
 
 	List<SellVO> getProductWeek(int weekDay);
 
+	void insertClient(ClientVO clientVO);
+
+	void deleteClient(String c_no);
+
 
 }

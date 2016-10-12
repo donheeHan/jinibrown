@@ -31,18 +31,19 @@
 		WHERE P_NO=#{productNo}
 	</update>
 	<select id="getBestProduct" resultType="product">
-		SELECT 		*
-		FROM 		PRODUCT
-    	WHERE 		ROWNUM BETWEEN 1 AND 4 
-		ORDER BY 	P_COUNT DESC
+		SELECT    *
+      	FROM    (SELECT * FROM PRODUCT ORDER BY P_COUNT DESC)
+      	 WHERE    ROWNUM BETWEEN 1 AND 4
 	</select>
 	<select id="getClientList" resultType="client">
-		SELECT C_NO, C_NAME, C_TEL
+		SELECT *
 		FROM CLIENT
 	</select>
 	
 	<select id="getNewProduct" resultType="product">
-		select * from product where rownum between 1 and 4 order by p_no desc
+		SELECT    *
+      	FROM    (SELECT * FROM PRODUCT ORDER BY P_NO DESC)
+      	 WHERE    ROWNUM BETWEEN 1 AND 4
 	</select>
 	
 	<select id="getProductMonth" parameterType="int" resultType="sell">
@@ -78,4 +79,12 @@
     	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME
     	ORDER BY S_DAY DESC
 	</select>
+	
+	<insert id="insertClient" parameterType="client">
+		insert into client(c_no, c_name, c_tel) values(client_seq.nextval, #{c_name}, #{c_tel})
+	</insert>
+	
+	<delete id="deleteClient" parameterType="str">
+		delete from client where c_no = #{c_no}
+	</delete>
 </mapper>

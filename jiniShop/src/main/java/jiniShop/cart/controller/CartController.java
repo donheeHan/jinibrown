@@ -168,6 +168,8 @@ public class CartController {
 							productBuy.put("pass", k);
 							CartVO cartPno = cartService.myCartPno(k);
 							productBuy.put("pass2", cartPno.getC_p_no());
+							productBuy.put("s_c_qty", cartPno.getC_qty());
+							productBuy.put("s_c_color", cartPno.getC_color());
 
 							cartService.myCartBuy(productBuy);
 							cartService.myCartDel(k);

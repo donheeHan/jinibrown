@@ -2,7 +2,6 @@ package jiniShop.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +21,7 @@ import jiniShop.vo.SellVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -212,5 +212,32 @@ public class AdminController {
 			retVal.put("getProductMonth", getProductMonth);
 		}
 		return retVal;
+	}
+	
+	@RequestMapping("/admin/clientList")
+	public String clientList(Model model){
+		String url="/admin/adminClientList";
+		
+		List<ClientVO> clientList = adminService.getClientList();
+		
+		model.addAttribute("clientList", clientList);
+		
+		return url;
+	}
+	@RequestMapping("/admin/clientInsert")
+	public String clientInsertForm(ClientVO clientVO){
+		String url="redirect:/admin/clientList";
+		
+		adminService.insertClient(clientVO);
+		
+		return url;
+	}
+	@RequestMapping("/admin/clientDel")
+	public String clientDel(@RequestParam("c_no")String c_no){
+		String url="redirect:/admin/clientList";
+		
+		adminService.deleteClient(c_no);
+		
+		return url;
 	}
 }

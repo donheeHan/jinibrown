@@ -91,4 +91,14 @@ public class AdminDAOImpl implements AdminDAO{
 		return getProductWeek;
 	}
 
+	@Override
+	public void insertClient(ClientVO clientVO) {
+		session.insert("product.insertClient", clientVO);
+	}
+
+	@Override
+	public void deleteClient(String c_no) {
+		session.delete("product.deleteClient", c_no);
+	}
+
 }

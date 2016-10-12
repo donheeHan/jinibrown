@@ -76,7 +76,7 @@
 						<td>
 						<select name="p_c_name">
 							<c:forEach items="${clientList}" var="clientList" varStatus="status">
-								<option value="${status.count}">${clientList.c_name}</option>
+								<option value="${clientList.c_no}">${clientList.c_name}</option>
 							</c:forEach>
 						</select></td>
 					</tr>
