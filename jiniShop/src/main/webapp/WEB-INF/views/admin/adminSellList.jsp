@@ -20,9 +20,7 @@ $(function(){
 		type : "json",
 		success : function(retVal) {
 			var values = retVal.getProductMonth; 
-			var html="<table class='simple_table' id='datatable'><thead><tr><th>구매일</th>"
-				+ "<th>구매자 번호</th><th>상품 번호</th><th>상품 이름</th><th>상품 가격</th><th>판매 수량</th>"
-				+ "</tr></thead><tbody>";
+			var html="";
 			var sum=0;
 			$.each(values,function(i,v){
 				html += "<tr><td>"+v.s_day+"</td>"
@@ -51,9 +49,7 @@ $(function(){
 			type : "json",
 			success : function(retVal) {
 				var values = retVal.getProductMonth; 
-				var html="<table class='simple_table' id='datatable'><thead><tr><th>구매일</th>"
-					+ "<th>구매자 번호</th><th>상품 번호</th><th>상품 이름</th><th>상품 가격</th><th>판매 수량</th>"
-					+ "</tr></thead><tbody>";
+				var html="";
 				var sum=0;
 				$.each(values,function(i,v){
 					html += "<tr><td>"+v.s_day+"</td>"
@@ -83,9 +79,7 @@ $(function(){
 			type : "json",
 			success : function(retVal) {
 				var values = retVal.getProductMonth; 
-				var html="<table class='simple_table' id='datatable'><thead><tr><th>구매일</th>"
-					+ "<th>구매자 번호</th><th>상품 번호</th><th>상품 이름</th><th>상품 가격</th><th>판매 수량</th>"
-					+ "</tr></thead><tbody>";
+				var html="";
 				var sum=0;
 				$.each(values,function(i,v){
 					html += "<tr><td>"+v.s_day+"</td>"
@@ -129,7 +123,7 @@ $(function(){
 					+ "</tr>";
 					sum+=(v.s_c_qty*v.p_price);
 	     	  	 });
-				sell += "<div> 총 판매금액 : "+sum+"</div>";
+				html += "<td colspan='3'>총 판매 금액</td><td colspan='3'>"+sum+"</td></tbody></table>";
 				$("#product").html(html);
 			},
 			error : function(){
@@ -153,8 +147,6 @@ $(function(){
 	<div>
 		<table class='simple_table' id="datatable">
 			<thead>
-			</thead>
-			<tbody id="product">
 				<tr>
 					<th>구매일</th>
 					<th>구매자 번호</th>
@@ -163,6 +155,8 @@ $(function(){
 					<th>상품 가격</th>
 					<th>판매 수량</th>
 				</tr>
+			</thead>
+			<tbody id="product">
 			</tbody>
 		
 		</table>
