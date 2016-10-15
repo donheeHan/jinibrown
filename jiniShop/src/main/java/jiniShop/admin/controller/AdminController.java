@@ -191,6 +191,14 @@ public class AdminController {
 		}
 		return check;
 	}
+	
+	@RequestMapping("/admin/sellList")
+	public String sellList(Model model) {
+		String url = "/admin/adminSellList";
+
+		return url;
+	}
+	
 	@RequestMapping(value="/admin/mainSellProduct", method=RequestMethod.GET)
 	@ResponseBody
 	public Object mainSellProduct(Model model, HttpSession session, @RequestParam(value="search")String search){

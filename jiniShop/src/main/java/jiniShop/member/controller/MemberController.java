@@ -108,7 +108,7 @@ public class MemberController {
 		loginUser = memberService.getLoginInfo(id);
 		
 		if(id.equals("admin")){
-			url = "redirect:/admin/main";
+			url = "redirect:/admin/memberList";
 			
 		}else{
 			url = "redirect:/main";
@@ -210,6 +210,40 @@ public class MemberController {
 	public String joinError(){
 		String url="/member/joinError";
 		
+		
+		return url;
+	}
+	@RequestMapping("mypageForm")
+	public String mypageForm(HttpSession session, Model model){
+		String url="/member/mypage";
+		
+		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
+		
+		String id = loginUser.getId();
+		
+		loginUser = memberService.getLoginInfo(id);
+		
+		model.addAttribute("loginInfo", loginUser);
+		
+		return url;
+	}
+	
+	@RequestMapping("/mypageInfo")
+	public String mypageInfoUpdate(HttpSession session, MemberVO vo){
+		String url ="redirect:/mypageForm";
+		
+		memberService.updateMypageInfo(vo);
+		
+		return url;
+	}
+	
+	@RequestMapping("mypagePwdInfo")
+	public String mypagePwdUpdate(HttpSession session, UsersVO vo) throws Exception{
+		String url = "redirect:/logout";
+		
+		vo.setUser_pass(sp.encrypt(vo.getUser_pass()));
+		
+		memberService.updateUserPwd(vo);
 		
 		return url;
 	}

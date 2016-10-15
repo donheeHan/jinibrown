@@ -6,15 +6,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title></title>
-</head>
 <body>
 <script type="text/javascript">
-$(function(){
+$(function(){ 
+	
+	
 	$.ajax({
 		url : "/admin/mainSellProduct",
 		method : "get",
@@ -109,7 +105,6 @@ $(function(){
 			}
 		});
 		 
-		$(".simple_table").DataTable();
 	});
 	$("#weekProduct").click(function(){
 		$.ajax({
@@ -142,6 +137,8 @@ $(function(){
 			}
 		});
 	});
+	
+	$("#datatable").DataTable();
 });
 </script>
 <div style="text-align: left; height: 50px;">
@@ -154,7 +151,7 @@ $(function(){
 		<input type="button" id="dayProduct" class="button1" value="당일 매출">
 	</div>
 	<div>
-		<table class='simple_table' id='datatable'>
+		<table class='simple_table' id="datatable">
 			<thead>
 			</thead>
 			<tbody id="product">

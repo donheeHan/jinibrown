@@ -40,6 +40,15 @@
                 		return false;
                 	}
                 });
+                
+                $("#mypage").click(function(){
+                	if(loginCheck != ""){
+                		
+                	}else{
+                		swal("로그인 후 이용가능합니다.");
+                		return false;
+                	}
+                });
             }); 
         </script>
          <style>
@@ -85,7 +94,7 @@
        </p>
        <p class="aa">♥</p>
        <p>
-         <a href="#"><img src="./images/mypage.jpg"></a>
+         <a href="/mypageForm" id="mypage"><img src="./images/mypage.jpg"></a>
        </p>
        </c:when>
        </c:choose>

@@ -51,4 +51,14 @@ public class MemberDAOImpl implements MemberDAO{
 		return session.selectList("product.getNewProduct");
 	}
 
+	@Override
+	public void updateMypageInfo(MemberVO vo) {
+		session.update("Member.updateMypageInfo", vo);
+	}
+
+	@Override
+	public void updateUserPwd(UsersVO vo) {
+		session.update("Member.updateUserPwd", vo);
+	}
+
 }

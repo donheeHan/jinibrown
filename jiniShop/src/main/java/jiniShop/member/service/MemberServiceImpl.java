@@ -53,4 +53,14 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.getNewProduct();
 	}
 
+	@Override
+	public void updateMypageInfo(MemberVO vo) {
+		memberDAO.updateMypageInfo(vo);
+	}
+
+	@Override
+	public void updateUserPwd(UsersVO vo) {
+		memberDAO.updateUserPwd(vo);
+	}
+
 }

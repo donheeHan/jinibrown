@@ -25,4 +25,19 @@
 		select * from login_view where id != 'admin'
 	</select>
 	
+	<update id="updateMypageInfo">
+		update member
+		set email = #{email},
+		mtemp = #{mtemp},
+		maddress1 = #{maddress1},
+		maddress2 = #{maddress2}
+		where id=#{id}
+	</update>
+	
+	<update id="updateUserPwd">
+		update users
+		set user_pass = #{user_pass}
+		where user_id = #{user_id}
+	</update>
+	
 </mapper>

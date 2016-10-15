@@ -50,7 +50,7 @@
 				        	<td>${client.c_no }</td>
 			           		<td>${client.c_name }</td>
 			           		<td>${client.c_tel }</td>
-			           		<td><a href="/admin/clientDel?c_no=${client.c_no }">X</a></td>
+			           		<td><a href="/admin/clientDel?c_no=${client.c_no }">삭제하기</a></td>
 				        </tr>
 			           	</c:forEach>
 	        		</c:otherwise>

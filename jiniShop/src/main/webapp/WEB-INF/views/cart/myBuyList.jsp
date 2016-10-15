@@ -31,8 +31,8 @@ $(function(){
 		<br> 
 	</div>  
 	<div style="text-align: right; height: 50px;">  
-		<input type="button" id="goMyCart" class="button1"value="장바구니 이동">
 		<input type="button" id="goMain" class="button1" value="메인 이동">
+		<input type="button" id="goMyCart" class="button1"value="장바구니 이동">
 	</div>
 	<table class="simple_table" id="datatable">
 		<thead>

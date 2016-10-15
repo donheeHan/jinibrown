@@ -80,7 +80,7 @@
 							<p style="text-align: center; font-size:13px; color:#FF4000; overflow: hidden; text-overflow: ellipsis;">${item.p_info}</p>
 							<p style="text-align: center; font-size:15px; overflow: hidden; text-overflow: ellipsis;"><strong>${item.p_price}</strong></p>
 							<p style="text-align: center; font-size:13px; overflow: hidden; text-overflow: ellipsis;"><strong>조회수 : ${item.p_count}</strong></p>
-						</div>s 
+						</div> 
 					</li>
 			</c:forEach>
 			</div>

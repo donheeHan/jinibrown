@@ -119,13 +119,12 @@
 		<br> 
 	</div>  
 	<div style="text-align: right; height: 50px;">  
-		<input type="button" id="checkTrue" class="button1"value="선택상품 삭제">
-		<input type="button" id="checkBuy" class="button1" value="선택상품  구매">
 		<input type="button" id="goBuyList" class="button1" value="구매 목록으로 이동">
 	</div>
 	<table class="simple_table" id="datatable">
 		<thead>
 			<tr>
+				<th style="width:5%;"><input type="checkbox" id="checkAll" style="width:30px;"/></th>
 				<th style="width:25%;">상품</th>
 				<th style="width:15%;">상품명</th>
 				<th style="width:25%;">상품정보</th>
@@ -133,7 +132,6 @@
 				<th style="width:10%;">색상</th>
 				<th style="width:10%;">단가 가격</th>
 				<th style="width:10%;">총 가격</th>
-				<th style="width:5%;"><input type="checkbox" id="checkAll" style="width:30px;"/></th>
 			</tr> 
 		</thead>
 	    <tbody> 
@@ -146,6 +144,7 @@
 	        		<c:otherwise>
 			           	<c:forEach var="myCart" items="${myCart}">
 				        <tr>
+				        	<td><input type="checkbox" id="${myCart.c_no}" style="width:30px;"/></td>
 				        	<td>
 				        	<a href="#" class="goProduct" id="${myCart.c_no}">
 				        	<img src="/images/productImage/${myCart.p_mainimg }" style="width:100px; height: 125px;"/></a>
@@ -156,13 +155,16 @@
 			           		<td><span style="color:${myCart.c_color };">${myCart.c_color }</span></td>
 			           		<td>${myCart.p_price }</td> 
 			           		<td>${(myCart.p_price * myCart.c_qty) }</td>
-				        	<td><input type="checkbox" id="${myCart.c_no}" style="width:30px;"/></td>
 				        </tr>
 			           	</c:forEach>
 	        		</c:otherwise>
 	        	</c:choose>
 	    </tbody>
 	</table>
+	<div style="text-align: center; height: 50px;">
+		<input type="button" id="checkTrue" class="button1"value="선택상품 삭제">
+		<input type="button" id="checkBuy" class="button1" value="선택상품  구매">
+	</div>
 		<input type="hidden" value="${buyFalse}" id="buyFalse"/>
 </div>
 </body>

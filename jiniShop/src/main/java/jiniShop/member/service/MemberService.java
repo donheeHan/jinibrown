@@ -23,4 +23,8 @@ public interface MemberService {
 
 	List<ProductVO> getNewProduct();
 
+	void updateMypageInfo(MemberVO vo);
+
+	void updateUserPwd(UsersVO vo);
+
 }
