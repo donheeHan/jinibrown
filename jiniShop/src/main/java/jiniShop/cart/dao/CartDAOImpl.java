@@ -7,6 +7,7 @@ import java.util.Map;
 import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
+import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 
 import org.apache.ibatis.session.SqlSession;
@@ -77,6 +78,27 @@ public class CartDAOImpl implements CartDAO{
 	@Override
 	public void insertSell(Map<String, String> insertCart) throws SQLException {
 		session.insert("cart.insertSell",insertCart);
+	}
+
+	@Override
+	public ProductVO getProductInfo(int productNo) throws SQLException {
+		ProductVO productInfo = null;
+		productInfo = (ProductVO) session.selectOne("product.detail", productNo);
+		return productInfo;
+	}
+
+	@Override
+	public Login_ViewVO getMyPoint(String id) throws SQLException {
+		Login_ViewVO memberInfo = null;
+		memberInfo = (Login_ViewVO) session.selectOne("cart.myPoint", id);
+		return memberInfo;
+	}
+
+	@Override
+	public CartViewVO getCartProductInfo(int cartNo) throws SQLException {
+		CartViewVO viewCartPro = null;
+		viewCartPro = (CartViewVO) session.selectOne("cart.cartProductDetail", cartNo);
+		return viewCartPro;
 	}
 	
 }

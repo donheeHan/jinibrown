@@ -7,19 +7,20 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.QnaViewVO;
 import jiniShop.vo.SellVO;
 
 public interface AdminService {
 
 	List<Login_ViewVO> getMemberList();
 
-	List<QnaVO> getQnaList();
+	List<QnaViewVO> getQnaList();
 
-	QnaVO getQnaDetail(String q_no);
+	QnaViewVO getQnaDetail(String q_no);
 
 	void deleteAdminQna(String q_no);
 
-	QnaVO insertQnaReply(Map<String, String> params);
+	QnaViewVO insertQnaReply(Map<String, String> params);
 
 	void addProduct(ProductVO product);
 
@@ -38,6 +39,10 @@ public interface AdminService {
 	void insertClient(ClientVO clientVO);
 
 	void deleteClient(String c_no);
+
+	ProductVO getProductDetail(int productNo);
+
+	void modifyProduct(ProductVO product);
 
 
 }

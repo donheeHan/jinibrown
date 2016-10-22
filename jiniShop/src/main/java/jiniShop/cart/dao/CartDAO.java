@@ -7,6 +7,7 @@ import java.util.Map;
 import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
+import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 
 public interface CartDAO {
@@ -20,5 +21,8 @@ public interface CartDAO {
 	void minusPoint(Map<String, Object> pointChange) throws SQLException;
 	int getProNum(int point) throws SQLException;
 	void insertSell(Map<String, String> insertCart)throws SQLException;
+	ProductVO getProductInfo(int productNo) throws SQLException;
+	Login_ViewVO getMyPoint(String id) throws SQLException;
+	CartViewVO getCartProductInfo(int cartNo) throws SQLException;
 
 }

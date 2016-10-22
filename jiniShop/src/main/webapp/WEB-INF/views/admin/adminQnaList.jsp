@@ -29,6 +29,7 @@
 		<thead>
 			<tr>
 				<th>NO</th>
+				<th>TYPE</th>
 				<th>SUBJECT</th>
 				<th>WRITER</th>
 				<th>DATE</th>
@@ -46,6 +47,32 @@
 			           	<c:forEach var="qnaList" items="${qnaList}">
 				        <tr id="${qnaList.q_no }" class="listTr">
 			           		<td>${qnaList.q_no }</td>
+			           		<td>
+			           		<c:if test="${empty qnaList.p_no}">
+			           				일반문의
+			           			</c:if>
+			           			<c:if test="${!empty qnaList.p_no}">
+			           				<c:if test="${qnaList.p_cate == '1' }">
+			           					Cheek
+			           				</c:if>
+			           				<c:if test="${qnaList.p_cate == '2' }">
+			           					Eye
+			           				</c:if>
+			           				<c:if test="${qnaList.p_cate == '3' }">
+			           					Face
+			           				</c:if>
+			           				<c:if test="${qnaList.p_cate == '4' }">
+			           					Lip
+			           				</c:if>
+			           				<c:if test="${qnaList.p_cate == '5' }">
+			           					Skincare
+			           				</c:if>
+			           				<c:if test="${qnaList.p_cate == '6' }">
+			           					More
+			           				</c:if>
+			           				&nbsp;>&nbsp;${qnaList.p_name }
+			           			</c:if>
+			           		</td>
 			           		<td>${qnaList.q_title }</td>
 			           		<td>${qnaList.q_user }</td>
 			           		<td>${qnaList.q_day }</td>

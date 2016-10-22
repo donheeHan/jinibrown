@@ -15,7 +15,7 @@
 			if(status=="false"){
 				alert("포인트부족");
 			}else if(status=="true"){
-				alert("선택상품이없슴");			
+				alert("선택상품이 없습니다.");			
 			}
 		
 		$("#goBuyList").click(function(){
@@ -41,47 +41,8 @@
 			$("input[type=checkbox]:checked").each(function(){
 				valueArr.push($(this).attr("id"));
 			});
-				
 		   var str = valueArr.toString();
-
-			$.ajax({
-				url : "/myCartBuy",
-				method : "get",
-				data : {
-					"str" : str
-				},
-				type : "json",
-				success : function(data) {
-					if(data=="ok"){
-						swal({
-							title:"구매성공!!",
-							text:"구매에 성공했습니다.",
-							type:"success"
-						},
-						function(){
-								self.location.reload();
-						});
-					}else if(data=="noPoint"){
-						swal({
-							title:"포인트 부족!",
-							text:"구매 상품보다 포인트가 부족합니다.",
-							type:"info"
-						},
-						function(){
-								self.location.reload();
-						});
-					}else if(data=="noProduct"){
-						swal({
-							title:"상품 미선택!",
-							text:"선택하신 상품이 없습니다.",
-							type:"info"
-						},
-						function(){
-								self.location.reload();
-						});
-					}
-				}
-			});
+			location.href="/myCartBuyForm?str="+str;
 		});
 		
 		$("#checkTrue").click(function(){
@@ -163,7 +124,10 @@
 	</table>
 	<div style="text-align: center; height: 50px;">
 		<input type="button" id="checkTrue" class="button1"value="선택상품 삭제">
-		<input type="button" id="checkBuy" class="button1" value="선택상품  구매">
+		<input type="button" id="checkBuy" class="button1" value="선택상품 구매">
+	</div>
+	<div>
+	
 	</div>
 		<input type="hidden" value="${buyFalse}" id="buyFalse"/>
 </div>

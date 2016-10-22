@@ -37,6 +37,35 @@
 				<td>${qnaInfo.q_title }</td>
 			</tr>
 			<tr>
+				<th>문의종류</th>
+				<td>
+					<c:if test="${empty qnaInfo.p_no}">
+				        	일반문의
+				    </c:if>
+			    	<c:if test="${!empty qnaInfo.p_no}">
+			        	<c:if test="${qnaInfo.p_cate == '1' }">
+			        		Cheek
+			        	</c:if>
+			        	<c:if test="${qnaInfo.p_cate == '2' }">
+			        		Eye
+			        	</c:if>
+			        	<c:if test="${qnaInfo.p_cate == '3' }">
+			        		Face
+			        	</c:if>
+			        	<c:if test="${qnaInfo.p_cate == '4' }">
+			        		Lip
+			        	</c:if>
+			        	<c:if test="${qnaInfo.p_cate == '5' }">
+			        		Skincare
+			        	</c:if>
+			        	<c:if test="${qnaInfo.p_cate == '6' }">
+			        		More
+			        	</c:if>
+			        	&nbsp;>&nbsp;<a href="/productDetail?productNo=${qnaInfo.p_no }">${qnaInfo.p_name }</a>
+			        </c:if>
+				</td>
+			</tr>
+			<tr>
 				<th>작성자</th>
 				<td>${qnaInfo.q_user }</td>
 			</tr>

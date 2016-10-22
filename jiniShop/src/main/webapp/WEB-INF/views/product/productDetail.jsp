@@ -8,41 +8,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <body>
 <script type="text/javascript">
+	
  function sellInput(){
-	 var passNo=$("#passNo").val();
+	 	var productNo=$("#passNo").val();
 		var c_qty=$("#c_qty").val();
 		var c_color=$("#c_color").val();
-		$.ajax({
-			url : "/insertSell",
-			method : "GET",
-			data : {
-				"productNo" : passNo,
-				"c_qty" : c_qty,
-				"c_color" : c_color
-			},
-			type : "json",
-			success : function(result) {
-				if(result=="ok"){
-					swal({
-						title:"구매 성공!",
-						text:"상품을 성공적으로 구매했습니다.",
-						type:"success"
-					},
-					function(){
-						self.location.reload();
-					});
-				}else{
-					swal({
-						title:"로그인이 필요합니다!",
-						text:"메인페이지로 이동합니다.",
-						type:"error"
-					},
-					function(){
-						self.location.href="/main";
-					});
-				}
-			}
-		});
+		location.href="/productBuy?productNo="+productNo+"&c_qty="+c_qty+"&c_color="+c_color;
  }
  function cartInput(){
 		var passNo=$("#passNo").val();
@@ -85,7 +56,6 @@
 		frm.action="";
 		frm.submit();
 	}
-	
 </script>
 <style type="text/css">
 	hr{
@@ -111,6 +81,7 @@
 							<option value="4">4개</option>
 							<option value="5">5개</option>
 						</select></p>
+					<p id="price">상품 총 가격 : </p>
 				 <p>색상 선택 : 
 						 <select id="c_color">
 							<option>red</option>
@@ -128,6 +99,7 @@
 			<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" onclick="cartInput();" value="장바구니 담기">
 			<input type="hidden" id="passNo" value="${productDetail.p_no}">  
 		</form> 
+		<input id="p_price" type="hidden" value="${productDetail.p_price}"/>
 	</div>
 </div>
 <br>

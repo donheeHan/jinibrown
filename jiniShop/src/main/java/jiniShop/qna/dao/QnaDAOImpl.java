@@ -3,6 +3,7 @@ package jiniShop.qna.dao;
 import java.util.List;
 
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.QnaViewVO;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class QnaDAOImpl implements QnaDAO{
 	SqlSession session;
 	
 	@Override
-	public List<QnaVO> getQnaList(String id) {
+	public List<QnaViewVO> getQnaList(String id) {
 		return session.selectList("QNA.qnaList",id);
 	}
 
@@ -25,8 +26,8 @@ public class QnaDAOImpl implements QnaDAO{
 	}
 
 	@Override
-	public QnaVO getQnaDetail(String q_no) {
-		return (QnaVO) session.selectOne("QNA.qnaDetail", q_no);
+	public QnaViewVO getQnaDetail(String q_no) {
+		return (QnaViewVO) session.selectOne("QNA.qnaDetail", q_no);
 	}
 
 	@Override

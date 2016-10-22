@@ -8,6 +8,7 @@ import jiniShop.cart.dao.CartDAO;
 import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
+import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,6 +124,42 @@ public class CartServiceImpl implements CartService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public ProductVO getProductInfo(int productNo) {
+		ProductVO productInfo = null;
+		try {
+			productInfo = cartDAO.getProductInfo(productNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return productInfo;
+	}
+
+	@Override
+	public Login_ViewVO getMyPoint(String id) {
+		Login_ViewVO memberInfo = null;
+		try {
+			memberInfo = cartDAO.getMyPoint(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return memberInfo;
+	}
+
+	@Override
+	public CartViewVO getCartProductInfo(int cartNo) {
+		CartViewVO viewCartPro = null;
+		try {
+			viewCartPro = cartDAO.getCartProductInfo(cartNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return viewCartPro;
 	}
 
 }

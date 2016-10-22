@@ -20,9 +20,78 @@
 		var date = year+"-"+(month+1)+"-"+day;
 		
 		$("#q_day").val(date);
+		
+		//항목 변경시
+		$("#selone").change(function(){
+			var htmlCode = "<select id='seltwo' class='selec'>";
+			htmlCode += "<option value='1'>Cheek</option>";
+			htmlCode += "<option value='2'>Eye</option>";
+			htmlCode += "<option value='3'>Face</option>";
+			htmlCode += "<option value='4'>Lip</option>";
+			htmlCode += "<option value='5'>Skin care</option>";
+			htmlCode += "<option value='6'>More</option>";
+			htmlCode += "</select>";
+			
+			if($("#selone").val() == "2"){
+				$("#selre").append("&nbsp;&nbsp;>&nbsp;&nbsp;"+htmlCode);
+				var cate = $("#seltwo").val();
+				$.ajax({
+					url : "/productCate",
+					method : "get",
+					data : {"cate" : cate},
+					type : "json",
+					success : function(data) {
+						var productCode = "";
+						productCode += "<select id='selthree' class='selec'>";
+						$.each(data, function(index, value){
+							productCode += "<option value="+value.p_no+">"+value.p_name+"</option>";
+						});
+						productCode += "</select>";
+						$("#selree").html("&nbsp;&nbsp;>&nbsp;&nbsp;"+productCode);
+						$("#q_p_no").val($("#selthree").val());
+						$(document).on("change", "#selthree", function(){
+							var q_p_no = $("#selthree").val();
+							
+							$("#q_p_no").val(q_p_no);
+						});
+					}
+				});
+				
+				$(document).on("change", "#seltwo", function(){
+					cate = $("#seltwo").val();
+					$.ajax({
+						url : "/productCate",
+						method : "get",
+						data : {"cate" : cate},
+						type : "json",
+						success : function(data) {
+							var productCode = "";
+							productCode += "<select id='selthree' class='selec'>";
+							$.each(data, function(index, value){
+								productCode += "<option value="+value.p_no+">"+value.p_name+"</option>";
+							});
+							productCode += "</select>";
+							$("#selree").html("&nbsp;&nbsp;>&nbsp;&nbsp;"+productCode);
+							$("#q_p_no").val($("#selthree").val());
+							$(document).on("change", "#selthree", function(){
+								var q_p_no = $("#selthree").val();
+								
+								$("#q_p_no").val(q_p_no);
+							});
+						}
+					});
+				});
+			}else{
+				$("#selre").html("");
+				$("#selree").html("");
+			}
+		});
 	});
 
 </script>
+<style type="text/css">
+	.selec{width:150px; height: 30px;}
+</style>
 <div>
 	<div style="text-align: left; height: 80px;">
 		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>Q&A Write</strong></p>
@@ -33,6 +102,20 @@
 			<tr>
 				<th>제목</th>
 				<td><input type="text" placeholder="제목을 입력해주세요." required="required" name="q_title"></td>
+			</tr>
+			<tr>
+				<th>문의종류</th>
+				<td>
+						<span>
+						<select id="selone" class="selec">
+							<option value="1">일반문의</option>
+							<option value="2">상품문의</option>
+						</select>
+						</span>
+						<span id="selre"></span>
+						<span id="selree"></span>
+						<input type="hidden" id="q_p_no" name="q_p_no">
+				</td>
 			</tr>
 			<tr>
 				<th>작성자</th>

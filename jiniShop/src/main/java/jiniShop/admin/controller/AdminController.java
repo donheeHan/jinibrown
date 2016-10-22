@@ -16,12 +16,12 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.QnaViewVO;
 import jiniShop.vo.SellVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,7 +59,7 @@ public class AdminController {
 	public String qnaList(Model model) {
 		String url = "/admin/adminQnaList";
 
-		List<QnaVO> qnaList = adminService.getQnaList();
+		List<QnaViewVO> qnaList = adminService.getQnaList();
 
 		model.addAttribute("qnaList", qnaList);
 
@@ -70,7 +70,7 @@ public class AdminController {
 	public String qnaDetail(Model model, @RequestParam("q_no") String q_no) {
 		String url = "/admin/adminQnaDetail";
 
-		QnaVO qnaInfo = adminService.getQnaDetail(q_no);
+		QnaViewVO qnaInfo = adminService.getQnaDetail(q_no);
 
 		model.addAttribute("qnaInfo", qnaInfo);
 
@@ -93,7 +93,7 @@ public class AdminController {
 		params.put("q_no", q_no);
 		params.put("reply", reply);
 
-		QnaVO qnaInfo = adminService.insertQnaReply(params);
+		QnaViewVO qnaInfo = adminService.insertQnaReply(params);
 
 		ObjectMapper jsonObject = new ObjectMapper();
 
@@ -246,6 +246,90 @@ public class AdminController {
 		
 		adminService.deleteClient(c_no);
 		
+		return url;
+	}
+	@RequestMapping("/admin/productModify")
+	public String productModify(Model model, HttpSession session, @RequestParam(value="productNo")int productNo) {
+		String url = "redirect:/admin/main";
+		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
+	      
+	    if(loginUser !=null){
+	    	url = "/admin/adminProductModify";
+	    	ProductVO adminProductDetail = adminService.getProductDetail(productNo);
+	    	List<ClientVO> clientList = adminService.getClientList();
+	    	model.addAttribute("adminProductDetail",adminProductDetail);
+    		model.addAttribute("clientList",clientList);
+	    }
+		return url;
+	}
+	@RequestMapping(value="/admin/modifyProduct", method=RequestMethod.POST)
+	public String modifyProduct(Model model, MultipartFile multiFile1, MultipartFile multiFile2, HttpSession session, ProductVO product){
+		/* String imagePath = request.getSession().getServletContext().getRealPath("resources/memberManagementImage");      
+	      String signPath = request.getSession().getServletContext().getRealPath("resources/memberSign");        */     
+		
+		String url = "redirect:/admin/productList";
+		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
+		
+		if(loginUser !=null){
+			model.addAttribute("memberVO",loginUser);
+			if(!multiFile1.isEmpty() && !multiFile2.isEmpty()){
+				String uploadPath = "C:/Users/admin/git/jinibrown/jiniShop/src/main/webapp/resources/images/productImage";
+				File file1 = new File(uploadPath, "$$"+System.currentTimeMillis() + multiFile1.getOriginalFilename());
+				File file2 = new File(uploadPath, "$$"+System.currentTimeMillis() + multiFile2.getOriginalFilename());
+				
+				try {
+					multiFile1.transferTo(file1);
+					multiFile2.transferTo(file2); 
+					//실제 저장이 이루어짐
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} //실제 저장이 이루어짐
+				product.setP_mainimg(file1.getName()); //DB 컬럼에 파일명 저장
+				product.setP_subimg(file2.getName());
+				adminService.modifyProduct(product);
+			}else if(!multiFile1.isEmpty()){
+				String uploadPath = "C:/Users/admin/git/jinibrown/jiniShop/src/main/webapp/resources/images/productImage";
+				File file2 = new File(uploadPath, "$$"+System.currentTimeMillis() + multiFile2.getOriginalFilename());
+				
+				try {
+					multiFile2.transferTo(file2); 
+					//실제 저장이 이루어짐
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} //실제 저장이 이루어짐
+				ProductVO adminProductDetail = adminService.getProductDetail(product.getP_no());
+				product.setP_mainimg(adminProductDetail.getP_mainimg()); //DB 컬럼에 파일명 저장
+				product.setP_subimg(file2.getName());
+				adminService.modifyProduct(product);
+			}else if(!multiFile2.isEmpty()){
+				String uploadPath = "C:/Users/admin/git/jinibrown/jiniShop/src/main/webapp/resources/images/productImage";
+				File file1 = new File(uploadPath, "$$"+System.currentTimeMillis() + multiFile1.getOriginalFilename());
+				File file2 = new File(uploadPath, "$$"+System.currentTimeMillis() + multiFile2.getOriginalFilename());
+				
+				try {
+					multiFile1.transferTo(file1);
+					multiFile2.transferTo(file2); 
+					//실제 저장이 이루어짐
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} //실제 저장이 이루어짐
+				ProductVO adminProductDetail = adminService.getProductDetail(product.getP_no());
+				product.setP_mainimg(adminProductDetail.getP_mainimg()); //DB 컬럼에 파일명 저장
+				product.setP_subimg(adminProductDetail.getP_subimg());
+				adminService.modifyProduct(product);
+			}else{
+				ProductVO adminProductDetail = adminService.getProductDetail(product.getP_no());
+				product.setP_mainimg(adminProductDetail.getP_mainimg()); //DB 컬럼에 파일명 저장
+				product.setP_subimg(adminProductDetail.getP_subimg());	        	 
+				adminService.modifyProduct(product);
+			}
+		}
 		return url;
 	}
 }

@@ -4,28 +4,28 @@
 				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="QNA">
-	<select id="qnaList" parameterType="str" resultType="qna">
-		select * from qna where Q_USER = #{id} order by q_no desc
+	<select id="qnaList" parameterType="str" resultType="qnaView">
+		select * from qna_view where Q_USER = #{id} order by q_no desc
 	</select>
 
 	<insert id="insertQna" parameterType="qna">
-		insert into qna(q_no, q_title, q_content, q_day, q_user) values(qna_seq.nextval, #{q_title}, #{q_content}, #{q_day}, #{q_user})
+		insert into qna(q_no, q_title, q_content, q_day, q_user, q_p_no) values(qna_seq.nextval, #{q_title}, #{q_content}, #{q_day}, #{q_user}, #{q_p_no, jdbcType=INTEGER})
 	</insert>
 	
-	<select id="qnaDetail" parameterType="str" resultType="qna">
-		select * from qna where q_no = #{q_no}
+	<select id="qnaDetail" parameterType="str" resultType="qnaView">
+		select * from qna_view where q_no = #{q_no}
 	</select>
 	
 	<delete id="qnaDelete" parameterType="str">
 		delete from qna where q_no = #{q_no}
 	</delete>
 	
-	<select id="adminQnaList" resultType="qna">
-		select * from qna order by q_no desc
+	<select id="adminQnaList" resultType="qnaView">
+		select * from qna_view order by q_no desc
 	</select>
 	
-	<select id="adminQnaDetail" parameterType="str" resultType="qna">
-		select * from qna where q_no = #{q_no}
+	<select id="adminQnaDetail" parameterType="str" resultType="qnaView">
+		select * from qna_view where q_no = #{q_no}
 	</select>
 	
 	<delete id="adminQnaDel" parameterType="str">

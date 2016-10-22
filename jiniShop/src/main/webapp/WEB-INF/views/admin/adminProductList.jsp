@@ -26,7 +26,7 @@
 		
 		$(".goProduct").click(function(){
 			var p_no = $(this).attr("id");
-			location.href='/productDetail?productNo='+p_no+'';
+			location.href='/admin/productModify?productNo='+p_no+'';
 		});
 		
 
@@ -81,7 +81,8 @@
 </script>
 <div>
 	<div style="text-align: left; height: 80px;">
-		<p style="margin-left: 30px; margin-top:100px; font-size:30px;"><strong>상품관리</strong></p>
+		<p style="margin-left: 15px; margin-top:100px; font-size:30px;"><strong>상품관리</strong></p>
+		<p style="margin-left: 15px; font-size:15px;"><strong>상품 선택시 상품정보 수정으로 이동합니다.</strong></p>
 		<br> 
 	</div>  
 	<div style="text-align: right; height: 50px;">  

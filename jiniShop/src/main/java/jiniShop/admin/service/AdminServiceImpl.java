@@ -9,6 +9,7 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.QnaViewVO;
 import jiniShop.vo.SellVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,12 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<QnaVO> getQnaList() {
+	public List<QnaViewVO> getQnaList() {
 		return adminDAO.getQnaList();
 	}
 
 	@Override
-	public QnaVO getQnaDetail(String q_no) {
+	public QnaViewVO getQnaDetail(String q_no) {
 		return adminDAO.getQnaDetail(q_no);
 	}
 
@@ -41,9 +42,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public QnaVO insertQnaReply(Map<String, String> params) {
+	public QnaViewVO insertQnaReply(Map<String, String> params) {
 		adminDAO.insertQnaReply(params);
-		QnaVO qnaInfo = adminDAO.getQnaDetail(params.get("q_no"));
+		QnaViewVO qnaInfo = adminDAO.getQnaDetail(params.get("q_no"));
 		return qnaInfo;
 	}
 
@@ -129,6 +130,23 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void deleteClient(String c_no) {
 		adminDAO.deleteClient(c_no);
+	}
+
+	@Override
+	public ProductVO getProductDetail(int productNo) {
+		ProductVO adminProductDetail = null;
+		adminProductDetail = adminDAO.getProductDetail(productNo);
+		return adminProductDetail;
+	}
+
+	@Override
+	public void modifyProduct(ProductVO product) {
+		try {
+			adminDAO.modifyProduct(product);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

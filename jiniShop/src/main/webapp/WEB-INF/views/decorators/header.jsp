@@ -49,6 +49,14 @@
                 		return false;
                 	}
                 });
+                $("#buyList").click(function(){
+                	if(loginCheck != ""){
+                		
+                	}else{
+                		swal("로그인 후 이용가능합니다.");
+                		return false;
+                	}
+                });
             }); 
         </script>
          <style>
@@ -94,6 +102,10 @@
        </p>
        <p class="aa">♥</p>
        <p>
+         <a href="/myBuyList" id="buyList"><img src="./images/buyList.png"></a>
+       </p>
+       <p class="aa">♥</p>
+       <p>
          <a href="/mypageForm" id="mypage"><img src="./images/mypage.jpg"></a>
        </p>
        </c:when>
@@ -116,7 +128,6 @@
 					</c:when> 
 					<c:otherwise> 
 						환영합니다. <strong style="color:#DA81F5;">${loginUser.name }(${loginUser.id })</strong>님 즐거운 시간 되세요.
-						/ 잔여포인트 : <span style="color:red;">${loginUser.point }P</span>
 					</c:otherwise>       
 				</c:choose>
 			</c:when>

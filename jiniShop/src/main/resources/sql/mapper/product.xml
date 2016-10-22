@@ -90,4 +90,9 @@
 	<delete id="deleteClient" parameterType="str">
 		delete from client where c_no = #{c_no}
 	</delete>
+	
+	<update id="adminProductUpdate" parameterType="map">
+		UPDATE PRODUCT SET P_NO=${p_no}, P_NAME=#{p_name},P_PRICE=#{p_price},P_INFO=#{p_info},P_MAINIMG=#{p_mainimg},P_SUBIMG=#{p_subimg},P_CATE=#{p_cate},P_QTY=#{p_qty},P_PRICE2=#{p_price2},P_C_NAME=#{p_c_name}
+		WHERE P_NO=#{p_no}
+	</update>
 </mapper>

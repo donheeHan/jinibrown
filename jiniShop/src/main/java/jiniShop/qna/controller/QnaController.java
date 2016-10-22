@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import jiniShop.qna.service.QnaService;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.QnaViewVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class QnaController {
 			url="/main";
 		}
 		
-		List<QnaVO> qnaList = qnaService.getQnaList(id);
+		List<QnaViewVO> qnaList = qnaService.getQnaList(id);
 		
 		model.addAttribute("qnaList", qnaList);
 		
@@ -59,7 +60,7 @@ public class QnaController {
 	public String qnaDetail(@RequestParam("q_no")String q_no, Model model){
 		String url="/qna/qnaDetail";
 		
-		QnaVO qnaInfo = qnaService.getQnaDetail(q_no);
+		QnaViewVO qnaInfo = qnaService.getQnaDetail(q_no);
 		
 		model.addAttribute("qnaInfo", qnaInfo);
 		

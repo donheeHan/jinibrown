@@ -80,7 +80,6 @@
 					</c:when> 
 					<c:otherwise> 
 						환영합니다. <strong style="color:#DA81F5;">${loginUser.name }(${loginUser.id })</strong>님 즐거운 시간 되세요.
-						/ 잔여포인트 : <span style="color:red;">${loginUser.point }P</span>
 					</c:otherwise>       
 				</c:choose>
 			</c:when>

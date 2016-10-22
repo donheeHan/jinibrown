@@ -1,6 +1,5 @@
 package jiniShop.vo;
 
-import java.util.Date;
 
 public class QnaVO {
 	private String q_no;
@@ -9,6 +8,7 @@ public class QnaVO {
 	private String q_day;
 	private String q_answer;
 	private String q_user;
+	private String q_p_no;
 	public String getQ_no() {
 		return q_no;
 	}
@@ -44,6 +44,12 @@ public class QnaVO {
 	}
 	public void setQ_day(String q_day) {
 		this.q_day = q_day;
+	}
+	public String getQ_p_no() {
+		return q_p_no;
+	}
+	public void setQ_p_no(String q_p_no) {
+		this.q_p_no = q_p_no;
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import jiniShop.qna.dao.QnaDAO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.QnaViewVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class QnaServiceImpl implements QnaService{
 	QnaDAO qnaDAO;
 	
 	@Override
-	public List<QnaVO> getQnaList(String id) {
+	public List<QnaViewVO> getQnaList(String id) {
 		return qnaDAO.getQnaList(id);
 	}
 
@@ -25,7 +26,7 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 	@Override
-	public QnaVO getQnaDetail(String q_no) {
+	public QnaViewVO getQnaDetail(String q_no) {
 		return qnaDAO.getQnaDetail(q_no);
 	}
 

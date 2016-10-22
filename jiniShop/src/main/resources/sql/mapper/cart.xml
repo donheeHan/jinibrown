@@ -57,4 +57,19 @@
 		WHERE C_NO=#{point}
 	</select>
 	
+	<select id="myPoint" parameterType="str" resultType="loginView">
+		SELECT *
+		FROM LOGIN_VIEW
+		WHERE ID=#{id}
+	</select>
+	
+	<select id="cartProductDetail" parameterType="int" resultType="cartView">
+		SELECT 	C_NO, C_USER, C_P_NO, P_NO, P_NAME, P_PRICE, P_INFO, P_MAINIMG, c_qty, c_color
+		FROM 	CART, PRODUCT
+		WHERE 	CART.C_P_NO = PRODUCT.P_NO
+			AND
+				CART.C_NO = #{cartNo}
+			
+	</select>
+	
 	</mapper>

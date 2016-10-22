@@ -43,7 +43,7 @@
 				<br /> 
 			<div style="height: 400px;">
 			<c:forEach items="${getBestProduct}" var="item" varStatus="status"> 
-					<li style="list-style:none; float:left; margin-right:10px;"> 
+					<li style="list-style:none; float:left; margin-right:10px; max-width: 270px;"> 
 						<div style="display: inline-block;">   
 							<a href="/productDetail?productNo=${item.p_no}"> <img  
 								src="/images/productImage/${item.p_mainimg }"

@@ -8,6 +8,7 @@ import jiniShop.vo.ClientVO;
 import jiniShop.vo.Login_ViewVO;
 import jiniShop.vo.ProductVO;
 import jiniShop.vo.QnaVO;
+import jiniShop.vo.QnaViewVO;
 import jiniShop.vo.SellVO;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,13 +27,13 @@ public class AdminDAOImpl implements AdminDAO{
 	}
 
 	@Override
-	public List<QnaVO> getQnaList() {
+	public List<QnaViewVO> getQnaList() {
 		return session.selectList("QNA.adminQnaList");
 	}
 
 	@Override
-	public QnaVO getQnaDetail(String q_no) {
-		return (QnaVO) session.selectOne("QNA.adminQnaDetail", q_no);
+	public QnaViewVO getQnaDetail(String q_no) {
+		return (QnaViewVO) session.selectOne("QNA.adminQnaDetail", q_no);
 	}
 
 	@Override
@@ -99,6 +100,18 @@ public class AdminDAOImpl implements AdminDAO{
 	@Override
 	public void deleteClient(String c_no) {
 		session.delete("product.deleteClient", c_no);
+	}
+
+	@Override
+	public ProductVO getProductDetail(int productNo) {
+		ProductVO adminProductDetail = null;
+		adminProductDetail = (ProductVO) session.selectOne("product.detail",productNo);
+		return adminProductDetail;
+	}
+
+	@Override
+	public void modifyProduct(ProductVO product) throws SQLException {
+		session.update("product.adminProductUpdate",product);
 	}
 
 }
