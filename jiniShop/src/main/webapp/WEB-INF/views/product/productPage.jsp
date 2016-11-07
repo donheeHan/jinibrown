@@ -35,7 +35,14 @@
 							<br />
 							<p style="text-align: center; font-size:13px; overflow: hidden; text-overflow: ellipsis;"><strong>${item.p_name}</strong></p>
 							<p style="text-align: center; font-size:13px; color:#FF4000; overflow: hidden; text-overflow: ellipsis;">${item.p_info}</p> 
-							<p style="text-align: center; font-size:15px; overflow: hidden; text-overflow: ellipsis;"><strong>${item.p_price}</strong></p>
+							<p style="text-align: center; font-size:15px; overflow: hidden; text-overflow: ellipsis;">
+							<c:if test="${item.p_qty != 0 }">
+								<strong>${item.p_price}</strong>
+							</c:if>
+							<c:if test="${item.p_qty == 0 }">
+								<strong style="color:red;">sold out</strong>
+							</c:if>
+							</p>
 							<p style="text-align: center; font-size:13px; overflow: hidden; text-overflow: ellipsis;"><strong>조회수 : ${item.p_count}</strong></p>
 						</div>
 					</li>

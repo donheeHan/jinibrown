@@ -1,6 +1,7 @@
 package jiniShop.admin.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,25 +72,10 @@ public class AdminDAOImpl implements AdminDAO{
 	}
 
 	@Override
-	public List<SellVO> getProductMonth(int month) throws SQLException {
+	public List<SellVO> getProductMonth(String month) throws SQLException {
 		List<SellVO> getProductMonth = null;
 		getProductMonth = session.selectList("product.getProductMonth",month);
 		return getProductMonth;
-	}
-
-	@Override
-	public List<SellVO> getProductDay(int date) throws SQLException {
-		List<SellVO> getProductDay = null;
-		getProductDay = session.selectList("product.getProductDay",date);
-		return getProductDay;
-	}
-
-	@Override
-	public List<SellVO> getProductWeek(int weekDay)
-			throws SQLException {
-		List<SellVO> getProductWeek = null;
-		getProductWeek = session.selectList("product.getProductWeek",weekDay);
-		return getProductWeek;
 	}
 
 	@Override
@@ -112,6 +98,19 @@ public class AdminDAOImpl implements AdminDAO{
 	@Override
 	public void modifyProduct(ProductVO product) throws SQLException {
 		session.update("product.adminProductUpdate",product);
+	}
+
+	@Override
+	public Login_ViewVO getMemberDetail(String id) {
+		return (Login_ViewVO) session.selectOne("Member.loginInfo",id);
+	}
+
+	@Override
+	public void updateMemberPoint(String id, String point) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("id", id);
+		params.put("point", point);
+		session.update("Member.updateAdminMemberPoint", params);
 	}
 
 }

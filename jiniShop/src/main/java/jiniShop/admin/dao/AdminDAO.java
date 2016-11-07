@@ -30,12 +30,8 @@ public interface AdminDAO {
 
 	List<ClientVO> getClientList() throws SQLException;
 
-	List<SellVO> getProductMonth(int month) throws SQLException;
-
-	List<SellVO> getProductDay(int date) throws SQLException;
-
-	List<SellVO> getProductWeek(int weekDay) throws SQLException;
-
+	List<SellVO> getProductMonth(String month) throws SQLException;
+	
 	void insertClient(ClientVO clientVO);
 
 	void deleteClient(String c_no);
@@ -43,5 +39,9 @@ public interface AdminDAO {
 	ProductVO getProductDetail(int productNo);
 
 	void modifyProduct(ProductVO product) throws SQLException;
+
+	Login_ViewVO getMemberDetail(String id);
+
+	void updateMemberPoint(String id, String point);
 
 }

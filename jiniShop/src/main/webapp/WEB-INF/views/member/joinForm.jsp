@@ -43,13 +43,47 @@
 					type : "json",
 					success : function(data) {
 						if (data == "ok") {
-							swal("사용하실수 있습니다.");
+							var yn = confirm("사용하실수 있습니다. 사용하시겠습니까?");
+							
+							if(yn == true){
+								$("#id").attr("readonly","readonly");
+								$("#idcheck").hide();
+								$("#idcheck").val("ok");
+							}else{
+								return false;
+							}
 						} else {
 							swal("중복아이디. 다시입력해주세요");
 							$("#id").val("");
 						}
 					}
 				});
+			});
+			
+			$("#joinBtn").click(function(){
+				
+				if($("#idcheck").val() != "ok"){
+					swal("ID 중복확인을 해주세요.");
+					return false;
+				}else if($("#pwd").val() != $("#pwdChk").val()){
+					swal("비밀번호를 다시 확인해주세요.");
+					$("#pwd").val("");
+					$("#pwdChk").val("");
+					$("#pwd").focus();
+					return false;
+				}else if($("#birth1").val() == ""){
+					swal("태어난 년도를 선택해주세요.");
+					return false;
+				}else if($("#birth2").val() == ""){
+					swal("태어난 월을 선택해주세요.");
+					return false;
+				}else if($("#birth3").val() == ""){
+					swal("태어난 일을 선택해주세요.");
+					return false;
+				}else if($("input:checkbox[id='agChk']").is(":checked") == false){
+					swal("약관에 동의해주시기 바랍니다.");
+					return false;
+				}
 			});
 
 		});
@@ -66,20 +100,20 @@
 				<table class="simple_table">
 					<tr>
 						<th style="width: 300px;"><label>User ID</label></th>
-						<td><input type="text" name="id" id="id" size="12"> <input
-							type="hidden" name="reid"><input type="button" value="중복 체크" id="idcheck" class="button2" style="width: 100px; margin-left: 15px;">
+						<td><input type="text" name="id" id="id" size="12" required="required"> 
+						<input type="hidden" name="reid"><input type="button" value="중복 체크" id="idcheck" class="button2" style="width: 100px; margin-left: 15px;">
 					</tr>
 					<tr>
 						<th><label>Password</label></th>  
-						<td colspan="2"><input type="password" name="pwd"></td>
+						<td colspan="2"><input type="password" name="pwd" required="required" id="pwd"></td>
 					</tr>
 					<tr>
 						<th><label>Retype Password</label></th>
-						<td colspan="2"><input type="password" name="pwdCheck"></td>
+						<td colspan="2"><input type="password" name="pwdCheck" required="required" id="pwdChk"></td>
 					</tr>
 					<tr>
 						<th><label>Name</label></th>
-						<td colspan="2"><input type="text" name="name"></td>
+						<td colspan="2"><input type="text" name="name" required="required"></td>
 					</tr>
 					<tr>
 						<th><label>생년월일</label></th>
@@ -713,7 +747,7 @@
 			</div>
 			<br>
 			<div>
-				<input type="checkbox"><label>&nbsp;이용약관 및 개인정보 수집/이용 내용을
+				<input type="checkbox" id="agChk"><label>&nbsp;이용약관 및 개인정보 수집/이용 내용을
 					확인하고 동의합니다 <!-- 이용약관 및 개인정보 수집/이용 내용을 확인하고 동의합니다 -->
 				</label>
 			</div>
@@ -721,7 +755,7 @@
 			<br>
 
 			<div>
-				<input type="submit" value="회원가입" class="button1"> 
+				<input type="submit" value="회원가입" class="button1" id="joinBtn"> 
 				<input type="reset" value="취소" onclick="history.back();" class="button1">
 			</div>
 		</form>

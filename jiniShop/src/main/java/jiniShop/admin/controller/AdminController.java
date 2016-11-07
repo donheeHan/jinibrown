@@ -2,6 +2,7 @@ package jiniShop.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -201,24 +202,17 @@ public class AdminController {
 	
 	@RequestMapping(value="/admin/mainSellProduct", method=RequestMethod.GET)
 	@ResponseBody
-	public Object mainSellProduct(Model model, HttpSession session, @RequestParam(value="search")String search){
-		Calendar cal = Calendar.getInstance();
-		 
-		int month = cal.get ( cal.MONTH ) + 1 ;
-		int date = cal.get ( cal.DATE ) ;
-		int weekDay = cal.get(cal.DATE);
-
+	public Object mainSellProduct(Model model, HttpSession session
+			, @RequestParam(value="search")String search
+			, @RequestParam(value="month")String month
+			, @RequestParam(value="index")int index){
 		Map<String,Object> retVal = new HashMap<String, Object>();
 		if(search.equals("month")){
-		List<SellVO> getProductMonth = adminService.getProductMonth(month);
-		retVal.put("getProductMonth", getProductMonth);
-		}else if(search.equals("day")){
-			List<SellVO> getProductMonth = adminService.getProductDay(date);
-			retVal.put("getProductMonth", getProductMonth);
-		}else if(search.equals("week")){
-			List<SellVO> getProductMonth = adminService.getProductWeek(weekDay);
+			month = month.substring(2);
+			List<SellVO> getProductMonth = adminService.getProductMonth(month, index);
 			retVal.put("getProductMonth", getProductMonth);
 		}
+		
 		return retVal;
 	}
 	
@@ -331,5 +325,67 @@ public class AdminController {
 			}
 		}
 		return url;
+	}
+	
+	@RequestMapping("/admin/adminMemberDetail")
+	public String adminMemberDetailForm(Model model, @RequestParam("id")String id){
+		String url ="/admin/adminMemberDetail";
+		Login_ViewVO memberInfo = adminService.getMemberDetail(id);
+		
+		
+		model.addAttribute("loginInfo", memberInfo);
+		return url;
+	}
+	
+	@RequestMapping("/admin/adminPointUpdate")
+	public String adminPointUpdate(@RequestParam("id")String id, @RequestParam("point")String point){
+		String url ="redirect:/admin/memberList";
+		
+		adminService.updateMemberPoint(id, point);
+		
+		return url;
+	}
+	
+	@RequestMapping("/admin/sellChart")
+	public void sellChart(HttpServletResponse response,
+			@RequestParam("year")String year) {
+		
+		List<Object> chartList = new ArrayList<Object>();
+		
+		for (int i = 1; i < 13; i++) {
+			String y = year+"-"; 
+			String rey = year.substring(2)+"/";
+			rey = rey+i;
+			int sum = 0;
+			int profit = 0;
+			List<SellVO> monthList = new ArrayList<SellVO>();
+			Map<Object, Object> params = new HashMap<Object, Object>();
+			
+			monthList = adminService.getProductMonth(rey, i);
+			
+			for (int j = 0; j < monthList.size(); j++) {
+				sum += monthList.get(j).getS_c_qty()*monthList.get(j).getP_price();
+				profit += monthList.get(j).getS_c_qty()*monthList.get(j).getP_price2();
+			}
+			
+			params.put("y", y+i);
+			params.put("sum", sum);
+			params.put("profit", sum-profit);
+			
+			chartList.add(params);
+		}
+		
+
+		ObjectMapper jsonObject = new ObjectMapper();
+
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(chartList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException ei) {
+			ei.printStackTrace();
+		}
 	}
 }

@@ -44,6 +44,11 @@
 	width: 300px; 
 }
 
+.simple_table input:checkbox{
+ 	width: 20px;
+ 	height: 20px;
+}
+
 /* qna등록 테이블 */
 #writeTable{
 	font-size:17px;
@@ -97,14 +102,13 @@
 
     <title>JiMi Shop! </title>
   </head>
-	<script src="/js/jquery.min.js"></script>
+ 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery.form.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/sweetalert.min.js"></script>
 	<script src="/js/jquery.dataTables.min.js"></script>
 	<script src="/js/dataTables.bootstrap.min.js"></script>
 	<script src="/js/jquery.bxslider.min.js"></script>
-	 
 	
 	<link href="/css/login.css" rel="stylesheet" />
 	<link href="/css/jquery.bxslider.css" rel="stylesheet" />

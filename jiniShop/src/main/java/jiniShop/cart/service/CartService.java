@@ -23,4 +23,7 @@ public interface CartService {
 	ProductVO getProductInfo(int productNo);
 	Login_ViewVO getMyPoint(String id);
 	CartViewVO getCartProductInfo(int cartNo);
+	void minusProductQty(Map<String, Object> minusQty);
+	int getProductQty(String productNo);
+	List<BuyListViewVO> getBuyMyProductDay(String id, String day);
 }

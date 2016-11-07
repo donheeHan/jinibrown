@@ -100,5 +100,23 @@ public class CartDAOImpl implements CartDAO{
 		viewCartPro = (CartViewVO) session.selectOne("cart.cartProductDetail", cartNo);
 		return viewCartPro;
 	}
+
+	@Override
+	public void minusProductQty(Map<String, Object> minusQty)
+			throws SQLException {
+		session.update("product.minusProductQty",minusQty);
+	}
+
+	@Override
+	public int getProductQty(String productNo) throws SQLException {
+		int qty=0;
+		qty=(Integer) session.selectOne("product.getProductQty", productNo);
+		return qty;
+	}
+
+	@Override
+	public List<BuyListViewVO> getBuyMyProductDay(Map<String, String> params) {
+		return session.selectList("cart.getBuyMyProductDay", params);
+	}
 	
 }

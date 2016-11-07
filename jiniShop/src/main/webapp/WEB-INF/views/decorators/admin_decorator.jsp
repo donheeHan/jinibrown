@@ -40,8 +40,13 @@
 	background-color: lightyellow; 
 }
 
-.simple_table input{
+.simple_table input:text{
 	width: 300px; 
+}
+
+.simple_table input:checkbox{
+ 	width: 15px;
+ 	height: 15px;
 }
 
 /* qna등록 테이블 */
@@ -104,8 +109,10 @@
 	<script src="/js/jquery.dataTables.min.js"></script>
 	<script src="/js/dataTables.bootstrap.min.js"></script>
 	<script src="/js/jquery.bxslider.min.js"></script>
-	 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 	<link href="/css/login.css" rel="stylesheet" />
 	<link href="/css/jquery.bxslider.css" rel="stylesheet" />
 	<link href="/css/font-awesome.min.css" rel="stylesheet" />

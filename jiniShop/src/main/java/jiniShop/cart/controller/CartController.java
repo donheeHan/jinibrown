@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpSession;
 
 import jiniShop.cart.service.CartService;
+import jiniShop.member.service.MemberService;
 import jiniShop.vo.BuyListViewVO;
 import jiniShop.vo.CartVO;
 import jiniShop.vo.CartViewVO;
@@ -27,6 +28,9 @@ public class CartController {
 	
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@RequestMapping(value="/insertCart")
 	@ResponseBody
@@ -61,18 +65,27 @@ public class CartController {
 			@RequestParam(value="stackPoint",defaultValue="0")String stackPoint,
 			@RequestParam(value="setPoint",defaultValue="0")String setPoint,
 			HttpSession session){
+		//로그인정보
 		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
+		
 		String check = "err";
+		
 		int priceSum=0;
 		int myPoint = 0;
-		int getMyPoint = Integer.parseInt(loginUser.getPoint());
+		
+		Login_ViewVO loginInfo = memberService.getLoginInfo(loginUser.getId());
+		
+		//현재나의포인트
+		int getMyPoint = Integer.parseInt(loginInfo.getPoint());
 		Map<String, Object> pointChange = new HashMap<String, Object>();
 		Map<String, String> insertCart = new HashMap<String, String>();
+		Map<String, Object> minusQty = new HashMap<String, Object>();
 		int stackPointInput = Integer.parseInt(stackPoint);
 		int setPointInput = Integer.parseInt(setPoint);
 		if(loginUser!=null){
 			if(buyMethod.equals("1")){
-				getMyPoint+=stackPointInput;
+				//포인트 쌓기
+				getMyPoint= getMyPoint+stackPointInput;
 				pointChange.put("priceSum", getMyPoint);
 				pointChange.put("loginUser", loginUser.getId());
 				cartService.minusPoint(pointChange);
@@ -81,8 +94,16 @@ public class CartController {
 				insertCart.put("c_qty", c_qty);
 				insertCart.put("c_color", c_color);
 				insertCart.put("member", loginUser.getId());
-				
 				cartService.insertSell(insertCart);
+				
+				int checkQty = cartService.getProductQty(productNo);
+				int c_qtyChange = Integer.parseInt(c_qty);
+				
+				minusQty.put("productNo", productNo);
+				minusQty.put("c_qty", (checkQty-c_qtyChange));
+				cartService.minusProductQty(minusQty);
+				
+				
 				check="ok";
 			}if(buyMethod.equals("2")){
 				int proNo = Integer.parseInt(productNo);
@@ -105,6 +126,14 @@ public class CartController {
 					insertCart.put("member", loginUser.getId());
 					
 					cartService.insertSell(insertCart);
+					
+					int checkQty = cartService.getProductQty(productNo);
+					int c_qtyChange = Integer.parseInt(c_qty);
+					
+					minusQty.put("productNo", productNo);
+					minusQty.put("c_qty", (checkQty-c_qtyChange));
+					cartService.minusProductQty(minusQty);
+					
 					check="ok";
 				}else{
 					check="point";
@@ -126,6 +155,14 @@ public class CartController {
 				insertCart.put("member", loginUser.getId());
 				
 				cartService.insertSell(insertCart);
+				
+				int checkQty = cartService.getProductQty(productNo);
+				int c_qtyChange = Integer.parseInt(c_qty);
+				
+				minusQty.put("productNo", productNo);
+				minusQty.put("c_qty", (checkQty-c_qtyChange));
+				cartService.minusProductQty(minusQty);
+				
 				check="ok";
 				}else{
 					check="point";
@@ -142,8 +179,14 @@ public class CartController {
 			if(loginUser!=null){
 				List<CartViewVO> myCart = new ArrayList<CartViewVO>();
 				myCart = cartService.getMyCart(loginUser.getId());
+				
+				int totalPrice = 0;
+				for (int i = 0; i < myCart.size(); i++) {
+					totalPrice += Integer.parseInt(myCart.get(i).getC_qty()) * Integer.parseInt(myCart.get(i).getP_price());
+				}
 				if(myCart!=null){
 					model.addAttribute("myCart", myCart);
+					model.addAttribute("totalPrice", totalPrice);
 				}
 			url="/cart/myCart";
 		}
@@ -202,6 +245,7 @@ public class CartController {
 		String data = "noProduct";
 		int getMyPoint = Integer.parseInt(loginUser.getPoint());
 		if(loginUser!=null){
+			Map<String, Object> minusQty = new HashMap<String, Object>();
 			if(buyMethod.equals("3")){
 				int usePoint = Integer.parseInt(setPoint);
 				int checking = getMyPoint-usePoint;
@@ -224,9 +268,18 @@ public class CartController {
 								productBuy.put("pass2", cartPno.getC_p_no());
 								productBuy.put("s_c_qty", cartPno.getC_qty());
 								productBuy.put("s_c_color", cartPno.getC_color());
-	
+								
+								String changeNo = String.valueOf(cartPno.getC_p_no());
+								int checkQty = cartService.getProductQty(changeNo);
+								int c_qtyChange = cartPno.getC_qty();
+								
+								minusQty.put("productNo", cartPno.getC_p_no());
+								minusQty.put("c_qty", (checkQty-c_qtyChange));
+								cartService.minusProductQty(minusQty);
+								
 								cartService.myCartBuy(productBuy);
 								cartService.myCartDel(k);
+								
 								}
 							}
 						}
@@ -250,7 +303,15 @@ public class CartController {
 							productBuy.put("pass2", cartPno.getC_p_no());
 							productBuy.put("s_c_qty", cartPno.getC_qty());
 							productBuy.put("s_c_color", cartPno.getC_color());
-	
+							
+							String changeNo = String.valueOf(cartPno.getC_p_no());
+							int checkQty = cartService.getProductQty(changeNo);
+							int c_qtyChange = cartPno.getC_qty();
+							
+							minusQty.put("productNo", cartPno.getC_p_no());
+							minusQty.put("c_qty", (checkQty-c_qtyChange));
+							cartService.minusProductQty(minusQty);
+							
 							cartService.myCartBuy(productBuy);
 							cartService.myCartDel(k);
 						}
@@ -295,7 +356,15 @@ public class CartController {
 								productBuy.put("pass2", cartPno.getC_p_no());
 								productBuy.put("s_c_qty", cartPno.getC_qty());
 								productBuy.put("s_c_color", cartPno.getC_color());
-	
+								
+								String changeNo = String.valueOf(cartPno.getC_p_no());
+								int checkQty = cartService.getProductQty(changeNo);
+								int c_qtyChange = cartPno.getC_qty();
+								
+								minusQty.put("productNo", cartPno.getC_p_no());
+								minusQty.put("c_qty", (checkQty-c_qtyChange));
+								cartService.minusProductQty(minusQty);
+								
 								cartService.myCartBuy(productBuy);
 								cartService.myCartDel(k);
 								}
@@ -315,14 +384,27 @@ public class CartController {
 		return data;
 	}
 	@RequestMapping(value="/myBuyList")
-	public String myCartBuy(Model model, HttpSession session){
+	public String myCartBuy(Model model, HttpSession session, @RequestParam(value="day", defaultValue="")String day){
 		String url="redirect:/main";
 		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
 		if(loginUser!=null){
 			Map<String, Object> productBuy = new HashMap<String, Object>();
-			List<BuyListViewVO> mySell = cartService.getBuyMyProduct(loginUser.getId());
+			List<BuyListViewVO> mySell = new ArrayList<BuyListViewVO>();
+			if(day.equals("")){
+				mySell = cartService.getBuyMyProduct(loginUser.getId());
+			}else{
+				day = day.substring(2);
+				day = day.replaceAll("-", "/");
+				mySell = cartService.getBuyMyProductDay(loginUser.getId(), day);
+			}
+			
+			int totalPrice = 0;
+			for (int i = 0; i < mySell.size(); i++) {
+				totalPrice += mySell.get(i).getS_c_qty() * Integer.parseInt(mySell.get(i).getP_price());
+			}
 			if(mySell!=null){
 				model.addAttribute("mySell",mySell);
+				model.addAttribute("totalPrice", totalPrice);
 			}
 			url = "/cart/myBuyList";
 		}

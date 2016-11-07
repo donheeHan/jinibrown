@@ -23,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -246,5 +247,34 @@ public class MemberController {
 		memberService.updateUserPwd(vo);
 		
 		return url;
+	}
+	
+	@RequestMapping("mypagePwdRequireForm")
+	public String mypagePwdRequireForm(){
+		String url = "/member/mypagePwdCheck";
+		
+		return url;
+	}
+	
+	@RequestMapping("mypagePwdRequire")
+	@ResponseBody
+	public String mypagePwdRequire(HttpSession session, @RequestParam("pass")String pass) throws Exception{
+
+		String message = "";
+		
+		Login_ViewVO loginUser = (Login_ViewVO) session.getAttribute("loginUser");
+			
+		String id = loginUser.getId();
+			
+		loginUser = memberService.getLoginInfo(id);
+		
+		pass = sp.encrypt(pass);
+		
+		if(loginUser.getUser_pass().equals(pass)){
+			message = "Y";
+		}else
+			message = "N";
+		
+		return message;
 	}
 }

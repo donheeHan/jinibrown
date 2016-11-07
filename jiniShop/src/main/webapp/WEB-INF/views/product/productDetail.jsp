@@ -8,12 +8,34 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <body>
 <script type="text/javascript">
+
+function selectEvent(selectObj) {
+	if(($("#pqty").val()*1)<(selectObj.value*1)){
+		$("#checkQty").hide();
+		swal("재고수량이 부족합니다.","구매 갯수를 다시한번 확인해주세요.", "error");
+	}
+	if(($("#pqty").val()*1)>=(selectObj.value*1)){
+		$("#checkQty").show();
+	}
 	
+	$("#price").html("총 구매 가격 : "+($("#pp").val()*selectObj.value)+"원");
+}
  function sellInput(){
-	 	var productNo=$("#passNo").val();
-		var c_qty=$("#c_qty").val();
-		var c_color=$("#c_color").val();
-		location.href="/productBuy?productNo="+productNo+"&c_qty="+c_qty+"&c_color="+c_color;
+	 	if($("#loginId").val() == ""){
+	 		swal({
+				title:"로그인이 필요합니다!",
+				text:"메인페이지로 이동합니다.",
+				type:"error"
+			},
+			function(){
+				self.location.href="/main";
+			});
+	 	}else{
+		 	var productNo=$("#passNo").val();
+			var c_qty=$("#c_qty").val();
+			var c_color=$("#c_color").val();
+			location.href="/productBuy?productNo="+productNo+"&c_qty="+c_qty+"&c_color="+c_color;
+	 	}
  }
  function cartInput(){
 		var passNo=$("#passNo").val();
@@ -64,39 +86,33 @@
 </style>
 	
 <div>
+	<input type="hidden" value="${loginUser.id }" id="loginId">
 	<div style="float: left; width: 40%;">
 		<img src="/images/productImage/${productDetail.p_mainimg}" style="width: 60%; height: 300px;">
 	</div> 
 	<div style="text-align: left; float: left; width:50%;">
 	<form>
+		<input type="hidden" value="${productDetail.p_price}" id="pp"/>
+		<input type="hidden" value="${productDetail.p_qty}" id="pqty"/>
 		<p style="text-align: center; font-size:30px; overflow: hidden; text-overflow: ellipsis;">[${productDetail.p_name}]</p><br>
 		<p style="text-align: left; font-size:20px; color:#FF4000; overflow: hidden; text-overflow: ellipsis;">${productDetail.p_info}</p><br> 
 		<p style="text-align: left; font-size:20px; overflow: hidden; text-overflow: ellipsis;">판매가 : ${productDetail.p_price}</p> 
 		<p style="text-align: left; font-size:20px; overflow: hidden; text-overflow: ellipsis;"><span> 제조사/원산지 : ${productDetail.p_c_name}/국산<br></span></p>
 		<br>
-			<div><p>주문 수량(최대 5개) :  <select id="c_qty">
+			<div>
+			<h4>＊＊＊＊＊＊＊현재 재고 수량 : ${productDetail.p_qty }＊＊＊＊＊＊＊</h4>
+			<p>주문 수량_1회 1개 :  <select id="c_qty" onchange="javascript:selectEvent(this)">
 							<option selected="selected" value="1">1개</option>
-							<option value="2">2개</option>
-							<option value="3">3개</option>
-							<option value="4">4개</option>
-							<option value="5">5개</option>
 						</select></p>
-					<p id="price">상품 총 가격 : </p>
-				 <p>색상 선택 : 
-						 <select id="c_color">
-							<option>red</option>
-							<option>black</option>
-							<option>blue</option>
-							<option>green</option>
-							<option>yellow</option>
-							<option>gray</option>
-							<option>lightGreen</option>
-						</select>
-						</p>
-			</div>   
-			<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" onclick="sellInput();" value="구매하기">
-			<input type="reset" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" value="옵션 재 선택">
-			<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" onclick="cartInput();" value="장바구니 담기">
+					<p id="price">총 구매 가격 : ${productDetail.p_price }</p>
+			</div> 
+			<c:if test="${productDetail.p_qty>0}">
+				<div id="checkQty">
+					<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" onclick="sellInput();" value="구매하기">
+					<input type="reset" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" value="옵션 재 선택">
+					<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" onclick="cartInput();" value="장바구니 담기">
+				</div>
+			</c:if>
 			<input type="hidden" id="passNo" value="${productDetail.p_no}">  
 		</form> 
 		<input id="p_price" type="hidden" value="${productDetail.p_price}"/>

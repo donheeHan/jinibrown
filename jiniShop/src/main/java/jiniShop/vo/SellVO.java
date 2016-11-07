@@ -10,7 +10,15 @@ public class SellVO {
 	private String s_c_color;
 	private int p_price;
 	private String p_name;
+	private int p_price2;
 	
+	
+	public int getP_price2() {
+		return p_price2;
+	}
+	public void setP_price2(int p_price2) {
+		this.p_price2 = p_price2;
+	}
 	public int getP_price() {
 		return p_price;
 	}

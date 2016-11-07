@@ -9,7 +9,7 @@
 		INSERT INTO CART(C_NO,C_USER,C_P_NO,C_QTY,C_COLOR) VALUES(CART_SEQ.NEXTVAL,#{member},#{productNo},#{c_qty},#{c_color})
 	</insert>
 	<insert id="insertSell" parameterType="map">
-		INSERT INTO SELL(S_NO,S_USER,S_P_NO,S_C_QTY,S_C_COLOR) VALUES(CART_SEQ.NEXTVAL,#{member},#{productNo},#{c_qty},#{c_color})
+		INSERT INTO SELL(S_NO,S_USER,S_P_NO,S_C_QTY,S_C_COLOR, S_DAY) VALUES(CART_SEQ.NEXTVAL,#{member},#{productNo},#{c_qty},#{c_color}, sysdate)
 	</insert>
 	
 	<select id="getMyCart" parameterType="str" resultType="cartView">
@@ -72,4 +72,9 @@
 			
 	</select>
 	
+	<select id="getBuyMyProductDay" parameterType="map" resultType="buy">
+		SELECT P_NO,P_NAME,P_PRICE,P_INFO,P_MAINIMG,P_SUBIMG,P_COUNT,P_CATE,P_QTY,P_PRICE2,P_BUY,P_STATUS,P_C_NAME,S_NO,S_DAY,S_RETURN,S_USER,S_P_NO,S_C_QTY,S_C_COLOR
+		FROM BUYLISTVIEW
+		WHERE S_USER=#{id} and S_DAY = #{day}
+	</select>
 	</mapper>

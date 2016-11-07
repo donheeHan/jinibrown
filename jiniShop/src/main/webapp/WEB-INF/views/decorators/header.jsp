@@ -106,7 +106,7 @@
        </p>
        <p class="aa">♥</p>
        <p>
-         <a href="/mypageForm" id="mypage"><img src="./images/mypage.jpg"></a>
+         <a href="/mypagePwdRequireForm" id="mypage"><img src="./images/mypage.jpg"></a>
        </p>
        </c:when>
        </c:choose>

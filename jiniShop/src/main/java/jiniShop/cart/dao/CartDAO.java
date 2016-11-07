@@ -24,5 +24,8 @@ public interface CartDAO {
 	ProductVO getProductInfo(int productNo) throws SQLException;
 	Login_ViewVO getMyPoint(String id) throws SQLException;
 	CartViewVO getCartProductInfo(int cartNo) throws SQLException;
+	void minusProductQty(Map<String, Object> minusQty) throws SQLException;
+	int getProductQty(String productNo) throws SQLException;
+	List<BuyListViewVO> getBuyMyProductDay(Map<String, String> params);
 
 }

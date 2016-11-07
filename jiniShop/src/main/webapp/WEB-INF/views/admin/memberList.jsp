@@ -12,6 +12,11 @@
 <script>
 	$(function(){
 		$("#datatable").DataTable();
+		
+		$(".listTr").click(function(){
+			var id = $(this).attr("id");
+			location.href='/admin/adminMemberDetail?id='+id+'';
+		})
 	});
 
 </script>
@@ -33,7 +38,7 @@
 		</thead>
 	    <tbody>
 	        	<c:forEach var="memberList" items="${memberList }" varStatus="status">
-	        		<tr>
+	        		<tr id="${memberList.id }" class="listTr">
 	        			<td>${status.count }</td>	
 	        			<td>${memberList.id }</td>	
 	        			<td>${memberList.name}</td>	

@@ -92,6 +92,7 @@
 	<table class="simple_table" id="datatable">
 		<thead>
 			<tr>
+				<th><input type="checkbox" id="checkAll"/></th>
 				<th>메인 이미지</th>
 				<th>상품명</th>
 				<th>상품 정보</th>
@@ -100,7 +101,6 @@
 				<th>카테고리</th>
 				<th>재고 수량</th>
 				<th>거래처</th>
-				<th style="width:5%;"><input type="checkbox" id="checkAll" style="width:10px;"/></th>
 
 			</tr>
 		</thead>
@@ -114,6 +114,7 @@
 	        		<c:otherwise>
 			           	<c:forEach var="productList" items="${productList}">
 				        <tr class="goProduct" id="${productList.p_no}">
+				        	<td><input type="checkbox" id="${productList.p_no}"></td>
 				        	<td>
 				        	<img src="/images/productImage/${productList.p_mainimg}" style="width:100px; height: 125px;"/>
 				        	</td>
@@ -124,7 +125,6 @@
 			           		<td>${productList.p_cate }</td>
 			           		<td>${productList.p_qty }</td>
 			           		<td>${productList.p_c_name }</td> 
-				        	<td><input type="checkbox" id="${productList.p_no}" style="width:10px;"></td>
 				        </tr>
 			           	</c:forEach>
 	        		</c:otherwise>

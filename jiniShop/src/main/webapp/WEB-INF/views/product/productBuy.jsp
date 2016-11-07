@@ -222,7 +222,7 @@ $("#buyCashPoint").click(function(){
 			<input type="hidden" id="price" value="${productInfo.p_price}">
 			<input type="hidden" id="myPoint" value="${memberInfo.point}">
 			
-			<div id="one" style="background-color: lightGray; display: none">
+			<div id="one" style="border: 3px solid lightGray; display: none">
 				<div>
 					<h3>상품의 총 가격은 ${c_qty*productInfo.p_price} 입니다.</h3>
 					<h2>결제 정보</h2>
@@ -237,10 +237,13 @@ $("#buyCashPoint").click(function(){
 					<h5>상품 구매시 누적될 포인트 : <fmt:formatNumber value="${c_qty*productInfo.p_price*0.05}" pattern="0"/></h5>
 					
 					<input type="hidden" value="<fmt:formatNumber value='${c_qty*productInfo.p_price*0.05}' pattern='0'/>" id="stackPoint">
-					<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" id="buyCash" value="최종 구매">
+					<p style="text-align: center;">
+					<br><br>
+						<input type="button" class="button2" style="width: 150px; height:30px; font-size:15px; margin-right: 10px;" id="buyCash" value="최종 구매">
+					</p>
 				</div>
 			</div>
-			<div id="two" style="background-color: lightGray; display: none;">
+			<div id="two" style="border: 3px solid lightGray; display: none;">
 				<div>
 					<h3>상품의 총 가격은 ${c_qty*productInfo.p_price} 입니다.</h3>
 					<h2>결제 정보</h2>
@@ -259,7 +262,7 @@ $("#buyCashPoint").click(function(){
 					</c:if>
 				</div>
 			</div>
-			<div id="three" style="background-color: lightGray; display: none;">
+			<div id="three" style="border: 3px solid lightGray; display: none;">
 				<div>
 					<h3>상품의 총 가격은 ${c_qty*productInfo.p_price} 입니다.</h3>
 					<h2>결제 정보</h2>

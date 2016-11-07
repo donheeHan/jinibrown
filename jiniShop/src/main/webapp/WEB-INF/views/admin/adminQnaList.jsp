@@ -40,7 +40,7 @@
 	        	<c:choose>
 	        		<c:when test="${empty qnaList }">
 			        <tr>
-	        			<td colspan="5">문의하신 내용이 없습니다.</td>
+	        			<td colspan="6">문의하신 내용이 없습니다.</td>
 			        </tr>
 	        		</c:when>
 	        		<c:otherwise>

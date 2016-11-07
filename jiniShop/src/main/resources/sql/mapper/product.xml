@@ -5,7 +5,7 @@
 
 <mapper namespace="product">
 	<select id="list" parameterType="str" resultType="product">
-		SELECT P_NO, P_NAME,P_PRICE,P_INFO,P_MAINIMG, p_count
+		SELECT P_NO, P_NAME,P_PRICE,P_INFO,P_MAINIMG, p_count, p_qty
 		FROM PRODUCT
 		WHERE P_CATE=#{kind}
 	</select>
@@ -47,39 +47,11 @@
 	</select>
 	
 	<select id="getProductMonth" parameterType="int" resultType="sell">
-		SELECT S_DAY, S_USER, S_P_NO, COUNT(S_C_QTY) AS S_C_QTY, P_PRICE, P_NAME
+		SELECT S_DAY, S_USER, S_P_NO, COUNT(S_C_QTY) AS S_C_QTY, P_PRICE, P_NAME, P_PRICE2
 		FROM SELL, PRODUCT
-		WHERE SUBSTR(S_DAY,4,2)=#{month} AND
+		WHERE SUBSTR(S_DAY,1,5)=#{month} AND
 		SELL.S_P_NO = PRODUCT.P_NO
-    	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME
-    	ORDER BY S_DAY DESC
-	</select>
-	<select id="getProductDay" parameterType="int" resultType="sell">
-		SELECT S_DAY, S_USER, S_P_NO, COUNT(S_C_QTY) AS S_C_QTY, P_PRICE, P_NAME
-		FROM SELL, PRODUCT
-		WHERE SUBSTR(S_DAY,7,2)=#{date} AND
-		SELL.S_P_NO = PRODUCT.P_NO
-    	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME
-    	ORDER BY S_DAY DESC
-	</select>
-	<select id="getProductWeek" parameterType="int" resultType="sell">
-		SELECT 	S_DAY, S_USER, S_P_NO, COUNT(S_C_QTY) AS S_C_QTY, P_PRICE, P_NAME
-		FROM 	SELL, PRODUCT
-		WHERE 	SUBSTR(S_DAY,7,2)=#{weekDay}-6
-			OR
-				SUBSTR(S_DAY,7,2)=#{weekDay}-5
-			OR
-				SUBSTR(S_DAY,7,2)=#{weekDay}-4
-			OR
-				SUBSTR(S_DAY,7,2)=#{weekDay}-3
-			OR
-				SUBSTR(S_DAY,7,2)=#{weekDay}-2
-			OR
-				SUBSTR(S_DAY,7,2)=#{weekDay}-1
-			OR
-				SUBSTR(S_DAY,7,2)=#{weekDay} AND
-		SELL.S_P_NO = PRODUCT.P_NO
-    	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME
+    	GROUP BY S_DAY, S_USER, S_P_NO, S_C_QTY, P_PRICE, P_NAME, P_PRICE2
     	ORDER BY S_DAY DESC
 	</select>
 	
@@ -92,7 +64,16 @@
 	</delete>
 	
 	<update id="adminProductUpdate" parameterType="map">
-		UPDATE PRODUCT SET P_NO=${p_no}, P_NAME=#{p_name},P_PRICE=#{p_price},P_INFO=#{p_info},P_MAINIMG=#{p_mainimg},P_SUBIMG=#{p_subimg},P_CATE=#{p_cate},P_QTY=#{p_qty},P_PRICE2=#{p_price2},P_C_NAME=#{p_c_name}
+		UPDATE PRODUCT SET P_NO=#{p_no}, P_NAME=#{p_name},P_PRICE=#{p_price},P_INFO=#{p_info},P_MAINIMG=#{p_mainimg},P_SUBIMG=#{p_subimg},P_CATE=#{p_cate},P_QTY=#{p_qty},P_PRICE2=#{p_price2},P_C_NAME=#{p_c_name}
 		WHERE P_NO=#{p_no}
+	</update>
+	<select id="getProductQty" parameterType="str" resultType="int">
+		SELECT P_QTY
+		FROM PRODUCT
+		WHERE P_NO=#{productNo}
+	</select>
+	<update id="minusProductQty" parameterType="map">
+		UPDATE PRODUCT SET P_QTY=#{c_qty}
+		WHERE P_NO=#{productNo}
 	</update>
 </mapper>

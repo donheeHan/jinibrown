@@ -90,36 +90,18 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<SellVO> getProductMonth(int month) {
+	public List<SellVO> getProductMonth(String month, int i) {
 		List<SellVO> getProductMonth = null;		
 		try {
-			getProductMonth = adminDAO.getProductMonth(month);
+			if(i>9){
+				getProductMonth = adminDAO.getProductMonth(month);
+			}else{
+				getProductMonth = adminDAO.getProductMonth(month+"/");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return getProductMonth;
-	}
-
-	@Override
-	public List<SellVO> getProductDay(int date) {
-		List<SellVO> getProductDay = null;
-		try {
-			getProductDay = adminDAO.getProductDay(date);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return getProductDay;
-	}
-
-	@Override
-	public List<SellVO> getProductWeek(int weekDay) {
-		List<SellVO> getProductWeek = null;
-		try {
-			getProductWeek = adminDAO.getProductWeek(weekDay);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return getProductWeek;
 	}
 
 	@Override
@@ -144,9 +126,18 @@ public class AdminServiceImpl implements AdminService{
 		try {
 			adminDAO.modifyProduct(product);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Login_ViewVO getMemberDetail(String id) {
+		return adminDAO.getMemberDetail(id);
+	}
+
+	@Override
+	public void updateMemberPoint(String id, String point) {
+		adminDAO.updateMemberPoint(id, point);
 	}
 	
 	

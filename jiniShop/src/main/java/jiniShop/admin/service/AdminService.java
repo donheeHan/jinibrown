@@ -30,11 +30,7 @@ public interface AdminService {
 
 	List<ClientVO> getClientList();
 
-	List<SellVO> getProductMonth(int month);
-
-	List<SellVO> getProductDay(int date);
-
-	List<SellVO> getProductWeek(int weekDay);
+	List<SellVO> getProductMonth(String month, int i);
 
 	void insertClient(ClientVO clientVO);
 
@@ -43,6 +39,10 @@ public interface AdminService {
 	ProductVO getProductDetail(int productNo);
 
 	void modifyProduct(ProductVO product);
+
+	Login_ViewVO getMemberDetail(String id);
+
+	void updateMemberPoint(String id, String point);
 
 
 }

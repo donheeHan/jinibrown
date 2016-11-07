@@ -40,4 +40,10 @@
 		where user_id = #{user_id}
 	</update>
 	
+	<update id="updateAdminMemberPoint" parameterType="map">
+		update member
+		set point = #{point}
+		where id=#{id}
+	</update>
+	
 </mapper>

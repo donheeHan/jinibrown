@@ -271,7 +271,7 @@
 	</div>
 	<div id="showText" style="display: none;">
 		<p style="font-size: 20px;">현재 나의 포인트 : ${myPoint}</p>
-		<input type="text" id="setPoint" style="width:260px;" placeholder="사용할 포인트를 입력하세요(100P 이상)">
+		<input type="number" id="setPoint" style="width:260px;" placeholder="사용할 포인트를 입력하세요(100P 이상)">
 		<input type="button" id="buyCashPoint" class="button1" value="결제 확인">
 		<input type="hidden" id="getMyPoint" value="${myPoint}">
 	</div>
